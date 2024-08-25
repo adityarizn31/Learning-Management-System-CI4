@@ -42,7 +42,7 @@
                         </div>
 
                         <div class="col-sm-12 col-md-12" style="padding: 20px;">
-                            <div class="card card-outline card-primary">
+                            <div class="card border-1 border-primary">
 
                                 <div class="card-header">
                                     <div class="card-title text-black fw-semibold"> Berkas Tugas <?= $tugas_alpro['id']; ?> </div>
@@ -54,6 +54,25 @@
 
                             </div>
                         </div>
+
+                        <!-- Form Pengumpulan Tugas -->
+                        <div class="col-sm-12">
+                            <div class="card border-1 border-primary mt-4 mb-3">
+                                <div class="card-header">
+                                    <div class="card-title text-black fw-semibold"> Unggah Tugas Anda </div>
+                                </div>
+                                <div class="card-body">
+                                    <form action="<?= base_url('/tugasAlpro/upload/' . $tugas_alpro['id']) ?>" method="post" enctype="multipart/form-data">
+                                        <div class="mb-3">
+                                            <label for="filetugas" class="form-label fw-semibold">Pilih Berkas Tugas (PDF, DOCX, dll)</label>
+                                            <input type="file" class="form-control" id="filetugas" name="filetugas" required>
+                                        </div>
+                                        <button type="submit" class="btn btn-success">Unggah Tugas</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Form Pengumpulan Tugas -->
 
                     </div>
 

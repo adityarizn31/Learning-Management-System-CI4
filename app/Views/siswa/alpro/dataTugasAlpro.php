@@ -48,15 +48,17 @@
 
                                 <div class="card text-center border-1 border-primary mb-2">
                                     <div class="card-header">
-                                        Tugas Pertemuan <?= $i++;  ?>
+                                        <h5>Tugas Pertemuan <?= $i++; ?> || <?= $alpro['judultugas_alpro']; ?></h5>
                                     </div>
                                     <div class="card-body border-primary">
-                                        <h5 class="card-title"><?= $alpro['judultugas_alpro']; ?></h5>
                                         <p class="card-text"><?= $alpro['deskripsitugas_alpro'] ?></p>
-                                        <a href="/GuruController/detailTugasAlpro/<?= $alpro['slug'] ?>" class="btn btn-primary">Go somewhere</a>
+                                        <a href="/SiswaController/detailTugasAlpro/<?= $alpro['slug'] ?>" class="btn btn-primary">Detail Tugas</a>
                                     </div>
-                                    <div class="card-footer text-muted">
-                                        <p>Batas Waktu Pengumpulan <?= $alpro['bataswaktu_alpro']; ?></p>
+                                    <div class="card-footer">
+                                        <p>Batas Waktu Pengumpulan
+                                            <br>
+                                            <?= $alpro['bataswaktu_alpro']; ?>
+                                        </p>
                                     </div>
                                 </div>
 

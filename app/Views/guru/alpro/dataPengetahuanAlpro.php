@@ -42,7 +42,7 @@
                         <th scope="col">NIS Siswa</th>
                         <th scope="col">Nama Siswa</th>
                         <th scope="col">Kelas Siswa</th>
-                        <th scope="col" colspan="2" class="text-center">Aksi</th>
+                        <th scope="col" colspan="2" class="text-center">Nilai</th>
                     </tr>
                 </thead>
 
@@ -56,15 +56,11 @@
                             <td><?= $a['nama_siswa']; ?></td>
                             <td><?= $a['kelas_siswa']; ?></td>
                             <td>
-                                <a href="/guru/detailSiswaRPLA/<?= $a['slug']; ?>" class="btn btn-success btn-sm"><i class="fa fa-question-circle"></i>
-                                    Pertanyaan
-                                </a>
-                            </td>
-                            <td>
                                 <a href="/guru/detailSiswaRPLA/<?= $a['slug']; ?>" class="btn btn-warning btn-sm"><i class="fa-solid fa-award"></i>
-                                    Pengetahuan
+                                    Input Nilai 
                                 </a>
                             </td>
+                            <!-- Jika Guru sudah memberikan Nilai maka button berwarna btn btn-success -->
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
