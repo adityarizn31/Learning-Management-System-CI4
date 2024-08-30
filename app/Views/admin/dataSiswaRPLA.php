@@ -1,73 +1,77 @@
-<?= $this->extend('layout/template'); ?>
+    <?= $this->extend('layout/templates'); ?>
 
-<?= $this->section('content'); ?>
+    <?= $this->section('content'); ?>
 
-<section class="p-4">
+    <div class="container-fluid">
 
-    <button class="btn btn-primary" id="button-toggle">
-        <i class="bi bi-list"></i>
-    </button>
+        <div class="card shadow mt-3 border-2 border-primary">
 
-    <div class="card shadow mt-3 border-2 border-primary">
+            <div class="card-header py-3">
+                <div class="d-sm-flex align-items-center justify-content-between" style="padding-top: 10px;">
+                    <h3 class="m-0 font-weight-bold text-primary"> Data Siswa RPL A </h3>
 
-        <div class="card-header py-3">
-            <div class="d-sm-flex align-items-center justify-content-between" style="padding-top: 10px;">
-                <h3 class="m-0 font-weight-bold text-primary"> Data Siswa RPL A </h3>
-                <a href="/AdminController/createSiswaRPLA/" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"> Tambah Siswa A </a>
-            </div>
-        </div>
+                    <!-- Tombol Export Excel -->
+                    <a href="<?= base_url(); ?>/AdminController/exportExcel" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm" style="margin-right: 10px;">
+                        <i class="fas fa-file-excel"></i> Export Excel
+                    </a>
 
-        <div class="container mt-4">
-            <div class="row">
-                <div class="col">
-
-                    <?php if (session()->getFlashdata('pesan')) : ?>
-
-                        <div class="alert alert-success" role="alert">
-                            <?= session()->getFlashdata('pesan'); ?>
-                        </div>
-
-                    <?php endif; ?>
+                    <!-- <a href="<?= base_url(); ?>/AdminController/createSiswaRPLA/" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus"> </i> Siswa RPL A </a> -->
 
                 </div>
             </div>
-        </div>
 
-        <div class="card-body">
-            <table class="table table-fixed table-hover">
+            <div class="container mt-4">
+                <div class="row">
+                    <div class="col">
 
-                <thead class="table-dark">
-                    <tr>
-                        <th scope="col">No</th>
-                        <th scope="col">Foto Siswa</th>
-                        <th scope="col">NIS Siswa</th>
-                        <th scope="col">Nama Siswa</th>
-                        <th scope="col">Kelas Siswa</th>
-                        <th scope="col">Aksi</th>
-                    </tr>
-                </thead>
+                        <?php if (session()->getFlashdata('pesan')) : ?>
 
-                <tbody>
-                    <?php $i = 1; ?>
-                    <?php foreach ($rpla as $a) : ?>
+                            <div class="alert alert-success" role="alert">
+                                <?= session()->getFlashdata('pesan'); ?>
+                            </div>
+
+                        <?php endif; ?>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <table class="table table-fixed table-hover table-responsive">
+
+                    <thead class="table-dark">
                         <tr>
-                            <th><?= $i++; ?></th>
-                            <td><img src="/img/rpla/<?= $a['foto_siswa']; ?>" alt="" style="width: 20%;"></td>
-                            <td><?= $a['nis_siswa']; ?></td>
-                            <td><?= $a['nama_siswa']; ?></td>
-                            <td><?= $a['kelas_siswa']; ?></td>
-                            <td><a href="/admin/detailSiswaRPLA/<?= $a['slug']; ?>" class="btn btn-success">Detail</a></td>
+                            <th scope="col">No</th>
+                            <th scope="col">Foto Siswa</th>
+                            <th scope="col">NIS Siswa</th>
+                            <th scope="col">Nama Siswa</th>
+                            <th scope="col">Kelas Siswa</th>
+                            <th scope="col">Aksi</th>
                         </tr>
-                    <?php endforeach; ?>
-                </tbody>
+                    </thead>
 
-            </table>
+                    <tbody>
+                        <?php $i = 1; ?>
+                        <?php foreach ($rpla as $a) : ?>
+                            <tr>
+                                <th><?= $i++; ?></th>
+                                <td><img src="/img/rpla/<?= $a['foto_siswa']; ?>" alt="" style="width: 20%;"></td>
+                                <td><?= $a['nis_siswa']; ?></td>
+                                <td><?= $a['nama_siswa']; ?></td>
+                                <td><?= $a['kelas_siswa']; ?></td>
+                                <td>
+                                    <a href="<?= base_url(); ?>/admin/detailSiswaRPLA/<?= $a['slug']; ?>" class="btn btn-success btn-sm"><i class="fas fa-eye"></i> Detail
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+
+                </table>
+            </div>
+
         </div>
 
     </div>
 
-
-
-</section>
-
-<?= $this->endSection('content'); ?>
+    <?= $this->endSection('content'); ?>

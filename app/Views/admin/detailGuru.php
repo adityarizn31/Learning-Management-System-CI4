@@ -1,12 +1,8 @@
-<?= $this->extend('layout/template'); ?>
+<?= $this->extend('layout/templates'); ?>
 
 <?= $this->section('content'); ?>
 
-<section class="p-4">
-
-  <button class="btn btn-primary" id="button-toggle">
-    <i class="bi bi-list"></i>
-  </button>
+<div class="container-fluid">
 
   <div class="card shadow mb-4 border-2" style="margin-top: 25px;">
 
@@ -103,6 +99,6 @@
     </div>
   </div>
 
-</section>
+</div>
 
 <?= $this->endSection('content'); ?>

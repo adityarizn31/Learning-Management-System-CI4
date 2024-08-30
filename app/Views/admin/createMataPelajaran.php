@@ -1,12 +1,8 @@
-<?= $this->extend('layout/template'); ?>
+<?= $this->extend('layout/templates'); ?>
 
 <?= $this->section('content'); ?>
 
-<section class="p-4" id="main-content">
-
-    <button class="btn btn-primary">
-        <i class="bi bi-list"></i>
-    </button>
+<div class="container-fluid">
 
     <div class="card shadow mb-4 border-2" style="margin-top: 25px; padding: 20px;">
 
@@ -15,7 +11,7 @@
             <h4 class="m-0 font-weight-bold text-primary">Tambah Matpel</h4>
         </div>
 
-        <form action="/AdminController/saveMatpel" method="post" enctype="multipart/form-data">
+        <form action="<?= base_url(); ?>/AdminController/saveMatpel" method="post" enctype="multipart/form-data">
 
             <div class="card-body">
                 <div class="row">
@@ -54,12 +50,10 @@
                     </div>
 
                     <!-- Button Create -->
-                    <div class="form-group row">
-                        <div class="col-sm-12">
-                            <button type="submit" class="btn btn-primary btn-user btn-block">
-                                Tambah Matpel
-                            </button>
-                        </div>
+                    <div class="col-sm-12">
+                        <button type="submit" class="btn btn-primary btn-user btn-block">
+                            Tambah Matpel
+                        </button>
                     </div>
 
                 </div>
@@ -67,6 +61,6 @@
         </form>
     </div>
 
-</section>
+</div>
 
 <?= $this->endSection('content'); ?>

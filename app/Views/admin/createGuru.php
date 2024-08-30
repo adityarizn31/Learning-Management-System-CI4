@@ -1,12 +1,8 @@
-<?= $this->extend('layout/template'); ?>
+<?= $this->extend('layout/templates'); ?>
 
 <?= $this->section('content'); ?>
 
-<section class="p-4" id="main-content">
-
-  <button class="btn btn-primary" id="button-toggle">
-    <i class="bi bi-list"></i>
-  </button>
+<div class="container-fluid">
 
   <div class="card shadow mb-4 border-2" style="margin-top: 25px; padding: 20px;">
 
@@ -15,7 +11,7 @@
       <h4 class="m-0 font-weight-bold text-primary">Buat Akun Guru</h4>
     </div>
 
-    <form action="/AdminController/saveGuru" method="post" enctype="multipart/form-data">
+    <form action="<?= base_url(); ?>/AdminController/saveGuru" method="post" enctype="multipart/form-data">
 
       <div class="card-body">
         <div class="row">
@@ -65,7 +61,7 @@
           </div>
 
           <!-- Jenis Kelamin Siswa -->
-          <div class="row">
+          <div class="col-sm-6">
             <div class="mb-3">
               <label class="form-label fw-semibold">Jenis Kelamin Siswa</label>
               <div>
@@ -118,7 +114,7 @@
           </div>
 
           <!-- Foto Siswa -->
-          <div class="row">
+          <div class="col-sm-6">
             <div class="mb-3">
               <label for="foto_guru" class="form-label fw-semibold">Foto Guru</label>
               <input type="file" name="foto_guru" id="foto_guru" class="form-control text-black <?= (session('errors.foto_guru')) ? 'is-invalid' : ''; ?>" value="<?= old('foto_guru'); ?>" onchange="previewImgGuru()">
@@ -132,8 +128,8 @@
           </div>
 
           <!-- Button Create -->
-          <div class="form-group row">
-            <div class="col-sm-12">
+          <div class="col-sm-12">
+            <div class="row">
               <button type="submit" class="btn btn-primary btn-user btn-block">
                 Tambah Data Guru
               </button>
@@ -144,8 +140,6 @@
 
     </form>
   </div>
-
-</section>
-
+</div>
 
 <?= $this->endSection('content'); ?>

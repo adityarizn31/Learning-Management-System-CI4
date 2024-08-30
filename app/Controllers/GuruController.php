@@ -12,6 +12,9 @@ use App\Models\GuruModel;
 use App\Models\MateriAlproModel;
 use App\Models\TugasAlproModel;
 
+use App\Models\SiswaAModel;
+use App\Models\NilaiAModel;
+
 use CodeIgniter\Config\Services;
 
 class GuruController extends BaseController
@@ -26,6 +29,9 @@ class GuruController extends BaseController
     protected $materiAlproModel;
     protected $tugasAlproModel;
 
+    protected $siswaAModel;
+    protected $nilaiAModel;
+
     public function __construct()
     {
         $this->adminModel = new AdminModel();
@@ -37,8 +43,11 @@ class GuruController extends BaseController
 
         $this->materiAlproModel = new MateriAlproModel();
         $this->tugasAlproModel = new TugasAlproModel();
+
+        $this->siswaAModel = new SiswaAModel();
+        $this->nilaiAModel = new NilaiAModel();
     }
-    
+
 
 
 
@@ -346,7 +355,7 @@ class GuruController extends BaseController
             'title' => 'Tambah Materi Algoritma Pemrograman || Guru Stemanikaku',
             'validation' => \Config\Services::validation()
         ];
-        return view('guru/alpro/createMateriAlpro', $data);
+        return view('guru/alpro/materi_alpro/createMateriAlpro', $data);
     }
 
     // Done
@@ -392,7 +401,7 @@ class GuruController extends BaseController
             'slug' => $slug
         ]);
         session()->setFlashdata('pesan', 'Materi baru Algoritma Pemrograman berhasil ditambahkan !!');
-        return redirect()->to('/guru/alpro/dataMateriAlpro');
+        return redirect()->to('/guru/alpro/materi_alpro/dataMateriAlpro');
     }
 
     public function createTugasAlpro()
@@ -402,7 +411,7 @@ class GuruController extends BaseController
             'title' => 'Buat Tugas Alpro || Guru Stemanika',
             'validation' => \Config\Services::validation()
         ];
-        return view('guru/alpro/createTugasAlpro', $data);
+        return view('guru/alpro/tugas_alpro/createTugasAlpro', $data);
     }
 
     public function saveTugasAlpro()
@@ -455,8 +464,183 @@ class GuruController extends BaseController
         ]);
 
         session()->setFlashdata('pesan', 'Tugas Algoritma Pemrograman berhasil dibuat !!');
-        return redirect()->to('/guru/alpro/dataTugasAlpro');
+        return redirect()->to('/guru/alpro/tugas_alpro/dataTugasAlpro');
     }
+
+
+
+
+
+
+
+
+
+
+
+    // Done
+    public function createSiswaA()
+    {
+        helper(['form']);
+        $SISWAA = $this->siswaAModel->findAll();
+        $data = [
+            'title' => 'Tambah Data Siswa RPL A || Guru Stemanikaku',
+            'validation' => \Config\Services::validation(),
+            'siswaa' => $SISWAA
+        ];
+
+        return view('guru/nilai/createSiswaA', $data);
+    }
+
+    // Done
+    public function saveSiswaA()
+    {
+        $validate = $this->validate([
+            'nis_siswa' => [
+                'rules' => 'required[siswaa.nis_siswa]|is_natural',
+                'errors' => [
+                    'required' => 'NIS Siswa harus diisi !!',
+                    'is_natural' => 'Hanya boleh diisi angka !!'
+                ],
+            ],
+            'username_siswa' => [
+                'rules' => 'required[siswaa.username_siswa]',
+                'errors' => [
+                    'required' => 'Username Siswa harus diisi !!'
+                ],
+            ],
+            'password_siswa' => [
+                'rules' => 'required[siswaa.password_siswa]',
+                'errors' => [
+                    'required' => 'Password Siswa harus diisi !!'
+                ],
+            ],
+            'nama_siswa' => [
+                'rules' => 'required[siswaa.nama_siswa]',
+                'errors' => [
+                    'required' => 'Nama Siswa harus diisi !!'
+                ],
+            ],
+            'jk_siswa' => [
+                'rules' => 'required[siswaa.jk_siswa]',
+                'errors' => [
+                    'required' => 'Jenis kelamin Siswa harus diisi !!'
+                ],
+            ],
+            'nohp_siswa' => [
+                'rules' => 'required[siswaa.nohp_siswa]',
+                'errors' => [
+                    'required' => 'No HP/Whatsapp Siswa harus diisi !!'
+                ],
+            ],
+            'alamat_siswa' => [
+                'rules' => 'required[siswaa.alamat_siswa]',
+                'errors' => [
+                    'required' => 'Alamat Siswa harus diisi !!'
+                ],
+            ],
+            'foto_siswa' => [
+                'rules' => 'uploaded[foto_siswa]|max_size[foto_siswa,2048]|is_image[foto_siswa]|mime_in[foto_siswa,image/jpg,image/jpeg,image/png]',
+                'errors' => [
+                    'uploaded' => 'Foto Siswa harus diisi !!',
+                    'max_size' => 'Ukuran Foto Maksimal 2MB !!',
+                    'mime_in' => 'Format Foto harus JPG,JPEG,PNG !!'
+                ],
+            ],
+        ]);
+
+        if (!$validate) {
+            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        }
+
+        $fileFotoSiswaA = $this->request->getFile('foto_siswa');
+        if ($fileFotoSiswaA->getError() == 4) {
+        } else {
+            $namaFotoSiswaA = $fileFotoSiswaA->getName();
+            $fileFotoSiswaA->move('img/rpla', $namaFotoSiswaA);
+        }
+
+        $slug = url_title($this->request->getVar('nama_siswa'), '-', true);
+        $this->siswaAModel->save([
+            'nis_siswa' => $this->request->getVar('nis_siswa'),
+            'username_siswa' => $this->request->getVar('username_siswa'),
+            'password_siswa' => $this->request->getVar('password_siswa'),
+            'slug' => $slug,
+            'nama_siswa' => $this->request->getVar('nama_siswa'),
+            'jk_siswa' => $this->request->getVar('jk_siswa'),
+            'nohp_siswa' => $this->request->getVar('nohp_siswa'),
+            'alamat_siswa' => $this->request->getVar('alamat_siswa'),
+            'foto_siswa' => $namaFotoSiswaA
+        ]);
+        session()->setFlashdata('pesan', 'Siswa RPL A berhasil ditambahkan !!');
+        return redirect()->to('/guru/nilai/dataNilaiSiswaA');
+    }
+
+    // Done
+    // Algoritma Pemrograman
+    public function createNilaiSiswaA()
+    {
+        $SISWAA = $this->siswaAModel->findAll();
+        $data = [
+            'title' => 'Input Nilai Siswa RPL A || Guru Stemanikaku',
+            'siswaa' => $SISWAA
+        ];
+        return view('guru/nilai/createNilaiSiswaA', $data);
+    }
+
+    // Done
+    // Algoritma Pemrograman
+    public function saveNilai()
+    {
+        if (!$this->validate([
+            'siswa_id' => 'required',
+            'mata_pelajaran' => 'required',
+            'nilai' => 'required|integer|greater_than_equal_to[0]|less_than_equal_to[100]',
+        ])) {
+            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        }
+
+        $this->nilaiAModel->save([
+            'siswa_id' => $this->request->getVar('siswa_id'),
+            'mata_pelajaran' => $this->request->getVar('mata_pelajaran'),
+            'nilai' => $this->request->getVar('nilai'),
+        ]);
+
+        session()->setFlashdata('pesan', 'Nilai siswa berhasil disimpan.');
+        return redirect()->to('guru/nilai/dataNilaiSiswaA');
+    }
+
+    //  // Done
+    //  public function createNilaiSiswaAModal()
+    //  {
+    //      $SISWAA = $this->siswaAModel->findAll();
+    //      $data = [
+    //          'title' => 'Input Nilai Siswa RPL A || Guru Stemanikaku',
+    //          'siswaa' => $SISWAA
+    //      ];
+    //      return view('guru/nilai/createNilaiSiswaAModal', $data);
+    //  }
+ 
+    //  // Done
+    //  public function saveNilaiAModal()
+    //  {
+    //      if (!$this->validate([
+    //          'siswa_id' => 'required',
+    //          'mata_pelajaran' => 'required',
+    //          'nilai' => 'required|integer|greater_than_equal_to[0]|less_than_equal_to[100]',
+    //      ])) {
+    //          return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+    //      }
+ 
+    //      $this->nilaiAModel->save([
+    //          'siswa_id' => $this->request->getVar('siswa_id'),
+    //          'mata_pelajaran' => $this->request->getVar('mata_pelajaran'),
+    //          'nilai' => $this->request->getVar('nilai'),
+    //      ]);
+ 
+    //      session()->setFlashdata('pesan', 'Nilai siswa berhasil disimpan.');
+    //      return redirect()->to('guru/nilai/createNilaiSiswaA');
+    //  }
+
 
 
 
@@ -552,6 +736,28 @@ class GuruController extends BaseController
 
 
 
+    // MATA PELAJARAN
+    // Done 
+    // Algoritma Pemrograman
+    public function dataNilaiRPLA_Alpro()
+    {
+        $NILAIA = $this->siswaAModel->getSiswaWithNilai();
+        $data = [
+            'title' => 'Data Nilai RPLA Algoritma Perograman || Guru Stemanikaku',
+            'siswa_nilai' => $NILAIA
+        ];
+
+        return view('guru/nilai/dataNilaiRPLA_Alpro', $data);
+    }
+
+
+
+
+
+
+
+
+
 
 
     // Done
@@ -562,7 +768,7 @@ class GuruController extends BaseController
             'title' => 'Materi Algoritma Pemrograman || Guru Stemanikaku',
             'materi_alpro' => $ALPRO
         ];
-        return view('guru/alpro/dataMateriAlpro', $data);
+        return view('guru/alpro/materi_alpro/dataMateriAlpro', $data);
     }
 
     // Done
@@ -573,7 +779,7 @@ class GuruController extends BaseController
             'title' => 'Daftar Tugas Algoritma Pemrograman || Guru Stemanikaku',
             'tugas_alpro' => $TUGASALPRO
         ];
-        return view('guru/alpro/dataTugasAlpro', $data);
+        return view('guru/alpro/tugas_alpro/dataTugasAlpro', $data);
     }
 
     // Done 
@@ -584,10 +790,10 @@ class GuruController extends BaseController
             'title' => 'Daftar Pengetahuan Algoritma Pemrograman || Guru Stemanikaku',
             'rpla' => $RPLA
         ];
-        return view('guru/alpro/dataPengetahuanAlpro', $data);
+        return view('guru/alpro/pengetahuan_alpro/dataPengetahuanAlpro', $data);
     }
 
-    
+
 
 
 
@@ -656,7 +862,7 @@ class GuruController extends BaseController
             'title' => 'Detail Materi Algoritma Pemrograman || Guru Stemanikaku',
             'materi_alpro' => $this->materiAlproModel->getMatAlpro($slug)
         ];
-        return view('/guru/alpro/detailMateriAlpro', $data);
+        return view('/guru/alpro/materi_alpro/detailMateriAlpro', $data);
     }
 
     // Done
@@ -666,7 +872,7 @@ class GuruController extends BaseController
             'title' => 'Detail Tugas Algoritma Perograman || Guru Stemanikaku',
             'tugas_alpro' => $this->tugasAlproModel->getTugasAlpro($slug)
         ];
-        return view('/guru/alpro/detailTugasAlpro', $data);
+        return view('/guru/alpro/tugas_alpro/detailTugasAlpro', $data);
     }
 
 
@@ -977,7 +1183,22 @@ class GuruController extends BaseController
         );
         session()->setFlashdata('pesan', 'Data Siswa RPLC berhasil diubah !!');
         return redirect()->to('guru/dataSiswaRPLC');
-    }    
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public function editMateriAlpro($slug)
     {
@@ -986,7 +1207,7 @@ class GuruController extends BaseController
             'validation' => \Config\Services::validation(),
             'materi_alpro' => $this->materiAlproModel->getMatAlpro($slug)
         ];
-        return view('guru/alpro/editMateriAlpro', $data);
+        return view('guru/alpro/materi_alpro/editMateriAlpro', $data);
     }
 
     public function updateMateriAlpro($id)
@@ -1011,8 +1232,8 @@ class GuruController extends BaseController
                     'max_size' => 'File Dokumen Materi terlalu besar, Kompress terlebih dahulu !!',
                     'mime_in' => 'Format Dokumen Materi Harus PDF !!',
                     'ext_in' => 'Format Dokumen Materi Harus PDF !!'
-                ],
-            ],
+                ]
+            ]
         ])) {
             return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
         }
@@ -1022,7 +1243,7 @@ class GuruController extends BaseController
         $berkasDokumenMateriAlpro->move('dokumen/alpro', $namaDokumenMateriAlpro);
 
         $slug = url_title($this->request->getVar('nama_materi'), '-', true);
-        $this->tugasAlproModel->save([
+        $this->materiAlproModel->save([
             'id' => $id,
             'nama_materi' => $this->request->getVar('nama_materi'),
             'deskripsi_materi' => $this->request->getVar('deskripsi_materi'),
@@ -1030,7 +1251,7 @@ class GuruController extends BaseController
             'slug' => $slug,
         ]);
         session()->setFlashdata('pesan', 'Materi Algoritma Pemrograman berhasil diubah !!');
-        return redirect()->to('/guru/alpro/dataMateriAlpro');
+        return redirect()->to('/GuruController/dataMateriAlpro');
     }
 
     // Done
@@ -1041,7 +1262,7 @@ class GuruController extends BaseController
             'validation' => \Config\Services::validation(),
             'tugas_alpro' => $this->tugasAlproModel->getTugasAlpro($slug)
         ];
-        return view('guru/alpro/editTugasAlpro', $data);
+        return view('guru/alpro/tugas_alpro/editTugasAlpro', $data);
     }
 
     // Done
@@ -1093,7 +1314,7 @@ class GuruController extends BaseController
             'slug' => $slug,
         ]);
         session()->setFlashdata('pesan', 'Tugas Algoritma Pemrograman berhasil diubah !!');
-        return redirect()->to('/guru/alpro/dataTugasAlpro');
+        return redirect()->to('/guru/alpro/tugas_alpro/dataTugasAlpro');
     }
 
 
@@ -1169,6 +1390,6 @@ class GuruController extends BaseController
     {
         $this->tugasAlproModel->delete($id);
         session()->setFlashdata('pesan', 'Tugas Alpro berhasil dihapus !!');
-        return redirect()->to('/GuruController/dataTugasAlpro');
+        return redirect()->to('/GuruController/tugas_alpro/dataTugasAlpro');
     }
 }

@@ -1,68 +1,59 @@
-<?= $this->extend('layout/template'); ?>
+<?= $this->extend('layout/templates'); ?>
 
 <?= $this->section('content'); ?>
 
-<section class="p-4" id="main-content">
+<div class="container-fluid">
 
-    <button class="btn btn-primary" id="button-toggle">
-        <i class="bi bi-list"></i>
-    </button>
+    <div class="d-sm-flex align-items-center justify-content-between mb-4" style="padding-top: 5%;">
+        <h2 class="text-black fw-bold"> Dashboard Guru </h2>
+        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class=""></i></a>
+    </div>
 
-    <div class="container-fluid">
+    <div class="card mt-3 shadow border-2">
 
-        <div class="d-sm-flex align-items-center justify-content-between mb-4" style="padding-top: 5%;">
-            <h2 class="text-black fw-bold"> Dashboard Guru </h2>
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class=""></i></a>
-        </div>
+        <div class="container">
+            <div class="row">
 
-        <div class="card mt-3 shadow border-2">
-            <div class="container">
-                <div class="row">
+                <div class="card shadow border-2" style="width: 14rem; padding: 2%; margin: 1%; border-color: #007BFF;">
+                    <a href="/GuruController/dataMateriAlpro/">
+                        <img src="" alt="">
 
-                <center>
-                    <h3 class="font-weight-bold"> Daftar Mata Pelajaran RPL </h3>
-                </center>
+                        <div class="card-body">
+                            <h5 class="card-title text-black text-center font-weight-bold"> Algoritma dan Pemrograman A </h5>
+                        </div>
 
-                    
-                    <div class="card shadow border-2" style="width: 19rem; padding: 3%; margin: 3%; border-color: #007BFF;">
-                        <a href="/GuruController/dataMateriAlpro/">
-                            <img src="" alt="">
-
-                            <div class="card-body">
-                                <h5 class="card-title text-black text-center font-weight-bold"> Algoritma dan Pemrograman </h5>
-                            </div>
-
-                        </a>
-                    </div>
-
-                    
-                    <div class="card shadow border-2" style="width: 19rem; padding: 3%; margin: 3%; border-color: #007BFF">
-                        <a href="#">
-                            <img src="" alt="">
-
-                            <div class="card-body">
-                                <h5 class="card-title text-black text-center font-weight-bold"> Design Thinking </h5>
-                            </div>
-
-                        </a>
-                    </div>
-
-                    
-                    <div class="card shadow border-2" style="width: 19rem; padding: 3%; margin: 3%; border-color: #007BFF">
-                        <a href="#">
-                            <img src="" alt="">
-
-                            <div class="card-body">
-                                <h5 class="card-title text-black text-center font-weight-bold"> Front End Bussiness </h5>
-                            </div>
-
-                        </a>
-                    </div>
-
+                    </a>
                 </div>
+
+
+                <div class="card shadow border-2" style="width: 14rem; padding: 2%; margin: 1%; border-color: #007BFF">
+                    <a href="#">
+                        <img src="" alt="">
+
+                        <div class="card-body">
+                            <h5 class="card-title text-black text-center font-weight-bold"> Algoritma dan Pemrograman B </h5>
+                        </div>
+
+                    </a>
+                </div>
+
+
+                <div class="card shadow border-2" style="width: 14rem; padding: 2%; margin: 1%; border-color: #007BFF">
+                    <a href="#">
+                        <img src="" alt="">
+
+                        <div class="card-body">
+                            <h5 class="card-title text-black text-center font-weight-bold"> Algoritma dan Pemrograman C </h5>
+                        </div>
+
+                    </a>
+                </div>
+
             </div>
         </div>
 
-</section>
+    </div>
+
+</div>
 
 <?= $this->endSection('content'); ?>

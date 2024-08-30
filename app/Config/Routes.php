@@ -53,10 +53,10 @@ $routes->get('/admin/editSiswaRPLA/(:segment)', 'AdminController::editSiswaRPLA/
 $routes->get('/admin/editSiswaRPLB/(:segment)', 'AdminController::editSiswaRPLB/$1');
 $routes->get('/admin/editSiswaRPLC/(:segment)', 'AdminController::editSiswaRPLC/$1');
 
-$routes->get('admin/dataMatpel', 'AdminController::dataMatpel');
-$routes->get('admin/createMatpel', 'AdminController::createMatpel');
-$routes->get('/admin/detailMatpel', 'AdminController::detailMatpel');
-$routes->get('/admin/editMatpel/(:segment)', 'AdminController::editMatpel/$1');
+$routes->get('admin/dataMataPelajaran', 'AdminController::dataMataPelajaran');
+$routes->get('admin/createMataPelajaran', 'AdminController::createMataPelajaran');
+$routes->get('/admin/detailMataPelajaran', 'AdminController::detailMataPelajaran');
+$routes->get('/admin/editMataPelajaran/(:segment)', 'AdminController::editMataPelajaran/$1');
 
 // Guru
 $routes->get('guru/', 'GuruController::index');
@@ -75,10 +75,10 @@ $routes->get('/guru/editSiswaRPLC/(:segment)', 'GuruController::editSiswaRPLC/$1
 
 $routes->get('guru/dataMataPelajaran', 'GuruController::dataMataPelajaran');
 
-$routes->get('guru/alpro/dataMateriAlpro', 'GuruController::dataMateriAlpro');
-$routes->get('guru/alpro/createMateriAlpro', 'GuruController::createMateriAlpro');
-$routes->get('/guru/alpro/detailMateriAlpro', 'GuruController::detailMateriAlpro');
-$routes->get('guru/alpro/editMateriAlpro', 'GuruController::editMateriAlpro');
+$routes->get('guru/alpro/materi_alpro/dataMateriAlpro', 'GuruController::dataMateriAlpro');
+$routes->get('guru/alpro/materi_alpro/createMateriAlpro', 'GuruController::createMateriAlpro');
+$routes->get('/guru/alpro/materi_alpro/detailMateriAlpro', 'GuruController::detailMateriAlpro');
+$routes->get('/guru/alpro/editMateriAlpro/(:segment)', 'GuruController::editMateriAlpro/$1');
 
 $routes->get('guru/alpro/dataTugasAlpro', 'GuruController::dataTugasAlpro');
 $routes->get('guru/alpro/createTugasAlpro', 'GuruController::createTugasAlpro');
@@ -90,7 +90,10 @@ $routes->get('/quiz/set_question_count', 'QuizController::setQuestionCount');
 $routes->post('/quiz/create_questions', 'QuizController::createQuestions');
 $routes->post('/quiz/store_questions', 'QuizController::storeQuestions');
 
-
+$routes->get('guru/nilai/', 'GuruController::index');
+$routes->get('guru/nilai/createSiswaA', 'GuruController::createSiswaA');
+$routes->get('guru/nilai/dataNilaiRPLA_Alpro', 'GuruController::dataNilaiRPLA_Alpro');
+$routes->get('guru/nilai/createNilaiSiswaA', 'GuruController::createNilaiSiswaA');
 
 // Siswa
 $routes->get('siswa/', 'SiswaController::index');

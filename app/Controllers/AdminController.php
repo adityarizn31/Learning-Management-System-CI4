@@ -431,7 +431,7 @@ class AdminController extends BaseController
     }
 
     // Done
-    public function createMatpel()
+    public function createMataPelajaran()
     {
         helper(['form']);
         $data = [
@@ -439,7 +439,7 @@ class AdminController extends BaseController
             'validation' => \Config\Services::validation()
         ];
 
-        return view('admin/createMatpel', $data);
+        return view('admin/createMataPelajaran', $data);
     }
 
     // Done
@@ -479,7 +479,7 @@ class AdminController extends BaseController
             'slug' => $slug
         ]);
         session()->setFlashdata('pesan', 'Mata Pelajaran berhasil ditambahkan !!');
-        return redirect()->to('/admin/dataMatpel');
+        return redirect()->to('/admin/dataMataPelajaran');
     }
 
 
@@ -549,14 +549,14 @@ class AdminController extends BaseController
     }
 
     // Done
-    public function dataMatpel()
+    public function dataMataPelajaran()
     {
         $MATPEL = $this->matapelajaranModel->findAll();
         $data = [
             'title' => 'Data Mata Pelajaran || Admin Stemanikaku',
             'matapelajaran' => $MATPEL
         ];
-        return view('admin/dataMatpel', $data);
+        return view('admin/dataMataPelajaran', $data);
     }
 
     // Done
@@ -622,13 +622,13 @@ class AdminController extends BaseController
     }
 
     // Done
-    public function detailMatpel($slug)
+    public function detailMataPelajaran($slug)
     {
         $data = [
             'title' => 'Detail Mata Pelajaran || Stemanikaku',
             'matapelajaran' => $this->matapelajaranModel->getMatpel($slug)
         ];
-        return view('/admin/detailMatpel', $data);
+        return view('/admin/detailMataPelajaran', $data);
     }
 
     
@@ -1046,14 +1046,14 @@ class AdminController extends BaseController
     }
 
     // Done
-    public function editMatpel($slug)
+    public function editMataPelajaran($slug)
     {
         $data = [
             'title' => 'Form Edit Mata Pelajaran || Admin Stemanikaku',
             'validation' => \Config\Services::validation(),
             'matapelajaran' => $this->rplAModel->getRPLA($slug)
         ];
-        return view('admin/editSiswaRPLA', $data);
+        return view('admin/editMataPelajaran', $data);
     }
 
     // Done
@@ -1091,7 +1091,7 @@ class AdminController extends BaseController
             ]
         );
         session()->setFlashdata('pesan', 'Data Mata Pelajaran berhasil diubah !!');
-        return redirect()->to('admin/dataMatpel');
+        return redirect()->to('admin/dataMataPelajaran');
     }
     
 
@@ -1137,7 +1137,7 @@ class AdminController extends BaseController
     {
         $this->matapelajaranModel->delete($id);
         session()->setFlashdata('pesan', 'Data Matpel berhasil dihapus !!');
-        return redirect()->to('/AdminController/dataMatpel');
+        return redirect()->to('/AdminController/dataMataPelajaran');
     }
 
     // Done

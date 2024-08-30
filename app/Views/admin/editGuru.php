@@ -1,12 +1,8 @@
-<?= $this->extend('layout/template'); ?>
+<?= $this->extend('layout/templates'); ?>
 
 <?= $this->section('content'); ?>
 
-<section class="p-4" id="main-content">
-
-    <button class="btn btn-primary" id="button-toggle">
-        <i class="bi bi-list"></i>
-    </button>w
+<div class="container-fluid">
 
     <div class="card shadow mb-4 border-2" style="margin-top: 25px; padding: 20px;">
         <div class="container">
@@ -64,7 +60,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="row">
                     <div class="mb-3">
                         <label class="form-label fw-semibold">Jenis Kelamin Guru</label>
@@ -136,6 +132,6 @@
         </div>
     </div>
 
-</section>
+</div>
 
 <?= $this->endSection('content'); ?>

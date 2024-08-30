@@ -3,7 +3,7 @@
 <?= $this->section('content'); ?>
 
 <section class="p-4">
- 
+
     <button class="btn btn-primary" id="button-toggle">
         <i class="bi bi-list"></i>
     </button>
@@ -13,7 +13,9 @@
         <div class="card-header py-3">
             <div class="d-sm-flex align-items-center justify-content-between" style="padding-top: 10px;">
                 <h3 class="m-0 font-weight-bold text-primary"> Data Siswa RPL A </h3>
-                <a href="/GuruController/createSiswaRPLA/" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"> Tambah Siswa A </a>
+
+                <!-- <a href="/GuruController/createSiswaRPLA/" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"> Tambah Siswa A </a> -->
+
             </div>
         </div>
 
@@ -22,11 +24,9 @@
                 <div class="col">
 
                     <?php if (session()->getFlashdata('pesan')) : ?>
-
                         <div class="alert alert-success" role="alert">
                             <?= session()->getFlashdata('pesan'); ?>
                         </div>
-
                     <?php endif; ?>
 
                 </div>
@@ -43,6 +43,7 @@
                         <th scope="col">NIS Siswa</th>
                         <th scope="col">Nama Siswa</th>
                         <th scope="col">Kelas Siswa</th>
+                        <th scope="col">Grafik Perkembangan Siswa</th>
                         <th scope="col">Aksi</th>
                     </tr>
                 </thead>
@@ -56,7 +57,15 @@
                             <td><?= $a['nis_siswa']; ?></td>
                             <td><?= $a['nama_siswa']; ?></td>
                             <td><?= $a['kelas_siswa']; ?></td>
-                            <td><a href="/guru/detailSiswaRPLA/<?= $a['slug']; ?>" class="btn btn-success">Detail</a></td>
+                            <td>
+                                <a href="/GuruController/grafikNilaiSiswa" class="btn btn-secondary btn-sm">
+                                    <i class="fas fa-chart-bar"></i> Grafik
+                                </a>
+                            </td>
+                            <td>
+                                <a href="/guru/detailSiswaRPLA/<?= $a['slug']; ?>" class="btn btn-success btn-sm">
+                                    Detail</a>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

@@ -1,6 +1,6 @@
 <?= $this->extend('layout/templateloginregister'); ?>
 
-<?= $this->section('content'); ?>
+<?= $this->section('contentloginregister'); ?>
 
 <div class="bg-gradient-primary">
     <div class="container">
@@ -17,18 +17,18 @@
                                         <h1 class="h4 text-gray-900 mb-4"> <?= lang('Auth.loginTitle') ?> </h1>
                                     </div>
 
-                                    <?= view('Myth\Auth\Views_message_block') ?>
+                                    <?= view('Myth\Auth\Views\_message_block') ?>
 
                                     <form class="user" action="<?= url_to('login') ?>" method="post">
                                         <?= csrf_field() ?>
 
                                         <?php
-                                        // Memeriksan Config apakah telah didefinisikan atau belum
+                                        // Memeriksa apakah $config telah didefinisikan dan bukan null
                                         if ($config && is_array($config->validFields) && in_array('email', $config->validFields)) :
                                         ?>
 
                                             <div class="form-group">
-                                                <input type="email" class="form-control form-control-user <?php if (session('errors.login')) : ?> is-invalid <?php endif ?>" name="login" aria-describedby="email" placeholder="<?= lang('Auth.email') ?>" id="">
+                                                <input type="email" class="form-control form-control-user <?php if (session('errors.login')) : ?>is-invalid<?php endif ?> " name="login" aria-describedby="email" placeholder="<?= lang('Auth.email') ?>">
                                                 <div class="invalid-feedback">
                                                     <?= session('errors.login') ?>
                                                 </div>
@@ -65,6 +65,8 @@
 
                                     </form>
 
+                                    <hr>
+
                                 </div>
                             </div>
 
@@ -76,4 +78,4 @@
     </div>
 </div>
 
-<?= $this->endSection('content'); ?>
+<?= $this->endSection('contentloginregister'); ?>

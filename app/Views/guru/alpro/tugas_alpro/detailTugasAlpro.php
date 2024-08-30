@@ -1,17 +1,26 @@
-<?= $this->extend('layout/template'); ?>
+<?= $this->extend('layout/templates'); ?>
 
 <?= $this->section('content'); ?>
 
-<section class="p-4">
-
-    <button class="btn btn-primary" id="button-toggle">
-        <i class="bi bi-list"></i>
-    </button>
+<div class="container-fluid">
 
     <div class="card shadow mb-2 border-2 border-primary" style="margin-top: 25px;">
 
-        <div class="card-header py-3 border-0">
-            <h5 class="m-0 font-weight-bold text-primary"> Tugas Algoritma Pemrograman </h5>
+        <div class="card-header py-3 border-0 d-flex justify-content-between align-items-center">
+            <h5 class="m-0 font-weight-bold text-primary">Tugas Algoritma Pemrograman</h5>
+            <div>
+                <a href="/GuruController/editTugasAlpro/<?= $tugas_alpro['slug']; ?>" class="btn btn-warning btn-sm">
+                    <i class="fas fa-edit"></i> Edit
+                </a>
+
+                <form action="/GuruController/deleteTugasAlpro/<?= $tugas_alpro['id']; ?>" method="post" class="d-inline">
+                    <?= csrf_field(); ?>
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapusnya?');">
+                        <i class="fas fa-trash-alt"></i> Delete
+                    </button>
+                </form>
+            </div>
         </div>
 
         <div class="container">
@@ -57,25 +66,11 @@
 
                     </div>
 
-                    <div class="container mb-3 align-items-center">
-                        <div class="row">    
-
-                            <a href="/GuruController/editTugasAlpro/<?= $tugas_alpro['slug']; ?>" class="btn btn-warning">Edit</a>
-
-                            <form action="/GuruController/deleteTugasAlpro/<?= $tugas_alpro['id']; ?>" method="post" class="d-inline btn btn-danger mt-2">
-                                <?= csrf_field(); ?>
-                                <input type="hidden" name="_method" value="DELETE">
-                                <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin ingin dihapus ?? ');">Delete</button>
-                            </form>
-
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </div>
     </div>
 
-</section>
+</div>
 
 <?= $this->endSection('content'); ?>

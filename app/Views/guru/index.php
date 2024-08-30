@@ -5,7 +5,7 @@
 <!-- container-fluid -->
 <div class="container-fluid">
 
-    <div class="d-sm-flex align-items-center justify-content-between mb-4" style="padding-top: 5%;">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h2 class="text-black fw-bold"> Dashboard Guru </h2>
         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class=""></i></a>
     </div>

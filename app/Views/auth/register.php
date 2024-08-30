@@ -1,6 +1,6 @@
 <?= $this->extend('layout/templateloginregister'); ?>
 
-<?= $this->section('content'); ?>
+<?= $this->section('contentloginregister'); ?>
 
 <div class="container">
 
@@ -47,7 +47,7 @@
                                 <hr>
 
                                 <div class="text-center">
-                                    <p><a href="<?= url_to('login') ?>" class="small" <?= lang('Auth.alreadyRegistered') ?> <?= lang('Auth.signIn') ?>></a></p>
+                                    <p> <a class="small" href="<?= url_to('login') ?>"> <?= lang('Auth.alreadyRegistered') ?> <?= lang('Auth.signIn') ?></a> </p>
                                 </div>
 
                             </div>
@@ -60,4 +60,4 @@
 
 </div>
 
-<?= $this->endSection('content'); ?>
+<?= $this->endSection('contentloginregister'); ?>
