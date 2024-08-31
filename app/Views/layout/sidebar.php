@@ -60,8 +60,8 @@
         </a>
         <div id="collapseZero" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="<?= base_url(); ?>/AdminController/dataGuru"> Data Guru</a>
-                <a class="collapse-item" href="<?= base_url(); ?>/AdminController/createGuru"> Buat Akun Guru</a>
+                <a class="collapse-item" href="<?= base_url(); ?>/GuruController/dataGuru"> Data Guru</a>
+                <a class="collapse-item" href="<?= base_url(); ?>/GuruController/createGuru"> Buat Akun Guru</a>
             </div>
         </div>
     </li>

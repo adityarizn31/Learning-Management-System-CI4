@@ -94,6 +94,12 @@ $routes->get('guru/nilai/', 'GuruController::index');
 $routes->get('guru/nilai/createSiswaA', 'GuruController::createSiswaA');
 $routes->get('guru/nilai/dataNilaiRPLA_Alpro', 'GuruController::dataNilaiRPLA_Alpro');
 $routes->get('guru/nilai/createNilaiSiswaA', 'GuruController::createNilaiSiswaA');
+$routes->get('guru/nilai/createSiswaB', 'GuruController::createSiswaB');
+$routes->get('guru/nilai/dataNilaiRPLB_Alpro', 'GuruController::dataNilaiRPLB_Alpro');
+$routes->get('guru/nilai/createNilaiSiswaB', 'GuruController::createNilaiSiswaB');
+$routes->get('guru/nilai/createSiswaC', 'GuruController::createSiswaC');
+$routes->get('guru/nilai/dataNilaiRPLC_Alpro', 'GuruController::dataNilaiRPLC_Alpro');
+$routes->get('guru/nilai/createNilaiSiswaC', 'GuruController::createNilaiSiswaC');
 
 // Siswa
 $routes->get('siswa/', 'SiswaController::index');

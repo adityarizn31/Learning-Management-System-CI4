@@ -3,7 +3,7 @@
 <?= $this->section('content'); ?>
 
 <div class="container mt-5">
-    <h2 class="mb-4">Input Nilai Siswa Algoritma Pemrograman</h2>
+    <h2 class="mb-4">Input Nilai Siswa Algoritma Pemrograman RPL C</h2>
 
     <?php if (session()->getFlashdata('errors')): ?>
         <div class="alert alert-danger">
@@ -11,13 +11,13 @@
         </div>
     <?php endif; ?>
 
-    <form action="<?= base_url('/GuruController/saveNilaiA'); ?>" method="post">
+    <form action="<?= base_url('/GuruController/saveNilaiC'); ?>" method="post">
         <?= csrf_field(); ?>
         <div class="form-group mb-3">
             <label for="siswa_id">Pilih Siswa:</label>
             <select name="siswa_id" id="siswa_id" class="form-control <?= (session('errors.siswa_id')) ? 'is-invalid' : '' ?>">
-                <option value="">-- Pilih Siswa RPL A --</option>
-                <?php foreach ($siswaa as $sw): ?>
+                <option value="">-- Pilih Siswa RPL B --</option>
+                <?php foreach ($siswac as $sw): ?>
                     <option value="<?= esc($sw['id']); ?>"><?= esc($sw['nama_siswa']); ?></option>
                 <?php endforeach; ?>
             </select>
