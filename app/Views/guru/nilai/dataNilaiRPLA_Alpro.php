@@ -8,13 +8,11 @@
     <div class="container mt-4">
         <div class="row">
             <div class="col">
-
                 <?php if (session()->getFlashdata('pesan')) : ?>
                     <div class="alert alert-success" role="alert">
                         <?= session()->getFlashdata('pesan'); ?>
                     </div>
                 <?php endif; ?>
-
             </div>
         </div>
     </div>
@@ -67,6 +65,52 @@
             <?php endforeach; ?>
         </tbody>
     </table>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+
+                <div class="card text-white bg-primary mb-3">
+
+                    <div class="card-header">
+                        Grafik Pelayanan Si Lancar
+                    </div>
+                    <div class="card-body bg-white viewTampilGrafik">
+                        <canvas id="myChart" width="200" height="200"></canvas>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        var NilaiAlgoritmaA = <?php echo json_encode($siswa_nilai); ?>;        
+
+        var countNilaiA = NilaiAlgoritmaA.length
+
+        var total = countNilaiA
+
+        var percentNilaiA = parseFloat((countNilaiA / total) * 100, 2).toFixed(2)
+
+        var labelNilaiA = `Nilai Alpro RPLA (${percentNilaiA}%)`
+
+        const ctx = document.getElementById('myChart');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [labelNilaiA],
+                datasets: [{
+                    label: 'Grafik Siswa RPL A',
+                    data: [countNilaiA],
+                    borderWidth: 3
+                }]
+            }
+        });
+    </script>
+
 </div>
 
 <?= $this->endSection('content'); ?>

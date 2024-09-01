@@ -90,7 +90,6 @@ $routes->get('/quiz/set_question_count', 'QuizController::setQuestionCount');
 $routes->post('/quiz/create_questions', 'QuizController::createQuestions');
 $routes->post('/quiz/store_questions', 'QuizController::storeQuestions');
 
-$routes->get('guru/nilai/', 'GuruController::index');
 $routes->get('guru/nilai/createSiswaA', 'GuruController::createSiswaA');
 $routes->get('guru/nilai/dataNilaiRPLA_Alpro', 'GuruController::dataNilaiRPLA_Alpro');
 $routes->get('guru/nilai/createNilaiSiswaA', 'GuruController::createNilaiSiswaA');

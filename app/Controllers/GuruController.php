@@ -595,7 +595,9 @@ class GuruController extends BaseController
             'foto_siswa' => $namaFotoSiswaA
         ]);
         session()->setFlashdata('pesan', 'Siswa RPL A berhasil ditambahkan !!');
-        return redirect()->to('/guru/nilai/dataNilaiSiswaA');
+        // return redirect()->to('/guru/nilai/dataNilaiSiswaA');
+        // return redirect()->to('/guru/nilai/dataSiswaRPLA');
+        return redirect()->to('/GuruController/dataSiswaRPLA/');
     }
 
     // Done
@@ -693,7 +695,9 @@ class GuruController extends BaseController
             'foto_siswa' => $namaFotoSiswaB
         ]);
         session()->setFlashdata('pesan', 'Siswa RPL B berhasil ditambahkan !!');
-        return redirect()->to('/guru/nilai/dataNilaiSiswaB');
+        // return redirect()->to('/guru/nilai/dataNilaiSiswaB');
+        // return redirect()->to('/guru/nilai/dataSiswaRPLB');
+        return redirect()->to('/GuruController/dataSiswaRPLB/');
     }
 
     // Done
@@ -775,7 +779,7 @@ class GuruController extends BaseController
         if ($fileFotoSiswaC->getError() == 4) {
         } else {
             $namaFotoSiswaC = $fileFotoSiswaC->getName();
-            $fileFotoSiswaC->move('img/rpla', $namaFotoSiswaC);
+            $fileFotoSiswaC->move('img/rplc', $namaFotoSiswaC);
         }
 
         $slug = url_title($this->request->getVar('nama_siswa'), '-', true);
@@ -791,7 +795,9 @@ class GuruController extends BaseController
             'foto_siswa' => $namaFotoSiswaC
         ]);
         session()->setFlashdata('pesan', 'Siswa RPL C berhasil ditambahkan !!');
-        return redirect()->to('/guru/nilai/dataNilaiSiswaC');
+        // return redirect()->to('/guru/nilai/dataNilaiSiswaC');
+        // return redirect()->to('/guru/nilai/dataSiswaRPLC');
+        return redirect()->to('/GuruController/dataSiswaRPLC/');
     }
 
 
@@ -839,7 +845,7 @@ class GuruController extends BaseController
         ]);
 
         session()->setFlashdata('pesan', 'Nilai siswa berhasil disimpan.');
-        return redirect()->to('guru/nilai/dataNilaiSiswaA');
+        return redirect()->to('guru/nilai/dataNilaiRPLA_Alpro');
     }
 
     // Done
@@ -873,7 +879,7 @@ class GuruController extends BaseController
         ]);
 
         session()->setFlashdata('pesan', 'Nilai siswa berhasil disimpan.');
-        return redirect()->to('guru/nilai/dataNilaiSiswaB');
+        return redirect()->to('guru/nilai/dataNilaiRPLB_Alpro');
     }
 
     // Done
@@ -907,7 +913,8 @@ class GuruController extends BaseController
         ]);
 
         session()->setFlashdata('pesan', 'Nilai siswa berhasil disimpan.');
-        return redirect()->to('guru/nilai/dataNilaiSiswaC');
+        // return redirect()->to('guru/nilai/dataNilaiRPLC_Alpro');
+        return redirect()->to('/GuruController/dataNilaiRPLC_Alpro/');
     }
 
     
@@ -925,10 +932,8 @@ class GuruController extends BaseController
 
     public function index()
     {
-        $guru = $this->guruModel->findAll();
         $data = [
-            'title' => 'Dashboard || Guru Stemanikaku',
-            'guru' => $guru
+            'title' => 'Dashboard || Guru Stemanikaku'
         ];
         return view('guru/index', $data);
     }
@@ -947,10 +952,12 @@ class GuruController extends BaseController
     // Done
     public function dataSiswaRPLA()
     {
-        $RPLA = $this->rplAModel->findAll();
+        // $RPLA = $this->rplAModel->findAll();
+        $SISWAA = $this->siswaAModel->findAll();
         $data = [
             'title' => 'Siswa RPLA || Guru Stemanikaku',
-            'rpla' => $RPLA
+            // 'rpla' => $RPLA
+            'siswaa' => $SISWAA
         ];
         return view('guru/dataSiswaRPLA', $data);
     }
@@ -958,10 +965,12 @@ class GuruController extends BaseController
     // Done
     public function dataSiswaRPLB()
     {
-        $RPLB = $this->rplBModel->findAll();
+        // $RPLB = $this->rplBModel->findAll();
+        $SISWAB = $this->siswaBModel->findAll();
         $data = [
             'title' => 'Siswa RPLB || Guru Stemanikaku',
-            'rplb' => $RPLB
+            // 'rplb' => $RPLB
+            'siswab' => $SISWAB
         ];
         return view('guru/dataSiswaRPLB', $data);
     }
@@ -969,10 +978,12 @@ class GuruController extends BaseController
     // Done
     public function dataSiswaRPLC()
     {
-        $RPLC = $this->rplCModel->findAll();
+        // $RPLC = $this->rplCModel->findAll();
+        $SISWAC = $this->siswaCModel->findAll();
         $data = [
             'title' => 'Siswa RPLC || Guru Stemanikaku',
-            'rplc' => $RPLC
+            // 'rplc' => $RPLC
+            'siswac' => $SISWAC
         ];
         return view('guru/dataSiswaRPLC', $data);
     }
@@ -997,6 +1008,15 @@ class GuruController extends BaseController
             'guru' => $GURU
         ];
         return view('guru/dataGuru', $data);
+    }
+
+    // Done
+    public function dataManajemenNilai()
+    {
+        $data = [
+            'title' => 'Data Manajemen Nilai || Guru Stemanikaku'
+        ];
+        return view('guru/nilai/dataManajemenNilai', $data);
     }
 
 
@@ -1107,7 +1127,8 @@ class GuruController extends BaseController
     {
         $data = [
             'title' => 'Detail Siswa RPL A || Guru Stemanikaku',
-            'rpla' => $this->rplAModel->getRPLA($slug)
+            // 'rpla' => $this->rplAModel->getRPLA($slug)
+            'siswaa' => $this->siswaAModel->getRPLA($slug)
         ];
         return view('/guru/detailSiswaRPLA', $data);
     }
@@ -1117,7 +1138,8 @@ class GuruController extends BaseController
     {
         $data = [
             'title' => 'Detail Siswa RPL B || Guru Stemanikaku',
-            'rplb' => $this->rplBModel->getRPLB($slug)
+            // 'rplb' => $this->rplBModel->getRPLB($slug)
+            'siswab' => $this->siswaBModel->getRPLB($slug)
         ];
         return view('/guru/detailSiswaRPLB', $data);
     }
@@ -1127,7 +1149,8 @@ class GuruController extends BaseController
     {
         $data = [
             'title' => 'Detail Siswa RPL C || Guru Stemanikaku',
-            'rplc' => $this->rplCModel->getRPLC($slug)
+            // 'rplc' => $this->rplCModel->getRPLC($slug)
+            'siswac' => $this->siswaCModel->getRPLC($slug)
         ];
         return view('/guru/detailSiswaRPLC', $data);
     }
@@ -1191,7 +1214,8 @@ class GuruController extends BaseController
         $data = [
             'title' => 'Form Edit Siswa RPL A || Stemanikaku',
             'validation' => \Config\Services::validation(),
-            'rpla' => $this->rplAModel->getRPLA($slug)
+            // 'rpla' => $this->rplAModel->getRPLA($slug)
+            'siswaa' => $this->siswaAModel->getRPLA($slug)
         ];
         return view('guru/editSiswaRPLA', $data);
     }
@@ -1267,7 +1291,8 @@ class GuruController extends BaseController
             unlink('img/rpla/' . $this->request->getVar('fotolama'));
         }
 
-        $this->rplAModel->save(
+        // $this->rplAModel->save(
+        $this->siswaAModel->save(
             [
                 'id' => $id,
                 'nis_siswa' => $this->request->getVar('nis_siswa'),
@@ -1290,7 +1315,8 @@ class GuruController extends BaseController
         $data = [
             'title' => 'Form Edit Siswa RPL B || Stemanikaku',
             'validation' => \Config\Services::validation(),
-            'rplb' => $this->rplBModel->getRPLB($slug)
+            // 'rplb' => $this->rplBModel->getRPLB($slug)
+            'siswab' => $this->siswaBModel->getRPLB($slug)
         ];
         return view('guru/editSiswaRPLB', $data);
     }
@@ -1366,7 +1392,7 @@ class GuruController extends BaseController
             unlink('img/rplb/' . $this->request->getVar('fotolama'));
         }
 
-        $this->rplBModel->save(
+        $this->siswaBModel->save(
             [
                 'id' => $id,
                 'nis_siswa' => $this->request->getVar('nis_siswa'),
@@ -1389,7 +1415,8 @@ class GuruController extends BaseController
         $data = [
             'title' => 'Form Edit Siswa RPL C || Stemanikaku',
             'validation' => \Config\Services::validation(),
-            'rplc' => $this->rplCModel->getRPLC($slug)
+            // 'rplc' => $this->rplCModel->getRPLC($slug)
+            'siswac' => $this->siswaCModel->getRPLC($slug)
         ];
         return view('guru/editSiswaRPLC', $data);
     }
@@ -1465,7 +1492,8 @@ class GuruController extends BaseController
             unlink('img/rplc/' . $this->request->getVar('fotolama'));
         }
 
-        $this->rplCModel->save(
+        // $this->rplCModel->save(
+        $this->siswaCModel->save(
             [
                 'id' => $id,
                 'nis_siswa' => $this->request->getVar('nis_siswa'),
@@ -1631,7 +1659,8 @@ class GuruController extends BaseController
     // Hapus Sementara di Non aktifkan belum dibuat deleted_at
     public function deleteSiswaRPLA($id = null)
     {
-        $this->rplAModel->delete($id);
+        // $this->rplAModel->delete($id);
+        $this->siswaAModel->delete($id);
         session()->setFlashdata('pesan', 'Data Siswa RPL A berhasil dihapus !!');
         return redirect()->to('/GuruController/dataSiswaRPLA');
     }
@@ -1640,7 +1669,8 @@ class GuruController extends BaseController
     // Hapus Sementara di Non aktifkan belum dibuat deleted_at
     public function deleteSiswaRPLB($id = null)
     {
-        $this->rplBModel->delete($id);
+        // $this->rplBModel->delete($id);
+        $this->siswaBModel->delete($id);
         session()->setFlashdata('pesan', 'Data Siswa RPL B berhasil dihapus !!');
         return redirect()->to('/GuruController/dataSiswaRPLB');
     }
@@ -1649,7 +1679,8 @@ class GuruController extends BaseController
     // Hapus Sementara di Non aktifkan belum dibuat deleted_at
     public function deleteSiswaRPLC($id = null)
     {
-        $this->rplCModel->delete($id);
+        // $this->rplCModel->delete($id);
+        $this->siswaCModel->delete($id);
         session()->setFlashdata('pesan', 'Data Siswa berhasil dihapus !!');
         return redirect()->to('/GuruController/dataSiswaRPLC');
     }

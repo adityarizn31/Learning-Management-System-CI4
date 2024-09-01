@@ -8,13 +8,11 @@
     <div class="container mt-4">
         <div class="row">
             <div class="col">
-
                 <?php if (session()->getFlashdata('pesan')) : ?>
                     <div class="alert alert-success" role="alert">
                         <?= session()->getFlashdata('pesan'); ?>
                     </div>
                 <?php endif; ?>
-
             </div>
         </div>
     </div>
@@ -53,9 +51,9 @@
             <?php foreach ($siswa_nilai as $sn): ?>
                 <tr>
                     <td><?= esc($sn['nama_siswa']); ?></td>
-                    <td>X RPL A</td>
+                    <td>X RPL C</td>
                     <td><?= esc($sn['mata_pelajaran']); ?></td>
-                    <td><?= $pertemuan++; ?></td>
+                    <td>1</td>
                     <td>
                         <!-- Tombol Preview Tugas -->
                         <a href="/GuruController/createNilaiSiswaCModal" class="btn btn-info btn-sm">
@@ -67,6 +65,60 @@
             <?php endforeach; ?>
         </tbody>
     </table>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="card text-white bg-primary mb-3">
+                    <div class="card-header">
+                        Grafik Pelayanan Si Lancar
+                    </div>
+                    <div class="card-body bg-white viewTampilGrafik">
+                        <canvas id="myChart" width="200" height="200"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        var NilaiAlgoritmaC = <?php echo json_encode($siswa_nilai); ?>;
+        
+        // Prepare data for chart
+        var labels = [];
+        var data = [];
+        
+        NilaiAlgoritmaC.forEach(function(item) {
+            labels.push(item['nama_siswa']);
+            data.push(item['nilai'] ? parseInt(item['nilai']) : 0);
+        });
+
+        const ctx = document.getElementById('myChart');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Nilai Tugas Siswa',
+                    data: data,
+                    borderWidth: 1,
+                    backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100
+                    }
+                }
+            }
+        });
+    </script>
+
 </div>
 
 <?= $this->endSection('content'); ?>

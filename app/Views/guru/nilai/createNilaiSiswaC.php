@@ -16,7 +16,7 @@
         <div class="form-group mb-3">
             <label for="siswa_id">Pilih Siswa:</label>
             <select name="siswa_id" id="siswa_id" class="form-control <?= (session('errors.siswa_id')) ? 'is-invalid' : '' ?>">
-                <option value="">-- Pilih Siswa RPL B --</option>
+                <option value="">-- Pilih Siswa RPL C --</option>
                 <?php foreach ($siswac as $sw): ?>
                     <option value="<?= esc($sw['id']); ?>"><?= esc($sw['nama_siswa']); ?></option>
                 <?php endforeach; ?>

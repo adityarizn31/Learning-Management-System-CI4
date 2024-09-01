@@ -11,7 +11,18 @@ class SiswaBModel extends Model
     protected $allowedFields = ['nis_siswa', 'username_siswa', 'password_siswa',  'slug', 'nama_siswa',  'jk_siswa', 'nohp_siswa', 'alamat_siswa', 'foto_siswa'];
     protected $useTimestamps = true;
 
-    public function getSiswaWithNilai()
+     // Digunakan untuk detail
+     public function getRPLB($slug = false)
+     {
+         if ($slug == false) {
+             return $this->findAll();
+         }
+         
+         return $this->where(['slug' => $slug])->first();
+     }
+
+    // Digunakan untuk mendapatkan Nilai
+     public function getSiswaWithNilai()
     {
         return $this->select('siswab.*, nilaib.mata_pelajaran, nilaib.nilai')
             ->join('nilaib', 'nilaib.siswa_id = siswab.id')

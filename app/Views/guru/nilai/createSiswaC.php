@@ -7,7 +7,7 @@
     <div class="card shadow shadow-blue-500/50 mb-4 border-2" style="padding: 20px;">
         <div class="container">
             <div class="card-header py-3">
-                <h4 class="m-0 font-weight-bold text-primary">Tambah Siswa X RPL B</h4>
+                <h4 class="m-0 font-weight-bold text-primary">Tambah Siswa X RPL C</h4>
             </div>
 
             <form action="<?= base_url(); ?>/GuruController/savesiswaC" method="post" enctype="multipart/form-data">
@@ -76,7 +76,7 @@
                 <!-- Kelas Siswa -->
                 <div class="form-group row mb-3">
                     <label for="kelas_siswa" class="form-label fw-semibold">Kelas Siswa</label>
-                    <input name="kelas_siswa" id="kelas_siswa" class="form-control" disabled placeholder="A">
+                    <input name="kelas_siswa" id="kelas_siswa" class="form-control" disabled placeholder="C">
                 </div>
 
                 <!-- No Hp Siswa -->

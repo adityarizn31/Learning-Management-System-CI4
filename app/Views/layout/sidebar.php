@@ -68,20 +68,10 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
-            aria-expanded="true" aria-controls="collapseThree">
+        <a class="nav-link collapsed" href="<?= base_url(); ?>/GuruController/dataManajemenNilai">
             <i class="fas fa-fw fa-clipboard"></i>
             <span>Manajemen Nilai</span>
         </a>
-        <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <!-- <a class="collapse-item" href=""> Input Nilai Algoritma Pemrograman </a>
-                <hr> -->
-                <a class="collapse-item" href=""> Algoritma Pemrograman RPL A </a>
-                <a class="collapse-item" href=""> Algoritma Pemrograman RPL B </a>
-                <a class="collapse-item" href=""> Algoritma Pemrograman RPL C </a>
-            </div>
-        </div>
     </li>
 
     <!-- Nav Item - Pages Collapse Menu -->

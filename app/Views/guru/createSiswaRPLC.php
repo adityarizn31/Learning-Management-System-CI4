@@ -1,14 +1,10 @@
-<?= $this->extend('layout/template'); ?>
+<?= $this->extend('layout/templates'); ?>
 
 <?= $this->section('content'); ?>
 
-<section class="p-4" id="main-content">
+<section class="p-4" id="main-content">    
 
-    <button class="btn btn-primary" id="button-toggle">
-        <i class="bi bi-list"></i>
-    </button>
-
-    <div class="card shadow shadow-blue-500/50 mb-4 border-2" style="margin-top: 25px; padding: 20px;">
+    <div class="card shadow shadow-blue-500/50 mb-4 border-2">
         <div class="container">
             <div class="card-header py-3">
                 <h4 class="m-0 font-weight-bold text-primary">Tambah Siswa XI RPL C</h4>
