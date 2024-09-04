@@ -52,7 +52,7 @@
 
                     <tbody>
                         <?php $i = 1; ?>
-                        <?php foreach ($rpla as $a) : ?>
+                        <?php foreach ($siswaa as $a) : ?>
                             <tr>
                                 <th><?= $i++; ?></th>
                                 <td><img src="/img/rpla/<?= $a['foto_siswa']; ?>" alt="" style="width: 20%;"></td>

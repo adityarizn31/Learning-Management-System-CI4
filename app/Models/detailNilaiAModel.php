@@ -6,9 +6,9 @@ use CodeIgniter\Model;
 
 class SiswaAModel extends Model
 {
-    protected $table = 'siswaa';
+    protected $table = 'detailnilai_a';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['nis_siswa', 'username_siswa', 'password_siswa',  'slug', 'nama_siswa',  'jk_siswa', 'nohp_siswa', 'alamat_siswa', 'foto_siswa', 'level'];
+    protected $allowedFields = ['siswa_id', 'nilai_id', 'tugas_id',  'judul_tugas', 'jumlah_pertemuan',  'created_at', 'updated_at'];
     protected $useTimestamps = true;
 
     // Digunakan untuk detail siswa
@@ -26,6 +26,15 @@ class SiswaAModel extends Model
         return $this
             ->select('siswaa.*, nilaia.mata_pelajaran, nilaia.nilai')
             ->join('nilaia', 'nilaia.siswa_id = siswaa.id')
+            ->findAll();
+    }
+
+    public function getDetailNilaiA()
+    {
+        return $this
+            ->select('siswaa.*, nilaia.mata_pelajaran, nilaia.nilai')
+            ->join('nilaia', 'nilaia.siswa_id = siswaa.id')
+            ->join('tugas_alpro', 'tugas_alpro.siswa_id = siswaa.id')
             ->findAll();
     }
 }

@@ -14,9 +14,9 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="<?= base_url() ?>AdminController/">
             <i class="fas fa-fw fa-user-shield"></i>
-            <span> Dashboard Guru </span></a>
+            <span> Dashboard Admin </span></a>
     </li>
 
     <!-- Divider -->
@@ -32,23 +32,33 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne"
             aria-expanded="true" aria-controls="collapseOne">
             <i class="fas fa-fw fa-user-graduate"></i>
-            <span> Manajemen Kelas </span>
+            <span>Tambah Data Siswa</span>
         </a>
         <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="<?= base_url(); ?>/GuruController/dataSiswaRPLA"> Kelas X RPL A</a>
-                <a class="collapse-item" href="<?= base_url(); ?>/GuruController/dataSiswaRPLB"> Kelas X RPL B</a>
-                <a class="collapse-item" href="<?= base_url(); ?>/GuruController/dataSiswaRPLC"> Kelas X RPL C</a>
+                <h6 class="collapse-header">Buat Data Baru Siswa</h6>
+                <a class="collapse-item" href="<?= base_url(); ?>AdminController/createSiswaA"> Data Siswa X RPL A</a>
+                <a class="collapse-item" href="<?= base_url(); ?>AdminController/createSiswaB"> Data Siswa X RPL B</a>
+                <a class="collapse-item" href="<?= base_url(); ?>AdminController/createSiswaC"> Data Siswa X RPL C</a>
             </div>
         </div>
     </li>
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="<?= base_url() ?>/GuruController/dataMataPelajaran">
-            <i class="fas fa-fw fa-book"></i>
-            <span> Manajemen Mata Pelajaran </span>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+            aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-fw fa-chalkboard"></i>
+            <span>Manajemen Kelas</span>
+
         </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="<?= base_url(); ?>AdminController/dataSiswaRPLA"> Kelas X RPL A</a>
+                <a class="collapse-item" href="<?= base_url(); ?>AdminController/dataSiswaRPLB"> Kelas X RPL B</a>
+                <a class="collapse-item" href="<?= base_url(); ?>AdminController/dataSiswaRPLC"> Kelas X RPL C</a>
+            </div>
+        </div>
     </li>
 
     <!-- Nav Item - Pages Collapse Menu -->
@@ -60,17 +70,17 @@
         </a>
         <div id="collapseZero" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="<?= base_url(); ?>/GuruController/dataGuru"> Data Guru</a>
-                <a class="collapse-item" href="<?= base_url(); ?>/GuruController/createGuru"> Buat Akun Guru</a>
+                <a class="collapse-item" href="<?= base_url(); ?>AdminController/dataGuru"> Data Guru</a>
+                <a class="collapse-item" href="<?= base_url(); ?>AdminController/createGuru"> Buat Akun Guru</a>
             </div>
         </div>
     </li>
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="<?= base_url(); ?>/GuruController/dataManajemenNilai">
-            <i class="fas fa-fw fa-clipboard"></i>
-            <span>Manajemen Nilai</span>
+        <a class="nav-link collapsed" href="<?= base_url() ?>AdminController/dataMataPelajaran">
+            <i class="fas fa-fw fa-book-open"></i>
+            <span>Manajemen Mata Pelajaran</span>
         </a>
     </li>
 
@@ -78,8 +88,8 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour"
             aria-expanded="true" aria-controls="collapseFour">
-            <i class="fas fa-lightbulb"></i>
-            <span>Manajemen Keterampilan</span>
+            <i class="fas fa-handshake"></i>
+            <span>Indikator Keterampilan</span>
         </a>
         <div id="collapseFour" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">

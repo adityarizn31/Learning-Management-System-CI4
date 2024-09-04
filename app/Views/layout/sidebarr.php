@@ -149,7 +149,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="<?= base_url(); ?>/GuruController/index/">
                 <i class="fas fa-fw fa-user-shield"></i>
                 <span> Dashboard Guru </span></a>
         </li>
@@ -205,16 +205,12 @@
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
                 aria-expanded="true" aria-controls="collapseThree">
-                <i class="fas fa-fw fa-clipboard"></i>
+                <i class="fas fa-lightbulb"></i>
                 <span>Manajemen Nilai</span>
             </a>
             <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <!-- <a class="collapse-item" href=""> Input Nilai Algoritma Pemrograman </a>
-            <hr> -->
-                    <a class="collapse-item" href=""> Algoritma Pemrograman RPL A </a>
-                    <a class="collapse-item" href=""> Algoritma Pemrograman RPL B </a>
-                    <a class="collapse-item" href=""> Algoritma Pemrograman RPL C </a>
+                    <a class="collapse-item" href="<?= base_url(); ?>/GuruController/dataManajemenNilai/"> Algoritma Pemrograman </a>
                 </div>
             </div>
         </li>
@@ -228,7 +224,7 @@
             </a>
             <div id="collapseFour" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href=""> Algoritma Pemrograman </a>
+                    <a class="collapse-item" href="<?= base_url(); ?>/GuruController/dataManajemenKeterampilan/"> Algoritma Pemrograman </a>
                 </div>
             </div>
         </li>

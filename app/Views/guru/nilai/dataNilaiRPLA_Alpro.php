@@ -3,7 +3,7 @@
 <?= $this->section('content'); ?>
 
 <div class="container mt-5">
-    <h2 class="mb-4">Data Siswa dan Nilai Algoritma Pemrograman RPL A</h2>
+    <h2 class="mb-4">Detail Data Siswa dan Nilai Algoritma Pemrograman RPL A</h2>
 
     <div class="container mt-4">
         <div class="row">
@@ -51,9 +51,9 @@
             <?php foreach ($siswa_nilai as $sn): ?>
                 <tr>
                     <td><?= esc($sn['nama_siswa']); ?></td>
-                    <td>X RPL A</td>
+                    <td>X RPL C</td>
                     <td><?= esc($sn['mata_pelajaran']); ?></td>
-                    <td><?= $pertemuan++; ?></td>
+                    <td>1</td>
                     <td>
                         <!-- Tombol Preview Tugas -->
                         <a href="/GuruController/createNilaiSiswaAModal" class="btn btn-info btn-sm">
@@ -69,16 +69,13 @@
     <div class="container">
         <div class="row">
             <div class="col">
-
                 <div class="card text-white bg-primary mb-3">
-
                     <div class="card-header">
                         Grafik Pelayanan Si Lancar
                     </div>
                     <div class="card-body bg-white viewTampilGrafik">
                         <canvas id="myChart" width="200" height="200"></canvas>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -87,26 +84,37 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script>
-        var NilaiAlgoritmaA = <?php echo json_encode($siswa_nilai); ?>;        
-
-        var countNilaiA = NilaiAlgoritmaA.length
-
-        var total = countNilaiA
-
-        var percentNilaiA = parseFloat((countNilaiA / total) * 100, 2).toFixed(2)
-
-        var labelNilaiA = `Nilai Alpro RPLA (${percentNilaiA}%)`
+        var NilaiAlgoritmaB = <?php echo json_encode($siswa_nilai); ?>;
+        
+        // Prepare data for chart
+        var labels = [];
+        var data = [];
+        
+        NilaiAlgoritmaB.forEach(function(item) {
+            labels.push(item['nama_siswa']);
+            data.push(item['nilai'] ? parseInt(item['nilai']) : 0);
+        });
 
         const ctx = document.getElementById('myChart');
         new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: [labelNilaiA],
+                labels: labels,
                 datasets: [{
-                    label: 'Grafik Siswa RPL A',
-                    data: [countNilaiA],
-                    borderWidth: 3
+                    label: 'Nilai Tugas Siswa',
+                    data: data,
+                    borderWidth: 1,
+                    backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
                 }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100
+                    }
+                }
             }
         });
     </script>

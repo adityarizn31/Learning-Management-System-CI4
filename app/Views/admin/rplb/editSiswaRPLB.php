@@ -97,8 +97,10 @@
                     </div>
                 </div>
 
-                <div class="d-grid gap-2 col-6 mx-auto">
-                    <button type="submit" value="submit" name="submit" id="submit" class="btn btn-primary btn-sm"> Ubah Data Siswa </button>
+                <div class="form-group row mb-3">
+                    <div class="col-12">
+                        <button type="submit" value="submit" name="submit" id="submit" class="btn btn-primary w-100">Ubah Data</button>
+                    </div>
                 </div>
 
             </form>

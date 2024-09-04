@@ -10,6 +10,11 @@
             <div class="d-sm-flex align-items-center justify-content-between" style="padding-top: 10px;">
                 <h3 class="m-0 font-weight-bold text-primary"> Data Siswa RPL B </h3>
 
+                <!-- Tombol Export Excel -->
+                <a href="<?= base_url(); ?>/AdminController/exportExcel" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm" style="margin-right: 10px;">
+                    <i class="fas fa-file-excel"></i> Export Excel
+                </a>
+
                 <!-- <a href="<?= base_url(); ?>/AdminController/createSiswaRPLB/" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus"></i> Siswa RPL B </a> -->
 
             </div>
@@ -47,7 +52,7 @@
 
                 <tbody>
                     <?php $i = 1; ?>
-                    <?php foreach ($rplb as $b) : ?>
+                    <?php foreach ($siswab as $b) : ?>
                         <tr>
                             <th><?= $i++; ?></th>
                             <td><img src="/img/rplb/<?= $b['foto_siswa']; ?>" alt="" style="width: 20%;"></td>

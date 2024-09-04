@@ -10,7 +10,7 @@
                 <h3 class="m-0 font-weight-bold text-primary"> Edit Data Siswa RPL A </h3>
             </div>
 
-            <form action="/AdminController/updateSiswaRPLA/<?= $rpla['id']; ?>" method="post" enctype="multipart/form-data">
+            <form action="/AdminController/updateSiswaRPLA/<?= $siswaa['id']; ?>" method="post" enctype="multipart/form-data">
 
                 <?= csrf_field(); ?>
 
@@ -19,11 +19,11 @@
                     <?php $validation = session('validation'); ?>
                 <?php endif; ?>
 
-                <input type="hidden" name="fotolama" value="<?= $rpla['foto_siswa']; ?>">
+                <input type="hidden" name="fotolama" value="<?= $siswaa['foto_siswa']; ?>">
 
                 <div class="form-group row mb-3">
                     <label for="nis_siswa" class="form-label fw-semibold"> NIS Siswa </label>
-                    <input type="text" name="nis_siswa" id="nis_siswa" class="form-control text-black <?= (session('errors.nis_siswa')) ? 'is-invalid' : null ?>" autofocus value="<?= (old('nis_siswa')) ? old('nis_siswa') : $rpla['nis_siswa'] ?>" ?>
+                    <input type="text" name="nis_siswa" id="nis_siswa" class="form-control text-black <?= (session('errors.nis_siswa')) ? 'is-invalid' : null ?>" autofocus value="<?= (old('nis_siswa')) ? old('nis_siswa') : $siswaa['nis_siswa'] ?>" ?>
                     <div class="invalid-feedback">
                         <?= session('errors.nis_siswa'); ?>
                     </div>
@@ -32,7 +32,7 @@
 
                 <div class="form-group row mb-3">
                     <label for="username_siswa" class="form-label fw-semibold"> Username Siswa </label>
-                    <input type="text" name="username_siswa" id="username_siswa" class="form-control text-black <?= (session('errors.username_siswa')) ? 'is-invalid' : null ?>" autofocus value="<?= (old('username_siswa')) ? old('username_siswa') : $rpla['username_siswa'] ?>" ?>
+                    <input type="text" name="username_siswa" id="username_siswa" class="form-control text-black <?= (session('errors.username_siswa')) ? 'is-invalid' : null ?>" autofocus value="<?= (old('username_siswa')) ? old('username_siswa') : $siswaa['username_siswa'] ?>" ?>
                     <div class="invalid-feedback">
                         <?= session('errors.username_siswa'); ?>
                     </div>
@@ -41,7 +41,7 @@
 
                 <div class="form-group row mb-3">
                     <label for="password_siswa" class="form-label fw-semibold"> Password Siswa </label>
-                    <input type="password" name="password_siswa" id="password_siswa" class="form-control text-black <?= (session('errors.password_siswa')) ? 'is-invalid' : null ?>" autofocus value="<?= (old('password_siswa')) ? old('password_siswa') : $rpla['password_siswa'] ?>" ?>
+                    <input type="password" name="password_siswa" id="password_siswa" class="form-control text-black <?= (session('errors.password_siswa')) ? 'is-invalid' : null ?>" autofocus value="<?= (old('password_siswa')) ? old('password_siswa') : $siswaa['password_siswa'] ?>" ?>
                     <div class="invalid-feedback">
                         <?= session('errors.password_siswa'); ?>
                     </div>
@@ -50,7 +50,7 @@
 
                 <div class="form-group row mb-3">
                     <label for="nama_siswa" class="form-label fw-semibold"> Nama Siswa </label>
-                    <input type="text" name="nama_siswa" id="nama_siswa" class="form-control text-black <?= (session('errors.nama_siswa')) ? 'is-invalid' : null ?>" autofocus value="<?= (old('nama_siswa')) ? old('nama_siswa') : $rpla['nama_siswa'] ?>" ?>
+                    <input type="text" name="nama_siswa" id="nama_siswa" class="form-control text-black <?= (session('errors.nama_siswa')) ? 'is-invalid' : null ?>" autofocus value="<?= (old('nama_siswa')) ? old('nama_siswa') : $siswaa['nama_siswa'] ?>" ?>
                     <div class="invalid-feedback">
                         <?= session('errors.nama_siswa'); ?>
                     </div>
@@ -77,7 +77,7 @@
 
                 <div class="form-group row mb-3">
                     <label for="nohp_siswa" class="form-label fw-semibold"> No HP Siswa </label>
-                    <input type="text" name="nohp_siswa" id="nohp_siswa" class="form-control text-black <?= (session('errors.nohp_siswa')) ? 'is-invalid' : null ?>" autofocus value="<?= (old('nohp_siswa')) ? old('nohp_siswa') : $rpla['nohp_siswa'] ?>" ?>
+                    <input type="text" name="nohp_siswa" id="nohp_siswa" class="form-control text-black <?= (session('errors.nohp_siswa')) ? 'is-invalid' : null ?>" autofocus value="<?= (old('nohp_siswa')) ? old('nohp_siswa') : $siswaa['nohp_siswa'] ?>" ?>
                     <div class="invalid-feedback">
                         <?= session('errors.nohp_siswa'); ?>
                     </div>
@@ -86,7 +86,7 @@
 
                 <div class="form-group row mb-3">
                     <label for="alamat_siswa" class="form-label fw-semibold"> Alamat Siswa </label>
-                    <input type="text" name="alamat_siswa" id="alamat_siswa" class="form-control text-black <?= (session('errors.alamat_siswa')) ? 'is-invalid' : null ?>" autofocus value="<?= (old('alamat_siswa')) ? old('alamat_siswa') : $rpla['alamat_siswa'] ?>" ?>
+                    <input type="text" name="alamat_siswa" id="alamat_siswa" class="form-control text-black <?= (session('errors.alamat_siswa')) ? 'is-invalid' : null ?>" autofocus value="<?= (old('alamat_siswa')) ? old('alamat_siswa') : $siswaa['alamat_siswa'] ?>" ?>
                     <div class="invalid-feedback">
                         <?= session('errors.alamat_siswa'); ?>
                     </div>
@@ -100,7 +100,7 @@
                         <?= session('errors.foto_siswa'); ?>
                     </div>
                     <div class="col-sm-2 my-4">
-                        <img src="/img/rpla/<?= $rpla['foto_siswa']; ?>" class="img-thumbnail img-preview" srcset="">
+                        <img src="/img/rpla/<?= $siswaa['foto_siswa']; ?>" class="img-thumbnail img-preview" srcset="">
                     </div>
                 </div>
 

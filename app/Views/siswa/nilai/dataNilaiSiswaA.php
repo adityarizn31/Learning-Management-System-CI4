@@ -13,7 +13,7 @@
                 <th>Pertemuan</th>
                 <th>Tugas</th>
                 <th>Nilai</th>
-            </tr>
+            </tr>   
         </thead>
         <tbody>
             <?php foreach ($siswa_nilai as $sn): ?>

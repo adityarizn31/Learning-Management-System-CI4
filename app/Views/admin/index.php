@@ -2,55 +2,25 @@
 
 <?= $this->section('content'); ?>
 
+<!-- container-fluid -->
 <div class="container-fluid">
 
-    <div class="d-sm-flex align-items-center justify-content-between mb-4" style="padding-top: 5%;">
-        <h2 class="text-black fw-bold"> Dashboard Admin </h2>
-        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class=""></i></a>
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h2 class="text-black fw-bold">Dashboard Admin</h2>
     </div>
 
-    <div class="card mt-3 shadow border-2">
+    <div class="card shadow border-2 border-primary text-center" style="padding: 2%;">        
 
-        <div class="row">
+        <img src="/img/default/stm.png" alt="Foto Admin" class="mx-auto d-block" style="width: 20%; height: 20%;">
 
-            <!-- Kelas X RPL A -->
-            <div class="card shadow border-2" style="width: 17rem; padding: 3%; margin: 3%; border-color: #007BFF;">
-                <a href="/AdminController/dataSiswaRPLA/">
-                    <img src="" alt="">
-
-                    <div class="card-body">
-                        <h5 class="card-title text-black text-center font-weight-bold"> Kelas X RPL A </h5>
-                    </div>
-
-                </a>
-            </div>
-
-            <!-- Kelas X RPL B -->
-            <div class="card shadow border-2" style="width: 17rem; padding: 3%; margin: 3%; border-color: #007BFF">
-                <a href="/AdminController/dataSiswaRPLB/">
-                    <img src="" alt="">
-
-                    <div class="card-body">
-                        <h5 class="card-title text-black text-center font-weight-bold"> Kelas X RPL B </h5>
-                    </div>
-
-                </a>
-            </div>
-
-            <!-- Kelas X RPL C -->
-            <div class="card shadow border-2" style="width: 17rem; padding: 3%; margin: 3%; border-color: #007BFF">
-                <a href="/AdminController/dataSiswaRPLC/">
-                    <img src="" alt="">
-
-                    <div class="card-body">
-                        <h5 class="card-title text-black text-center font-weight-bold"> Kelas X RPL C </h5>
-                    </div>
-
-                </a>
-            </div>
-
+        <div class="card-body text-black">
+            <h5 class="card-title text-black font-weight-bold">Selamat Datang, Admin!</h5>            
+            <p class="card-text">Website LMS STEMANIKAKU adalah platform pembelajaran online yang dirancang khusus untuk mendukung kegiatan belajar mengajar di STEMANIKAKU. Platform ini menyediakan berbagai fitur untuk mengelola kelas, materi, dan tugas dengan mudah.</p>
         </div>
+
     </div>
+
 </div>
+<!-- /.container-fluid -->
 
 <?= $this->endSection('content'); ?>
