@@ -14,7 +14,7 @@
                 <h4 class="m-0 font-weight-bold text-primary"> Tambah Materi Algoritma dan Pemrograman </h4>
             </div>
 
-            <form action="/GuruController/saveMateriAlpro" method="post" enctype="multipart/form-data">
+            <form action="<?= base_url() ?>GuruController/saveMateriAlpro" method="post" enctype="multipart/form-data">
 
                 <?= csrf_field(); ?>
 

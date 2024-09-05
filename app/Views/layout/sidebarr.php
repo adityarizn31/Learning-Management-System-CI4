@@ -149,7 +149,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item">
-            <a class="nav-link" href="<?= base_url(); ?>/GuruController/index/">
+            <a class="nav-link" href="<?= base_url() ?>GuruController/index/">
                 <i class="fas fa-fw fa-user-shield"></i>
                 <span> Dashboard Guru </span></a>
         </li>
@@ -171,9 +171,9 @@
             </a>
             <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="<?= base_url(); ?>/GuruController/dataSiswaRPLA"> Kelas X RPL A</a>
-                    <a class="collapse-item" href="<?= base_url(); ?>/GuruController/dataSiswaRPLB"> Kelas X RPL B</a>
-                    <a class="collapse-item" href="<?= base_url(); ?>/GuruController/dataSiswaRPLC"> Kelas X RPL C</a>
+                    <a class="collapse-item" href="<?= base_url() ?>GuruController/dataSiswaRPLA"> Kelas X RPL A</a>
+                    <a class="collapse-item" href="<?= base_url() ?>GuruController/dataSiswaRPLB"> Kelas X RPL B</a>
+                    <a class="collapse-item" href="<?= base_url() ?>GuruController/dataSiswaRPLC"> Kelas X RPL C</a>
                 </div>
             </div>
         </li>
@@ -195,8 +195,8 @@
             </a>
             <div id="collapseZero" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="<?= base_url(); ?>/GuruController/dataGuru"> Data Guru</a>
-                    <a class="collapse-item" href="<?= base_url(); ?>/GuruController/createGuru"> Buat Akun Guru</a>
+                    <a class="collapse-item" href="<?= base_url() ?>GuruController/dataGuru"> Data Guru</a>
+                    <a class="collapse-item" href="<?= base_url() ?>GuruController/createGuru"> Buat Akun Guru</a>
                 </div>
             </div>
         </li>
@@ -210,7 +210,7 @@
             </a>
             <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="<?= base_url(); ?>/GuruController/dataManajemenNilai/"> Algoritma Pemrograman </a>
+                    <a class="collapse-item" href="<?= base_url() ?>GuruController/dataManajemenNilai/"> Algoritma Pemrograman </a>
                 </div>
             </div>
         </li>
@@ -224,7 +224,7 @@
             </a>
             <div id="collapseFour" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="<?= base_url(); ?>/GuruController/dataManajemenKeterampilan/"> Algoritma Pemrograman </a>
+                    <a class="collapse-item" href="<?= base_url() ?>GuruController/dataManajemenKeterampilan/"> Algoritma Pemrograman </a>
                 </div>
             </div>
         </li>

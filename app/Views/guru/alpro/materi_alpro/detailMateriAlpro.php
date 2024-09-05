@@ -9,11 +9,11 @@
         <div class="card-header py-3 border-0 d-flex justify-content-between align-items-center">
             <h5 class="m-0 font-weight-bold text-primary"> Detail Materi Alpro </h5>
             <div>
-                <a href="/GuruController/editMateriAlpro/<?= $materi_alpro['slug']; ?>" class="btn btn-warning btn-sm">
+                <a href="<?= base_url() ?>GuruController/editMateriAlpro/<?= $materi_alpro['slug']; ?>" class="btn btn-warning btn-sm">
                     <i class="fas fa-edit"></i> Edit
                 </a>
 
-                <form action="/GuruController/deleteMateriAlpro/<?= $materi_alpro['id']; ?>" method="post" class="d-inline">
+                <form action="<?= base_url() ?>GuruController/deleteMateriAlpro/<?= $materi_alpro['id']; ?>" method="post" class="d-inline">
                     <?= csrf_field(); ?>
                     <input type="hidden" name="_method" value="DELETE">
                     <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapusnya?');">

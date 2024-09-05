@@ -10,7 +10,7 @@
             <div class="d-sm-flex align-items-center justify-content-between">
                 <h3 class="m-0 font-weight-bold text-primary"> Data Siswa RPL B </h3>
 
-                <!-- <a href="/GuruController/createSiswaB/" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus"></i> Siswa B </a> -->
+                <!-- <a href="<?= base_url() ?>GuruController/createSiswaB/" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus"></i> Siswa B </a> -->
 
             </div>
         </div>
@@ -54,12 +54,12 @@
                             <td><?= $b['nama_siswa']; ?></td>
                             <td><?= $b['kelas_siswa']; ?></td>
                             <td>
-                                <a href="/GuruController/grafikNilaiSiswa" class="btn btn-secondary btn-sm">
+                                <a href="<?= base_url() ?>GuruController/grafikNilaiSiswa" class="btn btn-secondary btn-sm">
                                     <i class="fas fa-chart-bar"></i> Grafik
                                 </a>
                             </td>
                             <td>
-                                <a href="/guru/detailSiswaRPLB/<?= $b['slug']; ?>" class="btn btn-success btn-sm">
+                                <a href="<?= base_url() ?>GuruController/detailSiswaRPLB/<?= $b['slug']; ?>" class="btn btn-success btn-sm">
                                     <i class="fas fa-eye"></i> Detail
                                 </a>
                             </td>

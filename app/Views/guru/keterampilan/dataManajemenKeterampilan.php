@@ -20,7 +20,7 @@
                 <!-- Card 1 -->
                 <div class="col-md-4 col-sm-6 mb-4">
                     <div class="card shadow border-primary h-100 text-center">
-                        <a href="/GuruController/dataNilaiRPLA_Alpro/" class="stretched-link">
+                        <a href="<?= base_url() ?>GuruController/dataNilaiRPLA_Alpro/" class="stretched-link">
                             <div class="card-body">
                                 <h5 class="card-title text-black font-weight-bold">Keterampilan X RPL A</h5>
                             </div>
@@ -31,7 +31,7 @@
                 <!-- Card 2 -->
                 <div class="col-md-4 col-sm-6 mb-4">
                     <div class="card shadow border-primary h-100 text-center">
-                        <a href="/GuruController/dataNilaiRPLB_Alpro/" class="stretched-link">
+                        <a href="<?= base_url() ?>GuruController/dataNilaiRPLB_Alpro/" class="stretched-link">
                             <div class="card-body">
                                 <h5 class="card-title text-black font-weight-bold">Keterampilan X RPL B</h5>
                             </div>
@@ -42,7 +42,7 @@
                 <!-- Card 3 -->
                 <div class="col-md-4 col-sm-6 mb-4">
                     <div class="card shadow border-primary h-100 text-center">
-                        <a href="/GuruController/dataNilaiRPLC_Alpro/" class="stretched-link">
+                        <a href="<?= base_url() ?>GuruController/dataNilaiRPLC_Alpro/" class="stretched-link">
                             <div class="card-body">
                                 <h5 class="card-title text-black font-weight-bold">Keterampilan X RPL C</h5>
                             </div>

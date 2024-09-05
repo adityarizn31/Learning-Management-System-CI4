@@ -10,7 +10,7 @@
                 <h3 class="m-0 font-weight-bold text-primary"> Edit Materi Algoritma Pemrograman </h3>
             </div>
 
-            <form action="/GuruController/updateMateriAlpro/<?= $materi_alpro['id']; ?>" method="post" enctype="multipart/form-data">
+            <form action="<?= base_url() ?>GuruController/updateMateriAlpro/<?= $materi_alpro['id']; ?>" method="post" enctype="multipart/form-data">
 
                 <?= csrf_field(); ?>
 

@@ -9,10 +9,10 @@
         <div class="card-header py-3 border-0 d-flex justify-content-between align-items-center">
             <h5 class="m-0 font-weight-bold text-primary">Detail Siswa RPL C</h5>
             <div class="d-flex align-items-center">
-                <a href="/GuruController/editSiswaRPLC/<?= $siswac['slug']; ?>" class="btn btn-warning btn-sm mr-2">
+                <a href="<?= base_url() ?>GuruController/editSiswaRPLC/<?= $siswac['slug']; ?>" class="btn btn-warning btn-sm mr-2">
                     <i class="fas fa-edit"></i> Edit
                 </a>
-                <form action="/GuruController/deleteSiswaRPLC/<?= $siswac['id']; ?>" method="post" class="d-inline m-0 p-0">
+                <form action="<?= base_url() ?>GuruController/deleteSiswaRPLC/<?= $siswac['id']; ?>" method="post" class="d-inline m-0 p-0">
                     <?= csrf_field(); ?>
                     <input type="hidden" name="_method" value="DELETE">
                     <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda Yakin ingin dihapus ?? ');">

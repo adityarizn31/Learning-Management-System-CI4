@@ -10,7 +10,7 @@
                 <h3 class="m-0 font-weight-bold text-primary"> Edit Data Siswa RPL A </h3>
             </div>
 
-            <form action="/GuruController/updateSiswaRPLA/<?= $siswaa['id']; ?>" method="post" enctype="multipart/form-data">
+            <form action="<?= base_url() ?>GuruController/updateSiswaRPLA/<?= $siswaa['id']; ?>" method="post" enctype="multipart/form-data">
 
                 <?= csrf_field(); ?>
 

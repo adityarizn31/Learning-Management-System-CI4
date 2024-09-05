@@ -34,7 +34,7 @@
                         <h4 class="p-2 font-weight-bold">Materi Algoritma Pemrograman</h4>
                     </div>
                     <div class="align-self-start mt-3">
-                        <a href="/GuruController/createMateriAlpro" class="btn btn-sm btn-primary shadow-sm">
+                        <a href="<?= base_url() ?>GuruController/createMateriAlpro" class="btn btn-sm btn-primary shadow-sm">
                             <i class="fas fa-plus"></i> Materi
                         </a>
                     </div>
@@ -63,10 +63,10 @@
 
                             <div class="container">
                                 <div class="col">
-                                    <a href="/GuruController/detailMateriAlpro/<?= $alpro['slug']; ?>" class="btn btn-outline-primary my-2">Materi</a>
-                                    <a href="/GuruController/dataTugasAlpro/<?= $alpro['slug']; ?>" class="btn btn-outline-primary my-2">Tugas</a>
-                                    <a href="/GuruController/dataPengetahuanAlpro/" class="btn btn-outline-primary my-2">Pengetahuan</a>
-                                    <a href="/GuruController/detailMateriAlpro/<?= $alpro['slug']; ?>" class="btn btn-outline-primary my-2">Keterampilan</a>
+                                    <a href="<?= base_url() ?>GuruController/detailMateriAlpro/<?= $alpro['slug']; ?>" class="btn btn-outline-primary my-2">Materi</a>
+                                    <a href="<?= base_url() ?>GuruController/dataTugasAlpro/<?= $alpro['slug']; ?>" class="btn btn-outline-primary my-2">Tugas</a>
+                                    <a href="<?= base_url() ?>GuruController/dataPengetahuanAlpro/" class="btn btn-outline-primary my-2">Pengetahuan</a>
+                                    <a href="<?= base_url() ?>GuruController/detailMateriAlpro/<?= $alpro['slug']; ?>" class="btn btn-outline-primary my-2">Keterampilan</a>
                                 </div>
                             </div>
 

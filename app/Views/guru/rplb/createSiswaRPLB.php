@@ -14,7 +14,7 @@
                 <h4 class="m-0 font-weight-bold text-primary">Tambah Siswa XI RPL B</h4>
             </div>
 
-            <form action="/GuruController/saveRPLB" method="post" enctype="multipart/form-data">
+            <form action="<?= base_url() ?>GuruController/saveRPLB" method="post" enctype="multipart/form-data">
 
                 <?= csrf_field(); ?>
 

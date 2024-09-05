@@ -10,7 +10,7 @@
                 <h4 class="m-0 font-weight-bold text-primary">Tambah Siswa XI RPL C</h4>
             </div>
 
-            <form action="/GuruController/saveRPLC" method="post" enctype="multipart/form-data">
+            <form action="<?= base_url() ?>GuruController/saveRPLC" method="post" enctype="multipart/form-data">
 
                 <?= csrf_field(); ?>
 

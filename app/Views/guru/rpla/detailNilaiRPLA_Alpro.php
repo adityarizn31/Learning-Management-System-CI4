@@ -19,7 +19,7 @@
 
     <div class="d-flex justify-content-between align-items-center mb-3">
         <!-- Dropdown Sorting -->
-        <form action="/GuruController/dataSiswaNilai" method="get" class="mb-3">
+        <form action="<?= base_url() ?>GuruController/dataSiswaNilai" method="get" class="mb-3">
             <label for="sort" class="me-2">Urutkan berdasarkan:</label>
             <select name="sort" id="sort" class="form-select form-select-sm d-inline-block w-auto" onchange="this.form.submit()">
                 <option value="tugas_terbaru">Tugas Terbaru</option>
@@ -29,7 +29,7 @@
         </form>
 
         <!-- Tombol Tambah Nilai Siswa -->
-        <a href="/GuruController/createNilaiSiswaA" class="btn btn-primary btn-sm">
+        <a href="<?= base_url() ?>GuruController/createNilaiSiswaA" class="btn btn-primary btn-sm">
             <i class="fas fa-plus"></i> Tambah Nilai Siswa
         </a>
     </div>
@@ -56,7 +56,7 @@
                     <td>1</td>
                     <td>
                         <!-- Tombol Preview Tugas -->
-                        <a href="/GuruController/createNilaiSiswaAModal" class="btn btn-info btn-sm">
+                        <a href="<?= base_url() ?>GuruController/createNilaiSiswaAModal" class="btn btn-info btn-sm">
                             <i class="fas fa-eye"></i> Nilai Tugas
                         </a>
                     </td>

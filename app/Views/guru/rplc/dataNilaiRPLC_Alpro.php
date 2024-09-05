@@ -38,7 +38,7 @@
                     <td>Rabu, 30 Agustus 2024</td>
                     <td>
                         <!-- Tombol Preview Tugas -->
-                        <a href="/GuruController/dataNilaiRPLC_Alpro" class="btn btn-info btn-sm">
+                        <a href="<?= base_url() ?>GuruController/dataNilaiRPLC_Alpro" class="btn btn-info btn-sm">
                             <i class="fas fa-eye"></i> Detail Grafik
                         </a>
                     </td>

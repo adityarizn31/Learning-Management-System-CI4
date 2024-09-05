@@ -56,7 +56,7 @@
                             <td><?= $a['nama_siswa']; ?></td>
                             <td><?= $a['kelas_siswa']; ?></td>
                             <td>
-                                <a href="/guru/detailSiswaRPLA/<?= $a['slug']; ?>" class="btn btn-warning btn-sm"><i class="fa-solid fa-award"></i>
+                                <a href="<?= base_url() ?>GuruController/detailSiswaRPLA/<?= $a['slug']; ?>" class="btn btn-warning btn-sm"><i class="fa-solid fa-award"></i>
                                     Input Nilai 
                                 </a>
                             </td>

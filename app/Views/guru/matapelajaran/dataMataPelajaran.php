@@ -17,7 +17,7 @@
                 
                 <div class="col-md-4 col-sm-6 mb-4">
                     <div class="card shadow border-2 border-primary h-100 text-center">
-                        <a href="/GuruController/dataMateriAlpro/" class="stretched-link">
+                        <a href="<?= base_url() ?>GuruController/dataMateriAlpro/" class="stretched-link">
                             <div class="card-body">
                                 <h5 class="card-title text-black font-weight-bold">Algoritma dan Pemrograman A</h5>
                             </div>
