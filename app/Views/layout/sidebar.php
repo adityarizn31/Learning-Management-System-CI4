@@ -46,6 +46,22 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne"
+            aria-expanded="true" aria-controls="collapseOne">
+            <i class="fas fa-fw fa-chalkboard-teacher"></i>
+            <span>Tambah Data Guru</span>
+        </a>
+        <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Buat Data Baru Guru</h6>
+                <a class="collapse-item" href="<?= base_url(); ?>AdminController/createGuru"> Buat Akun Guru</a>
+            </div>
+        </div>
+    </li>
+
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
             aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-chalkboard"></i>
@@ -71,7 +87,6 @@
         <div id="collapseZero" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="<?= base_url(); ?>AdminController/dataGuru"> Data Guru</a>
-                <a class="collapse-item" href="<?= base_url(); ?>AdminController/createGuru"> Buat Akun Guru</a>
             </div>
         </div>
     </li>

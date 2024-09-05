@@ -11,11 +11,11 @@
                 <h3 class="m-0 font-weight-bold text-primary"> Data Siswa RPL B </h3>
 
                 <!-- Tombol Export Excel -->
-                <a href="<?= base_url(); ?>/AdminController/exportExcel" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm" style="margin-right: 10px;">
+                <a href="<?= base_url() ?>AdminController/exportExcel" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm" style="margin-right: 10px;">
                     <i class="fas fa-file-excel"></i> Export Excel
                 </a>
 
-                <!-- <a href="<?= base_url(); ?>/AdminController/createSiswaRPLB/" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus"></i> Siswa RPL B </a> -->
+                <!-- <a href="<?= base_url() ?>AdminController/createSiswaRPLB/" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus"></i> Siswa RPL B </a> -->
 
             </div>
         </div>
@@ -59,7 +59,7 @@
                             <td><?= $b['nis_siswa']; ?></td>
                             <td><?= $b['nama_siswa']; ?></td>
                             <td><?= $b['kelas_siswa']; ?></td>
-                            <td><a href="<?= base_url(); ?>/admin/detailSiswaRPLB/<?= $b['slug']; ?>" class="btn btn-success btn-sm"><i class="fas fa-eye"></i> Detail</a></td>
+                            <td><a href="<?= base_url() ?>AdminController/detailSiswaRPLB/<?= $b['slug']; ?>" class="btn btn-success btn-sm"><i class="fas fa-eye"></i> Detail</a></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

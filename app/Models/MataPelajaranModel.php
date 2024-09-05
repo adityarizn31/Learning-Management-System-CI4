@@ -8,7 +8,7 @@ class MataPelajaranModel extends Model
 {
     protected $table = 'matapelajaran';
     protected $useTimestamps = true;
-    protected $allowedFields = ['nama_matapelajaran', 'guru_matapelajaran', 'judul_pertemuan', 'jam_pelajaran', 'jumlah_pertemuan'];
+    protected $allowedFields = ['nama_matapelajaran', 'guru_matapelajaran', 'slug', 'kelas_matapelajaran', 'fotoguru_matapelajaran'];
 
     // Digunakan untuk detail
     public function getMatpel($slug = false)

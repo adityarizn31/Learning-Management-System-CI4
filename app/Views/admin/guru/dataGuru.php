@@ -11,23 +11,27 @@
                 <h3 class="m-0 font-weight-bold text-primary"> Data Guru </h3>
 
                 <!-- Tombol Export Excel -->
-            <a href="<?= base_url(); ?>/AdminController/exportExcel" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm" style="margin-right: 10px;">
-                <i class="fas fa-file-excel"></i> Export Excel
-            </a>
+                <a href="<?= base_url(); ?>AdminController/exportExcel" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm" style="margin-right: 10px;">
+                    <i class="fas fa-file-excel"></i> Export Excel
+                </a>
 
                 <!-- <a href="<?= base_url(); ?>/AdminController/createGuru/" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus"></i> Guru </a> -->
 
             </div>
         </div>
 
-        <!-- Digunakan untuk Pesan -->
         <div class="container mt-4">
             <div class="row">
                 <div class="col">
 
                     <?php if (session()->getFlashdata('pesan')) : ?>
 
+                        <div class="alert alert-success" role="alert">
+                            <?= session()->getFlashdata('pesan'); ?>
+                        </div>
+
                     <?php endif; ?>
+
                 </div>
             </div>
         </div>
@@ -51,10 +55,10 @@
                         <tr>
                             <th><?= $i++; ?></th>
                             <td><img src="/img/guru/<?= $gur['foto_guru']; ?>" alt="" style="width: 20%;"></td>
-                            <td><?= $gur['nip_guru']; ?></td>
+                            <td><?= $gur['nip_guru']; ?></td>   
                             <td><?= $gur['nama_guru']; ?></td>
                             <td>
-                                <a href="<?= base_url(); ?>/admin/detailGuru/<?= $gur['slug']; ?>" class="btn btn-success btn-sm">
+                                <a href="<?= base_url(); ?>AdminController/detailGuru/<?= $gur['slug']; ?>" class="btn btn-success btn-sm">
                                     <i class="fas fa-eye"></i> Detail
                                 </a>
                             </td>

@@ -173,294 +173,6 @@ class AdminController extends BaseController
         return redirect()->to('/AdminController/dataGuru');        
     }
 
-    // // Done
-    // public function createSiswaRPLA()
-    // {
-    //     helper(['form']);
-    //     $data = [
-    //         'title' => 'Tambah Data Siswa RPL A || Admin Stemanikaku',
-    //         'validation' => \Config\Services::validation()
-    //     ];
-
-    //     return view('admin/createSiswaRPLA', $data);
-    // }
-
-    // // Done
-    // public function saveRPLA()
-    // {
-    //     $validate = $this->validate([
-    //         'nis_siswa' => [
-    //             'rules' => 'required[rpla.nis_siswa]|is_natural',
-    //             'errors' => [
-    //                 'required' => 'NIS Siswa harus diisi !!',
-    //                 'is_natural' => 'Hanya boleh diisi angka !!'
-    //             ],
-    //         ],
-    //         'username_siswa' => [
-    //             'rules' => 'required[rpla.username_siswa]',
-    //             'errors' => [
-    //                 'required' => 'Username Siswa harus diisi !!'
-    //             ],
-    //         ],
-    //         'password_siswa' => [
-    //             'rules' => 'required[rpla.password_siswa]',
-    //             'errors' => [
-    //                 'required' => 'Password Siswa harus diisi !!'
-    //             ],
-    //         ],
-    //         'nama_siswa' => [
-    //             'rules' => 'required[rpla.nama_siswa]',
-    //             'errors' => [
-    //                 'required' => 'Nama Siswa harus diisi !!'
-    //             ],
-    //         ],
-    //         'jk_siswa' => [
-    //             'rules' => 'required[rpla.jk_siswa]',
-    //             'errors' => [
-    //                 'required' => 'Jenis kelamin Siswa harus diisi !!'
-    //             ],
-    //         ],
-    //         'nohp_siswa' => [
-    //             'rules' => 'required[rpla.nohp_siswa]',
-    //             'errors' => [
-    //                 'required' => 'No HP/Whatsapp Siswa harus diisi !!'
-    //             ],
-    //         ],
-    //         'alamat_siswa' => [
-    //             'rules' => 'required[rpla.alamat_siswa]',
-    //             'errors' => [
-    //                 'required' => 'Alamat Siswa harus diisi !!'
-    //             ],
-    //         ],
-    //         'foto_siswa' => [
-    //             'rules' => 'uploaded[foto_siswa]|max_size[foto_siswa,2048]|is_image[foto_siswa]|mime_in[foto_siswa,image/jpg,image/jpeg,image/png]',
-    //             'errors' => [
-    //                 'uploaded' => 'Foto Siswa harus diisi !!',
-    //                 'max_size' => 'Ukuran Foto Maksimal 2MB !!',
-    //                 'mime_in' => 'Format Foto harus JPG,JPEG,PNG !!'
-    //             ],
-    //         ],
-    //     ]);
-
-    //     if (!$validate) {
-    //         return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
-    //     }
-
-    //     $fileFotoSiswaA = $this->request->getFile('foto_siswa');
-    //     if ($fileFotoSiswaA->getError() == 4) {
-    //     } else {
-    //         $namaFotoSiswaA = $fileFotoSiswaA->getName();
-    //         $fileFotoSiswaA->move('img/rpla', $namaFotoSiswaA);
-    //     }
-
-    //     $slug = url_title($this->request->getVar('nama_siswa'), '-', true);
-    //     $this->rplAModel->save([
-    //         'nis_siswa' => $this->request->getVar('nis_siswa'),
-    //         'username_siswa' => $this->request->getVar('username_siswa'),
-    //         'password_siswa' => $this->request->getVar('password_siswa'),
-    //         'slug' => $slug,
-    //         'nama_siswa' => $this->request->getVar('nama_siswa'),
-    //         'jk_siswa' => $this->request->getVar('jk_siswa'),
-    //         'nohp_siswa' => $this->request->getVar('nohp_siswa'),
-    //         'alamat_siswa' => $this->request->getVar('alamat_siswa'),
-    //         'foto_siswa' => $namaFotoSiswaA
-    //     ]);
-    //     session()->setFlashdata('pesan', 'Siswa RPL A berhasil ditambahkan !!');
-    //     return redirect()->to('/admin/dataSiswaRPLA');
-    // }
-
-    // // Done
-    // public function createSiswaRPLB()
-    // {
-    //     helper(['form']);
-    //     $data = [
-    //         'title' => 'Tambah Data Siswa RPL B || Admin Stemanikaku',
-    //         'validation' => \Config\Services::validation()
-    //     ];
-
-    //     return view('admin/createSiswaRPLB', $data);
-    // }
-
-    // // Done
-    // public function saveRPLB()
-    // {
-    //     $validate = $this->validate([
-    //         'nis_siswa' => [
-    //             'rules' => 'required[rplb.nis_siswa]|is_natural',
-    //             'errors' => [
-    //                 'required' => 'NIS Siswa harus diisi !!',
-    //                 'is_natural' => 'Hanya boleh diisi angka !!'
-    //             ],
-    //         ],
-    //         'username_siswa' => [
-    //             'rules' => 'required[rplb.username_siswa]',
-    //             'errors' => [
-    //                 'required' => 'Username Siswa harus diisi !!'
-    //             ],
-    //         ],
-    //         'password_siswa' => [
-    //             'rules' => 'required[rplb.password_siswa]',
-    //             'errors' => [
-    //                 'required' => 'Password Siswa harus diisi !!'
-    //             ],
-    //         ],
-    //         'nama_siswa' => [
-    //             'rules' => 'required[rplb.nama_siswa]',
-    //             'errors' => [
-    //                 'required' => 'Nama Siswa harus diisi !!'
-    //             ],
-    //         ],
-    //         'jk_siswa' => [
-    //             'rules' => 'required[rplb.jk_siswa]',
-    //             'errors' => [
-    //                 'required' => 'Jenis kelamin Siswa harus diisi !!'
-    //             ],
-    //         ],
-    //         'nohp_siswa' => [
-    //             'rules' => 'required[rplb.nohp_siswa]',
-    //             'errors' => [
-    //                 'required' => 'No HP/Whatsapp Siswa harus diisi !!'
-    //             ],
-    //         ],
-    //         'alamat_siswa' => [
-    //             'rules' => 'required[rplb.alamat_siswa]',
-    //             'errors' => [
-    //                 'required' => 'Alamat Siswa harus diisi !!'
-    //             ],
-    //         ],
-    //         'foto_siswa' => [
-    //             'rules' => 'uploaded[foto_siswa]|max_size[foto_siswa,2048]|is_image[foto_siswa]|mime_in[foto_siswa,image/jpg,image/jpeg,image/png]',
-    //             'errors' => [
-    //                 'uploaded' => 'Foto Siswa harus diisi !!',
-    //                 'max_size' => 'Ukuran Foto Maksimal 2MB !!',
-    //                 'mime_in' => 'Format Foto harus JPG,JPEG,PNG !!'
-    //             ],
-    //         ],
-    //     ]);
-
-    //     if (!$validate) {
-    //         return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
-    //     }
-
-    //     $fileFotoSiswaB = $this->request->getFile('foto_siswa');
-    //     if ($fileFotoSiswaB->getError() == 4) {
-    //     } else {
-    //         $namaFotoSiswaB = $fileFotoSiswaB->getName();
-    //         $fileFotoSiswaB->move('img/rplb', $namaFotoSiswaB);
-    //     }
-
-    //     $slug = url_title($this->request->getVar('nama_siswa'), '-', true);
-    //     $this->rplBModel->save([
-    //         'nis_siswa' => $this->request->getVar('nis_siswa'),
-    //         'username_siswa' => $this->request->getVar('username_siswa'),
-    //         'password_siswa' => $this->request->getVar('password_siswa'),
-    //         'slug' => $slug,
-    //         'nama_siswa' => $this->request->getVar('nama_siswa'),
-    //         'jk_siswa' => $this->request->getVar('jk_siswa'),
-    //         'nohp_siswa' => $this->request->getVar('nohp_siswa'),
-    //         'alamat_siswa' => $this->request->getVar('alamat_siswa'),
-    //         'foto_siswa' => $namaFotoSiswaB
-    //     ]);
-    //     session()->setFlashdata('pesan', 'Siswa RPL B berhasil ditambahkan !!');
-    //     return redirect()->to('/admin/dataSiswaRPLB');
-    // }
-
-    // // Done
-    // public function createSiswaRPLC()
-    // {
-    //     helper(['form']);
-    //     $data = [
-    //         'title' => 'Tambah Data Siswa RPL C || Admin Stemanikaku',
-    //         'validation' => \Config\Services::validation()
-    //     ];
-
-    //     return view('admin/createSiswaRPLC', $data);
-    // }
-
-    // // Done
-    // public function saveRPLC()
-    // {
-    //     $validate = $this->validate([
-    //         'nis_siswa' => [
-    //             'rules' => 'required[rplc.nis_siswa]|is_natural',
-    //             'errors' => [
-    //                 'required' => 'NIS Siswa harus diisi !!',
-    //                 'is_natural' => 'Hanya boleh diisi angka !!'
-    //             ],
-    //         ],
-    //         'username_siswa' => [
-    //             'rules' => 'required[rplc.username_siswa]',
-    //             'errors' => [
-    //                 'required' => 'Username Siswa harus diisi !!'
-    //             ],
-    //         ],
-    //         'password_siswa' => [
-    //             'rules' => 'required[rplc.password_siswa]',
-    //             'errors' => [
-    //                 'required' => 'Password Siswa harus diisi !!'
-    //             ],
-    //         ],
-    //         'nama_siswa' => [
-    //             'rules' => 'required[rplc.nama_siswa]',
-    //             'errors' => [
-    //                 'required' => 'Nama Siswa harus diisi !!'
-    //             ],
-    //         ],
-    //         'jk_siswa' => [
-    //             'rules' => 'required[rplc.jk_siswa]',
-    //             'errors' => [
-    //                 'required' => 'Jenis kelamin Siswa harus diisi !!'
-    //             ],
-    //         ],
-    //         'nohp_siswa' => [
-    //             'rules' => 'required[rplc.nohp_siswa]',
-    //             'errors' => [
-    //                 'required' => 'No HP/Whatsapp Siswa harus diisi !!'
-    //             ],
-    //         ],
-    //         'alamat_siswa' => [
-    //             'rules' => 'required[rplc.alamat_siswa]',
-    //             'errors' => [
-    //                 'required' => 'Alamat Siswa harus diisi !!'
-    //             ],
-    //         ],
-    //         'foto_siswa' => [
-    //             'rules' => 'uploaded[foto_siswa]|max_size[foto_siswa,2048]|is_image[foto_siswa]|mime_in[foto_siswa,image/jpg,image/jpeg,image/png]',
-    //             'errors' => [
-    //                 'uploaded' => 'Foto Siswa harus diisi !!',
-    //                 'max_size' => 'Ukuran Foto Maksimal 2MB !!',
-    //                 'mime_in' => 'Format Foto harus JPG,JPEG,PNG !!'
-    //             ],
-    //         ],
-    //     ]);
-
-    //     if (!$validate) {
-    //         return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
-    //     }
-
-    //     $fileFotoSiswaC = $this->request->getFile('foto_siswa');
-    //     if ($fileFotoSiswaC->getError() == 4) {
-    //     } else {
-    //         $namaFotoSiswaC = $fileFotoSiswaC->getName();
-    //         $fileFotoSiswaC->move('img/rplc', $namaFotoSiswaC);
-    //     }
-
-    //     $slug = url_title($this->request->getVar('nama_siswa'), '-', true);
-    //     $this->rplCModel->save([
-    //         'nis_siswa' => $this->request->getVar('nis_siswa'),
-    //         'username_siswa' => $this->request->getVar('username_siswa'),
-    //         'password_siswa' => $this->request->getVar('password_siswa'),
-    //         'slug' => $slug,
-    //         'nama_siswa' => $this->request->getVar('nama_siswa'),
-    //         'jk_siswa' => $this->request->getVar('jk_siswa'),
-    //         'nohp_siswa' => $this->request->getVar('nohp_siswa'),
-    //         'alamat_siswa' => $this->request->getVar('alamat_siswa'),
-    //         'foto_siswa' => $namaFotoSiswaC
-    //     ]);
-    //     session()->setFlashdata('pesan', 'Siswa RPL C berhasil ditambahkan !!');
-    //     return redirect()->to('/admin/dataSiswaRPLC');
-    // }
-
     // Done
     public function createSiswaA()
     {
@@ -849,47 +561,12 @@ class AdminController extends BaseController
 
 
 
-    // // Done
-    // public function dataSiswaRPLA()
-    // {
-    //     $RPLA = $this->rplAModel->findAll();
-    //     $data = [
-    //         'title' => 'Siswa RPLA || Admin Stemanikaku',
-    //         'rpla' => $RPLA
-    //     ];
-    //     return view('admin/dataSiswaRPLA', $data);
-    // }
-
-    // // Done
-    // public function dataSiswaRPLB()
-    // {
-    //     $RPLB = $this->rplBModel->findAll();
-    //     $data = [
-    //         'title' => 'Siswa RPLB || Admin Stemanikaku',
-    //         'rplb' => $RPLB
-    //     ];
-    //     return view('admin/dataSiswaRPLB', $data);
-    // }
-
-    // // Done
-    // public function dataSiswaRPLC()
-    // {
-    //     $RPLC = $this->rplCModel->findAll();
-    //     $data = [
-    //         'title' => 'Siswa RPLC || Admin Stemanikaku',
-    //         'rplc' => $RPLC
-    //     ];
-    //     return view('admin/dataSiswaRPLC', $data);
-    // }
-
     // Done
     public function dataSiswaRPLA()
     {
-        // $RPLA = $this->rplAModel->findAll();
         $SISWAA = $this->siswaAModel->findAll();
         $data = [
             'title' => 'Siswa RPLA || Guru Stemanikaku',
-            // 'rpla' => $RPLA
             'siswaa' => $SISWAA
         ];
         return view('admin/rpla/dataSiswaRPLA', $data);
@@ -898,11 +575,9 @@ class AdminController extends BaseController
     // Done
     public function dataSiswaRPLB()
     {
-        // $RPLB = $this->rplBModel->findAll();
         $SISWAB = $this->siswaBModel->findAll();
         $data = [
             'title' => 'Siswa RPLB || Guru Stemanikaku',
-            // 'rplb' => $RPLB
             'siswab' => $SISWAB
         ];
         return view('admin/rplb/dataSiswaRPLB', $data);
@@ -911,11 +586,9 @@ class AdminController extends BaseController
     // Done
     public function dataSiswaRPLC()
     {
-        // $RPLC = $this->rplCModel->findAll();
         $SISWAC = $this->siswaCModel->findAll();
         $data = [
             'title' => 'Siswa RPLC || Guru Stemanikaku',
-            // 'rplc' => $RPLC
             'siswac' => $SISWAC
         ];
         return view('admin/rplc/dataSiswaRPLC', $data);
@@ -954,36 +627,6 @@ class AdminController extends BaseController
 
 
 
-    // // Done
-    // public function detailSiswaRPLA($slug)
-    // {
-    //     $data = [
-    //         'title' => 'Detail Siswa RPL A || Stemanikaku',
-    //         'rpla' => $this->rplAModel->getRPLA($slug)
-    //     ];
-    //     return view('/admin/detailSiswaRPLA', $data);
-    // }
-
-    // // Done
-    // public function detailSiswaRPLB($slug)
-    // {
-    //     $data = [
-    //         'title' => 'Detail Siswa RPL B || Stemanikaku',
-    //         'rplb' => $this->rplBModel->getRPLB($slug)
-    //     ];
-    //     return view('/admin/detailSiswaRPLB', $data);
-    // }
-
-    // // Done
-    // public function detailSiswaRPLC($slug)
-    // {
-    //     $data = [
-    //         'title' => 'Detail Siswa RPL C || Stemanikaku',
-    //         'rplc' => $this->rplCModel->getRPLC($slug)
-    //     ];
-    //     return view('/admin/detailSiswaRPLC', $data);
-    // }
-
     // Done
     public function detailSiswaRPLA($slug)
     {
@@ -1000,7 +643,6 @@ class AdminController extends BaseController
     {
         $data = [
             'title' => 'Detail Siswa RPL B || Guru Stemanikaku',
-            // 'rplb' => $this->rplBModel->getRPLB($slug)
             'siswab' => $this->siswaBModel->getRPLB($slug)
         ];
         return view('/admin/rplb/detailSiswaRPLB', $data);
@@ -1011,7 +653,6 @@ class AdminController extends BaseController
     {
         $data = [
             'title' => 'Detail Siswa RPL C || Guru Stemanikaku',
-            // 'rplc' => $this->rplCModel->getRPLC($slug)
             'siswac' => $this->siswaCModel->getRPLC($slug)
         ];
         return view('/admin/rplc/detailSiswaRPLC', $data);
@@ -1167,302 +808,6 @@ class AdminController extends BaseController
 
 
 
-
-    // // Done
-    // public function editSiswaRPLA($slug)
-    // {
-    //     $data = [
-    //         'title' => 'Form Edit Siswa RPL A || Stemanikaku',
-    //         'validation' => \Config\Services::validation(),
-    //         'rpla' => $this->rplAModel->getRPLA($slug)
-    //     ];
-    //     return view('admin/editSiswaRPLA', $data);
-    // }
-
-    // // Done
-    // public function updateSiswaRPLA($id)
-    // {
-    //     if (!$this->validate([
-    //         'nis_siswa' => [
-    //             'rules' => 'required[rpla.nis_siswa]',
-    //             'errors' => [
-    //                 'required' => 'NIS Siswa harus diisi !!'
-    //             ],
-    //         ],
-    //         'username_siswa' => [
-    //             'rules' => 'required[rpla.username_siswa]',
-    //             'errors' => [
-    //                 'required' => 'Username Siswa harus diisi !!'
-    //             ],
-    //         ],
-    //         'password_siswa' => [
-    //             'rules' => 'required[rpla.password_siswa]',
-    //             'errors' => [
-    //                 'required' => 'Password Siswa harus diisi !!'
-    //             ],
-    //         ],
-    //         'nama_siswa' => [
-    //             'rules' => 'required[rpla.nama_siswa]',
-    //             'errors' => [
-    //                 'required' => 'Nama Siswa harus diisi !!'
-    //             ],
-    //         ],
-    //         'jk_siswa' => [
-    //             'rules' => 'required[rpla.jk_siswa]',
-    //             'errors' => [
-    //                 'required' => 'Jenis Kelamin Siswa harus diisi !!'
-    //             ],
-    //         ],
-    //         'nohp_siswa' => [
-    //             'rules' => 'required[rpla.nohp_siswa]',
-    //             'errors' => [
-    //                 'required' => 'No HP Siswa harus diisi !!'
-    //             ],
-    //         ],
-    //         'alamat_siswa' => [
-    //             'rules' => 'required[rpla.alamat_siswa]',
-    //             'errors' => [
-    //                 'required' => 'Alamat Siswa harus diisi !!'
-    //             ],
-    //         ],
-    //         'foto_siswa' => [
-    //             'rules' => 'max_size[foto_siswa,2048]|is_image[foto_siswa]|mime_in[foto_siswa,image/jpg,image/jpeg,image/png]',
-    //             'errors' => [
-    //                 'max_size' => 'Ukuran Gambar terlalu besar !!',
-    //                 'is_image' => 'Yang anda pilih bukan gambar !!',
-    //                 'mime_in' => 'Yang anda pilih bukan gambar'
-    //             ]
-    //         ]
-    //     ])) {
-    //         return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
-    //     }
-
-    //     $fileFotoSiswaRPLA = $this->request->getFile('foto_siswa');
-
-    //     if ($fileFotoSiswaRPLA->getError() == 4) {
-    //         $namaFotoSiswaRPLA = $this->request->getVar('fotolama');
-    //     } else {
-    //         // Generate nama File Random
-    //         $namaFotoSiswaRPLA = $fileFotoSiswaRPLA->getName();
-    //         // Memindahkan File Random
-    //         $fileFotoSiswaRPLA->move('img/rpla', $namaFotoSiswaRPLA);
-    //         // Menghapus File lama
-    //         unlink('img/rpla/' . $this->request->getVar('fotolama'));
-    //     }
-
-    //     $this->rplAModel->save(
-    //         [
-    //             'id' => $id,
-    //             'nis_siswa' => $this->request->getVar('nis_siswa'),
-    //             'username_siswa' => $this->request->getVar('username_siswa'),
-    //             'password_siswa' => $this->request->getVar('password_siswa'),
-    //             'nama_siswa' => $this->request->getVar('nama_siswa'),
-    //             'jk_siswa' => $this->request->getVar('jk_siswa'),
-    //             'nohp_siswa' => $this->request->getVar('nohp_siswa'),
-    //             'alamat_siswa' => $this->request->getVar('alamat_siswa'),
-    //             'foto_siswa' => $namaFotoSiswaRPLA
-    //         ]
-    //     );
-    //     session()->setFlashdata('pesan', 'Data Siswa RPLA berhasil diubah !!');
-    //     return redirect()->to('admin/dataSiswaRPLA');
-    // }
-
-    // // Done
-    // public function editSiswaRPLB($slug)
-    // {
-    //     $data = [
-    //         'title' => 'Form Edit Siswa RPL B || Stemanikaku',
-    //         'validation' => \Config\Services::validation(),
-    //         'rplb' => $this->rplBModel->getRPLB($slug)
-    //     ];
-    //     return view('admin/editSiswaRPLB', $data);
-    // }
-
-    // // Done
-    // public function updateSiswaRPLB($id)
-    // {
-    //     if (!$this->validate([
-    //         'nis_siswa' => [
-    //             'rules' => 'required[rplb.nis_siswa]',
-    //             'errors' => [
-    //                 'required' => 'NIS Siswa harus diisi !!'
-    //             ],
-    //         ],
-    //         'username_siswa' => [
-    //             'rules' => 'required[rplb.username_siswa]',
-    //             'errors' => [
-    //                 'required' => 'Username Siswa harus diisi !!'
-    //             ],
-    //         ],
-    //         'password_siswa' => [
-    //             'rules' => 'required[rplb.password_siswa]',
-    //             'errors' => [
-    //                 'required' => 'Password Siswa harus diisi !!'
-    //             ],
-    //         ],
-    //         'nama_siswa' => [
-    //             'rules' => 'required[rplb.nama_siswa]',
-    //             'errors' => [
-    //                 'required' => 'Nama Siswa harus diisi !!'
-    //             ],
-    //         ],
-    //         'jk_siswa' => [
-    //             'rules' => 'required[rplb.jk_siswa]',
-    //             'errors' => [
-    //                 'required' => 'Jenis Kelamin Siswa harus diisi !!'
-    //             ],
-    //         ],
-    //         'nohp_siswa' => [
-    //             'rules' => 'required[rplb.nohp_siswa]',
-    //             'errors' => [
-    //                 'required' => 'No HP Siswa harus diisi !!'
-    //             ],
-    //         ],
-    //         'alamat_siswa' => [
-    //             'rules' => 'required[rplb.alamat_siswa]',
-    //             'errors' => [
-    //                 'required' => 'Alamat Siswa harus diisi !!'
-    //             ],
-    //         ],
-    //         'foto_siswa' => [
-    //             'rules' => 'max_size[foto_siswa,2048]|is_image[foto_siswa]|mime_in[foto_siswa,image/jpg,image/jpeg,image/png]',
-    //             'errors' => [
-    //                 'max_size' => 'Ukuran Gambar terlalu besar !!',
-    //                 'is_image' => 'Yang anda pilih bukan gambar !!',
-    //                 'mime_in' => 'Yang anda pilih bukan gambar'
-    //             ]
-    //         ]
-    //     ])) {
-    //         return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
-    //     }
-
-    //     $fileFotoSiswaRPLB = $this->request->getFile('foto_siswa');
-
-    //     if ($fileFotoSiswaRPLB->getError() == 4) {
-    //         $namaFotoSiswaRPLB = $this->request->getVar('fotolama');
-    //     } else {
-    //         // Generate nama File Random
-    //         $namaFotoSiswaRPLB = $fileFotoSiswaRPLB->getName();
-    //         // Memindahkan File Random
-    //         $fileFotoSiswaRPLB->move('img/rplb', $namaFotoSiswaRPLB);
-    //         // Menghapus File lama
-    //         unlink('img/rplb/' . $this->request->getVar('fotolama'));
-    //     }
-
-    //     $this->rplBModel->save(
-    //         [
-    //             'id' => $id,
-    //             'nis_siswa' => $this->request->getVar('nis_siswa'),
-    //             'username_siswa' => $this->request->getVar('username_siswa'),
-    //             'password_siswa' => $this->request->getVar('password_siswa'),
-    //             'nama_siswa' => $this->request->getVar('nama_siswa'),
-    //             'jk_siswa' => $this->request->getVar('jk_siswa'),
-    //             'nohp_siswa' => $this->request->getVar('nohp_siswa'),
-    //             'alamat_siswa' => $this->request->getVar('alamat_siswa'),
-    //             'foto_siswa' => $namaFotoSiswaRPLB
-    //         ]
-    //     );
-    //     session()->setFlashdata('pesan', 'Data Siswa RPLB berhasil diubah !!');
-    //     return redirect()->to('admin/dataSiswaRPLB');
-    // }
-
-    // // Done
-    // public function editSiswaRPLC($slug)
-    // {
-    //     $data = [
-    //         'title' => 'Form Edit Siswa RPL C || Stemanikaku',
-    //         'validation' => \Config\Services::validation(),
-    //         'rplc' => $this->rplCModel->getRPLC($slug)
-    //     ];
-    //     return view('admin/editSiswaRPLC', $data);
-    // }
-
-    // // Done
-    // public function updateSiswaRPLC($id)
-    // {
-    //     if (!$this->validate([
-    //         'nis_siswa' => [
-    //             'rules' => 'required[rplc.nis_siswa]',
-    //             'errors' => [
-    //                 'required' => 'NIS Siswa harus diisi !!'
-    //             ],
-    //         ],
-    //         'username_siswa' => [
-    //             'rules' => 'required[rplc.username_siswa]',
-    //             'errors' => [
-    //                 'required' => 'Username Siswa harus diisi !!'
-    //             ],
-    //         ],
-    //         'password_siswa' => [
-    //             'rules' => 'required[rplc.password_siswa]',
-    //             'errors' => [
-    //                 'required' => 'Password Siswa harus diisi !!'
-    //             ],
-    //         ],
-    //         'nama_siswa' => [
-    //             'rules' => 'required[rplc.nama_siswa]',
-    //             'errors' => [
-    //                 'required' => 'Nama Siswa harus diisi !!'
-    //             ],
-    //         ],
-    //         'jk_siswa' => [
-    //             'rules' => 'required[rplc.jk_siswa]',
-    //             'errors' => [
-    //                 'required' => 'Jenis Kelamin Siswa harus diisi !!'
-    //             ],
-    //         ],
-    //         'nohp_siswa' => [
-    //             'rules' => 'required[rplc.nohp_siswa]',
-    //             'errors' => [
-    //                 'required' => 'No HP Siswa harus diisi !!'
-    //             ],
-    //         ],
-    //         'alamat_siswa' => [
-    //             'rules' => 'required[rplc.alamat_siswa]',
-    //             'errors' => [
-    //                 'required' => 'Alamat Siswa harus diisi !!'
-    //             ],
-    //         ],
-    //         'foto_siswa' => [
-    //             'rules' => 'max_size[foto_siswa,2048]|is_image[foto_siswa]|mime_in[foto_siswa,image/jpg,image/jpeg,image/png]',
-    //             'errors' => [
-    //                 'max_size' => 'Ukuran Gambar terlalu besar !!',
-    //                 'is_image' => 'Yang anda pilih bukan gambar !!',
-    //                 'mime_in' => 'Yang anda pilih bukan gambar'
-    //             ]
-    //         ]
-    //     ])) {
-    //         return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
-    //     }
-
-    //     $fileFotoSiswaRPLC = $this->request->getFile('foto_siswa');
-
-    //     if ($fileFotoSiswaRPLC->getError() == 4) {
-    //         $namaFotoSiswaRPLC = $this->request->getVar('fotolama');
-    //     } else {
-    //         // Generate nama File Random
-    //         $namaFotoSiswaRPLC = $fileFotoSiswaRPLC->getName();
-    //         // Memindahkan File Random
-    //         $fileFotoSiswaRPLC->move('img/rplc', $namaFotoSiswaRPLC);
-    //         // Menghapus File lama
-    //         unlink('img/rplc/' . $this->request->getVar('fotolama'));
-    //     }
-
-    //     $this->rplCModel->save(
-    //         [
-    //             'id' => $id,
-    //             'nis_siswa' => $this->request->getVar('nis_siswa'),
-    //             'username_siswa' => $this->request->getVar('username_siswa'),
-    //             'password_siswa' => $this->request->getVar('password_siswa'),
-    //             'nama_siswa' => $this->request->getVar('nama_siswa'),
-    //             'jk_siswa' => $this->request->getVar('jk_siswa'),
-    //             'nohp_siswa' => $this->request->getVar('nohp_siswa'),
-    //             'alamat_siswa' => $this->request->getVar('alamat_siswa'),
-    //             'foto_siswa' => $namaFotoSiswaRPLC
-    //         ]
-    //     );
-    //     session()->setFlashdata('pesan', 'Data Siswa RPLC berhasil diubah !!');
-    //     return redirect()->to('admin/dataSiswaRPLC');
 
     // Done
     public function editSiswaRPLA($slug)
@@ -1829,7 +1174,6 @@ class AdminController extends BaseController
     // Hapus Sementara di Non aktifkan belum dibuat deleted_at
     public function deleteSiswaRPLA($id = null)
     {
-        // $this->rplAModel->delete($id);
         $this->siswaAModel->delete($id);
         session()->setFlashdata('pesan', 'Data Siswa RPL A berhasil dihapus !!');
         return redirect()->to('/AdminController/dataSiswaRPLA');
@@ -1839,7 +1183,6 @@ class AdminController extends BaseController
     // Hapus Sementara di Non aktifkan belum dibuat deleted_at
     public function deleteSiswaRPLB($id = null)
     {
-        // $this->rplBModel->delete($id);
         $this->siswaBModel->delete($id);
         session()->setFlashdata('pesan', 'Data Siswa RPL B berhasil dihapus !!');
         return redirect()->to('/AdminController/dataSiswaRPLB/');
@@ -1849,7 +1192,6 @@ class AdminController extends BaseController
     // Hapus Sementara di Non aktifkan belum dibuat deleted_at
     public function deleteSiswaRPLC($id = null)
     {
-        // $this->rplCModel->delete($id);
         $this->siswaCModel->delete($id);
         session()->setFlashdata('pesan', 'Data Siswa berhasil dihapus !!');
         return redirect()->to('/AdminController/dataSiswaRPLC');
@@ -1857,7 +1199,7 @@ class AdminController extends BaseController
 
     // Done
     // Hapus Sementara
-    public function deleteMatpel($id = null)
+    public function deleteMataPelajaran($id = null)
     {
         $this->matapelajaranModel->delete($id);
         session()->setFlashdata('pesan', 'Data Matpel berhasil dihapus !!');

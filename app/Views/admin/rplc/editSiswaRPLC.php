@@ -11,7 +11,7 @@
                 <h3 class="m-0 font-weight-bold text-primary"> Edit Data Siswa RPL C </h3>
             </div>
 
-            <form action="/AdminController/updateSiswaRPLC/<?= $siswac['id']; ?>" method="post" enctype="multipart/form-data">
+            <form action="<?= base_url() ?>AdminController/updateSiswaRPLC/<?= $siswac['id']; ?>" method="post" enctype="multipart/form-data">
 
                 <?= csrf_field(); ?>
 

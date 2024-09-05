@@ -11,7 +11,7 @@
             <h4 class="m-0 font-weight-bold text-primary">Tambah Matpel</h4>
         </div>
 
-        <form action="<?= base_url(); ?>/AdminController/saveMatpel" method="post" enctype="multipart/form-data">
+        <form action="<?= base_url(); ?>AdminController/saveMatpel" method="post" enctype="multipart/form-data">
 
             <div class="card-body">
                 <div class="row">

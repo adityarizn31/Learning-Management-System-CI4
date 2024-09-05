@@ -10,7 +10,7 @@
                 <h3 class="m-0 font-weight-bold text-primary"> Edit Data Siswa RPL A </h3>
             </div>
 
-            <form action="/AdminController/updateSiswaRPLA/<?= $siswaa['id']; ?>" method="post" enctype="multipart/form-data">
+            <form action="<?= base_url() ?>AdminController/updateSiswaRPLA/<?= $siswaa['id']; ?>" method="post" enctype="multipart/form-data">
 
                 <?= csrf_field(); ?>
 
@@ -38,7 +38,6 @@
                     </div>
                 </div>
 
-
                 <div class="form-group row mb-3">
                     <label for="password_siswa" class="form-label fw-semibold"> Password Siswa </label>
                     <input type="password" name="password_siswa" id="password_siswa" class="form-control text-black <?= (session('errors.password_siswa')) ? 'is-invalid' : null ?>" autofocus value="<?= (old('password_siswa')) ? old('password_siswa') : $siswaa['password_siswa'] ?>" ?>
@@ -47,7 +46,6 @@
                     </div>
                 </div>
 
-
                 <div class="form-group row mb-3">
                     <label for="nama_siswa" class="form-label fw-semibold"> Nama Siswa </label>
                     <input type="text" name="nama_siswa" id="nama_siswa" class="form-control text-black <?= (session('errors.nama_siswa')) ? 'is-invalid' : null ?>" autofocus value="<?= (old('nama_siswa')) ? old('nama_siswa') : $siswaa['nama_siswa'] ?>" ?>
@@ -55,7 +53,6 @@
                         <?= session('errors.nama_siswa'); ?>
                     </div>
                 </div>
-
 
                 <div class="form-group col mb-3">
                     <label class="form-label fw-semibold">Jenis Kelamin Siswa</label>
@@ -74,7 +71,6 @@
                     <?php endif; ?>
                 </div>
 
-
                 <div class="form-group row mb-3">
                     <label for="nohp_siswa" class="form-label fw-semibold"> No HP Siswa </label>
                     <input type="text" name="nohp_siswa" id="nohp_siswa" class="form-control text-black <?= (session('errors.nohp_siswa')) ? 'is-invalid' : null ?>" autofocus value="<?= (old('nohp_siswa')) ? old('nohp_siswa') : $siswaa['nohp_siswa'] ?>" ?>
@@ -83,7 +79,6 @@
                     </div>
                 </div>
 
-
                 <div class="form-group row mb-3">
                     <label for="alamat_siswa" class="form-label fw-semibold"> Alamat Siswa </label>
                     <input type="text" name="alamat_siswa" id="alamat_siswa" class="form-control text-black <?= (session('errors.alamat_siswa')) ? 'is-invalid' : null ?>" autofocus value="<?= (old('alamat_siswa')) ? old('alamat_siswa') : $siswaa['alamat_siswa'] ?>" ?>
@@ -91,7 +86,6 @@
                         <?= session('errors.alamat_siswa'); ?>
                     </div>
                 </div>
-
 
                 <div class="form-group row mb-3">
                     <label for="foto_siswa" class="form-label fw-semibold"> Foto Siswa </label>

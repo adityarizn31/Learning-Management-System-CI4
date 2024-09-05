@@ -8,7 +8,7 @@ class GuruModel extends Model
 {
     protected $table = 'guru';
     protected $useTimestamps = true;
-    protected $allowedFields = ['username_guru', 'password_guru', 'slug', 'nip_guru', 'nama_guru', 'jk_guru', 'alamat_guru', 'nohp_guru', 'pendidikanterakhir_guru', 'foto_guru'];
+    protected $allowedFields = ['username_guru', 'password_guru', 'slug', 'nip_guru', 'nama_guru', 'jk_guru', 'alamat_guru', 'nohp_guru', 'pendidikanterakhir_guru', 'foto_guru', 'level'];
 
     // Digunakan untuk detail
     public function getGuru($slug = false)

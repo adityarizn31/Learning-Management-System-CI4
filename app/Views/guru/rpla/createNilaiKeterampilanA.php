@@ -3,7 +3,7 @@
 <?= $this->section('content'); ?>
 
 <div class="container mt-5">
-    <h2 class="mb-4">Form Penilaian Keterampilan Siswa</h2>
+    <h2 class="mb-4">Form Penilaian Keterampilan Siswa RPL A</h2>
 
     <form action="/keterampilan/store" method="post">
         <?= csrf_field(); ?>
