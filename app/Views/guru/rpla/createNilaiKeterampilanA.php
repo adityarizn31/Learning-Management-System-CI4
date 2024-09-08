@@ -3,44 +3,32 @@
 <?= $this->section('content'); ?>
 
 <div class="container mt-5">
-    <h2 class="mb-4">Form Penilaian Keterampilan Siswa RPL A</h2>
+    <h2 class="mb-4">Buat Pertanyaan Keterampilan</h2>
 
-    <form action="/keterampilan/store" method="post">
+    <form action="<?= base_url('GuruController/saveKeterampilanQuestions'); ?>" method="post">
         <?= csrf_field(); ?>
 
-        <input type="hidden" name="siswa_id" value="<?= esc($siswa['id']); ?>">
+        <?php for ($i = 1; $i <= 5; $i++): ?>
+            <div class="mb-3">
+                <label for="pertanyaan_<?= $i; ?>" class="form-label">Pertanyaan <?= $i; ?></label>
+                <textarea class="form-control" id="pertanyaan_<?= $i; ?>" name="pertanyaan_<?= $i; ?>" rows="3" required></textarea>
+            </div>
 
-        <div class="form-group mb-3">
-            <label for="mata_pelajaran_id">Mata Pelajaran</label>
-            <select name="mata_pelajaran_id" id="mata_pelajaran_id" class="form-select">
-                <?php foreach ($mata_pelajaran as $mp) : ?>
-                    <option value="<?= $mp['id']; ?>"><?= esc($mp['nama_mata_pelajaran']); ?></option>
-                <?php endforeach; ?>
-            </select>
-        </div>
+            <!-- Radio buttons for 1-5 -->
+            <div class="mb-3">
+                <label class="form-label">Jawaban yang diharapkan:</label>
+                <div>
+                    <?php for ($j = 1; $j <= 5; $j++): ?>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="nilai_<?= $i; ?>" id="nilai_<?= $i; ?>_<?= $j; ?>" value="<?= $j; ?>" required>
+                            <label class="form-check-label" for="nilai_<?= $i; ?>_<?= $j; ?>"><?= $j; ?></label>
+                        </div>
+                    <?php endfor; ?>
+                </div>
+            </div>
+        <?php endfor; ?>
 
-        <div class="form-group mb-3">
-            <label for="pertemuan">Pertemuan</label>
-            <input type="number" name="pertemuan" class="form-control" id="pertemuan" required>
-        </div>
-
-        <div class="form-group mb-3">
-            <label for="pertanyaan">Pertanyaan</label>
-            <textarea name="pertanyaan" id="pertanyaan" class="form-control" rows="4" required></textarea>
-        </div>
-
-        <div class="form-group mb-3">
-            <label for="nilai">Nilai (1-5)</label>
-            <select name="nilai" id="nilai" class="form-select">
-                <option value="1">1 - Sangat Kurang</option>
-                <option value="2">2 - Kurang</option>
-                <option value="3">3 - Cukup</option>
-                <option value="4">4 - Baik</option>
-                <option value="5">5 - Sangat Baik</option>
-            </select>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Simpan Nilai</button>
+        <button type="submit" class="btn btn-primary">Simpan Pertanyaan</button>
     </form>
 </div>
 

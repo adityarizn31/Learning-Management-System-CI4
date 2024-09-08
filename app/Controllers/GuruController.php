@@ -19,6 +19,9 @@ use App\Models\NilaiAModel;
 use App\Models\NilaiBModel;
 use App\Models\NilaiCModel;
 
+use App\Models\SoalModel;
+use App\Models\JawabanModel;
+use App\Models\JawabanModelModel;
 use CodeIgniter\Config\Services;
 
 class GuruController extends BaseController
@@ -40,6 +43,9 @@ class GuruController extends BaseController
     protected $nilaiBModel;
     protected $nilaiCModel;
 
+    protected $soalModel;
+    protected $jawabanModel;
+
     public function __construct()
     {
         $this->adminModel = new AdminModel();
@@ -58,6 +64,9 @@ class GuruController extends BaseController
         $this->nilaiAModel = new NilaiAModel();
         $this->nilaiBModel = new NilaiBModel();
         $this->nilaiCModel = new NilaiCModel();
+
+        $this->soalModel = new SoalModel();
+        $this->jawabanModel = new JawabanModel();
     }
 
 
@@ -609,14 +618,16 @@ class GuruController extends BaseController
         return redirect()->to('/GuruController/dataNilaiRPLC_Alpro');
     }
 
-    public function createKeterampilanRPLA() 
+    public function createNilaiKeterampilanA() 
     {
         $SISWAA = $this->siswaAModel->findAll();
+        $MATAPELAJARAN = $this->matapelajaranModel->findAll();
         $data = [
             'title' => 'Input Keterampilan Siswa RPL A || Guru Stemanikaku',
-            'siswaa' => $SISWAA
+            'siswaa' => $SISWAA,
+            'matapelajaran' => $MATAPELAJARAN
         ];
-        return view('guru/keterampilan/createNilaiKeterampilan', $data);
+        return view('guru/rpla/createNilaiKeterampilanA', $data);
     }
 
     public function saveKeterampilanRPLA()
@@ -738,17 +749,6 @@ class GuruController extends BaseController
 
 
 
-    public function dataTNilaiRPLA_Alpro()
-    {
-        $NILAIA = $this->siswaAModel->getSiswaWithNilai();
-        $data = [
-            'title' => 'Data Nilai RPLA Algoritma Perograman || Guru Stemanikaku',
-            'siswa_nilai' => $NILAIA
-        ];
-        return view('guru/rpla/dataTNilaiRPLA_Alpro', $data);
-
-    }
-
     // MATA PELAJARAN
     // Done 
     // Algoritma Pemrograman
@@ -787,6 +787,27 @@ class GuruController extends BaseController
         ];
 
         return view('guru/rplc/dataNilaiRPLC_Alpro', $data);
+    }
+
+    public function dataTNilaiRPLA_Alpro()
+    {
+        $NILAIA = $this->siswaAModel->getSiswaWithNilai();
+        $data = [
+            'title' => 'Data Nilai RPLA Algoritma Perograman || Guru Stemanikaku',
+            'siswa_nilai' => $NILAIA
+        ];
+        return view('guru/rpla/dataTNilaiRPLA_Alpro', $data);
+
+    }
+
+    public function dataNilaiKeterampilanA()
+    {
+        $NILAIKETERAMPILANA = $this->siswaAModel->getSiswaWithNilai();
+        $data = [
+            'title' => 'Data Nilai Keterampilan A || Guru Stemanikaku',
+            'siswa_nilai' => $NILAIKETERAMPILANA
+        ];
+        return view('', $data);
     }
 
 
@@ -1355,6 +1376,60 @@ class GuruController extends BaseController
         session()->setFlashdata('pesan', 'Tugas Algoritma Pemrograman berhasil diubah !!');
         return redirect()->to('/guru/alpro/tugas_alpro/dataTugasAlpro');
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public function createPilgan()
+    {
+        $data = [
+            'title' => 'Buat Soal Pilihan Ganda || Guru Stemanikaku'
+        ];
+        return view('guru/soal/createPilgan', $data);
+    }
+
+    public function savePilgan()
+    {
+
+        $questionModel = new SoalModel();
+        $answerModel = new JawabanModel();
+
+        $SOAL = $this->soalModel->findAll();
+        $data = [
+            'guru_id'=> session()->get('guru_id'),
+            'pertanyaan' => $this->request->getVar('pertanyaan')
+        ];
+
+        $questionModel->save($data);
+        $questionId = $questionModel->insertID();
+
+        $answers = $this->request->getPost('jawaban');
+        $isCorrect = $this->request->getPost('jawaban_benar');
+
+        foreach ($answers as $key => $answer) {
+            $answerData = [
+                'pertanyaan_id' => $questionId,
+                'jawaban' => $answer,
+                'jawaban_benar' => isset($isCorrect[$key]) ? 1 : 0,
+            ];
+
+            $answerModel->save($answerData);
+        }
+
+        return redirect()->to('/guru/createQuestion')->with('success', 'Question created successfully.');
+    }
+
+    
+    
 
 
 

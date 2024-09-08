@@ -90,18 +90,21 @@ $routes->get('/quiz/set_question_count', 'QuizController::setQuestionCount');
 $routes->post('/quiz/create_questions', 'QuizController::createQuestions');
 $routes->post('/quiz/store_questions', 'QuizController::storeQuestions');
 
-$routes->get('guru/nilai/createSiswaA', 'GuruController::createSiswaA');
-$routes->get('guru/nilai/dataTNilaiRPLA_Alpro', 'GuruController::dataNilaiRPLA_Alpro');
-$routes->get('guru/nilai/dataNilaiRPLA_Alpro', 'GuruController::dataNilaiRPLA_Alpro');
-$routes->get('guru/nilai/createNilaiSiswaA', 'GuruController::createNilaiSiswaA');
+$routes->get('guru/rpla/createSiswaA', 'GuruController::createSiswaA');
+$routes->get('guru/rpla/dataTNilaiRPLA_Alpro', 'GuruController::dataNilaiRPLA_Alpro');
+$routes->get('guru/rpla/dataNilaiRPLA_Alpro', 'GuruController::dataNilaiRPLA_Alpro');
+$routes->get('guru/rpla/createNilaiSiswaA', 'GuruController::createNilaiSiswaA');
+$routes->get('guru/rpla/createNilaiKeterampilanA', 'GuruController::createNilaiKeterampilanA');
 
-$routes->get('guru/nilai/createSiswaB', 'GuruController::createSiswaB');
-$routes->get('guru/nilai/dataNilaiRPLB_Alpro', 'GuruController::dataNilaiRPLB_Alpro');
-$routes->get('guru/nilai/createNilaiSiswaB', 'GuruController::createNilaiSiswaB');
+$routes->get('guru/rplb/createSiswaB', 'GuruController::createSiswaB');
+$routes->get('guru/rplb/dataNilaiRPLB_Alpro', 'GuruController::dataNilaiRPLB_Alpro');
+$routes->get('guru/rplb/createNilaiSiswaB', 'GuruController::createNilaiSiswaB');
 
-$routes->get('guru/nilai/createSiswaC', 'GuruController::createSiswaC');
-$routes->get('guru/nilai/dataNilaiRPLC_Alpro', 'GuruController::dataNilaiRPLC_Alpro');
-$routes->get('guru/nilai/createNilaiSiswaC', 'GuruController::createNilaiSiswaC');
+$routes->get('guru/rplc/createSiswaC', 'GuruController::createSiswaC');
+$routes->get('guru/rplc/dataNilaiRPLC_Alpro', 'GuruController::dataNilaiRPLC_Alpro');
+$routes->get('guru/rplc/createNilaiSiswaC', 'GuruController::createNilaiSiswaC');
+
+$routes->get('guru/soal/createPilgan', 'GuruController::createPilgan');
 
 // Siswa
 $routes->get('siswa/', 'SiswaController::index');

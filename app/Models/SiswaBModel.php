@@ -28,4 +28,16 @@ class SiswaBModel extends Model
             ->join('nilaib', 'nilaib.siswa_id = siswab.id')
             ->findAll();
     }
+
+    public function login($username_siswa, $password_siswa)
+{
+    return $this->db->table('siswab')
+        ->where([
+            'username_siswa' => $username_siswa,
+            'password_siswa' => $password_siswa
+        ])
+        ->get()
+        ->getRowArray();
+}
+
 }

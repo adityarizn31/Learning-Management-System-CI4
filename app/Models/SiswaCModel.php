@@ -27,4 +27,16 @@ class SiswaCModel extends Model
             ->join('nilaic', 'nilaic.siswa_id = siswac.id')
             ->findAll();
     }
+
+    public function login($username_siswa, $password_siswa)
+{
+    return $this->db->table('siswac')
+        ->where([
+            'username_siswa' => $username_siswa,
+            'password_siswa' => $password_siswa
+        ])
+        ->get()
+        ->getRowArray();
+}
+
 }

@@ -21,7 +21,7 @@ use App\Models\NilaiCModel;
 
 use CodeIgniter\Config\Services;
 
-class AuthController extends BaseController
+class Auth extends BaseController
 {
     protected $adminModel;
     protected $rplAModel;
@@ -143,12 +143,186 @@ class AuthController extends BaseController
         }
     }
 
-    public function login()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public function loginsiswa()
     {
+        helper(['form']);
+        $SISWAA = $this->siswaAModel->findAll();
+        $SISWAB = $this->siswaBModel->findAll();
+        $SISWAC = $this->siswaCModel->findAll();
         $data = [
-            'title' => 'Login Admin || Admin Stemanikaku'
+            'title' => 'Login Siswa || Siswa Stemanikaku',
+            'siswaa' => $SISWAA,
+            'validation' => \Config\Services::validation()
         ];
-        return view('admin/login', $data);
+        return view('auth/loginsiswa', $data);
+    }
+
+    public function loginprocess()
+    {
+        $post = $this->request->getVar();
+        $models = [$this->siswaAModel, $this->siswaBModel, $this->siswaCModel];
+        $user = null;
+
+        foreach ($models as $model) {
+            $query = $model->getWhere(['username_siswa' => $post['username_siswa']]);
+            $user = $query->getRow();
+            if ($user) {
+                break;
+            }
+        }
+
+        if ($user) {
+            if (password_verify($post['password_siswa'], $user->password_siswa)) {
+                $params = ['id' => $user->id];
+                session()->set($params);
+                // return redirect()->to('SiswaController/');
+                return redirect()->to('/AdminController/dataMataPelajaran');
+            } else {
+                return redirect()->back()->with('errors', 'Password tidak sesuai !!');
+            }
+        } else {
+            return redirect()->back()->with('errors', 'Username tidak ada !!');
+        }
+    }
+
+    // public function checkLogin()
+    // {
+    //     $validate = $this->validate([
+    //         'username_siswa' => [
+    //             'rules' => 'required',
+    //             'errors' => [
+    //                 'required' => 'Username Siswa harus diisi !!',
+    //             ],
+    //         ],
+    //         'password_siswa' => [
+    //             'rules' => 'required',
+    //             'errors' => [
+    //                 'required' => 'Password Siswa harus diisi !!',
+    //             ],
+    //         ],
+    //     ]);
+
+    //     if ($validate) {
+    //         $models = ['siswaa', 'siswab', 'siswac'];
+    //         $user = null;
+
+    //         foreach ($models as $model) {
+    //             $user = $this->$model->where('username_siswa', $this->request->getPost('username_siswa'))
+    //                 ->where('password_siswa', $this->request->getPost('password_siswa'))
+    //                 ->first();
+    //             if ($user) {
+    //                 break;
+    //             }
+    //         }
+
+    //         if ($user) {
+    //             // Proses login berhasil
+    //             // Misalnya, simpan data pengguna ke session
+    //             session()->set([
+    //                 'logged_in' => true,
+    //                 'username_siswa' => $user['username_siswa'],
+    //                 'password_siswa' => $user['password_siswa'],
+    //             ]);
+
+    //             // Redirect ke halaman dashboard atau halaman setelah login
+    //             return redirect()->to('/SiswaController/index');
+    //         } else {
+    //             // Kredensial tidak valid
+    //             return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+    //         }
+    //     } else {
+    //         // Kembalikan ke halaman sebelumnya dengan input yang sudah diisi dan error
+    //         return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+    //     }
+
+    //     //     if ($user) {
+    //     //         $username_siswa = $this->request->getVar('username_siswa');
+    //     //         $password_siswa = $this->request->getVar('password_siswa');
+
+    //     //         $modelInstance = new $model();
+    //     //         $cek = $modelInstance->login($username_siswa, $password_siswa);
+
+    //     //         if ($cek) {
+    //     //             session()->set('username_siswa', $cek['username_siswa']);
+    //     //             session()->set('passsword_siswa', $cek['passsword_siswa']);
+    //     //         }
+
+    //     //     } else {
+    //     //         // Kredensial tidak valid
+    //     //         // Tambahkan logika untuk kredensial tidak valid di sini
+    //     //     }
+    //     // } else {
+    //     //     // Kembalikan ke halaman sebelumnya dengan input yang sudah diisi dan error
+    //     //     return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+    //     // }
+    // }
+
+    public function saveLogin()
+    {
+        // Validasi input
+        $validate = $this->validate([
+            'username_siswa' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Username Siswa harus diisi !!',
+                ],
+            ],
+            'password_siswa' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Password Siswa harus diisi !!',
+                ],
+            ],
+        ]);
+
+        if ($validate) {
+            // Misalnya Anda memiliki model untuk setiap tabel
+            $models = ['siswaaModel', 'siswabModel', 'siswacModel'];
+            $user = null;
+
+            foreach ($models as $model) {
+                $user = $this->$model->where('username_siswa', $this->request->getPost('username_siswa'))
+                    ->first();
+                if ($user && password_verify($this->request->getPost('password_siswa'), $user['password_siswa'])) {
+                    break; // Hentikan loop jika user ditemukan dan password cocok
+                }
+            }
+
+            if ($user) {
+                // Proses login berhasil
+                // Misalnya, simpan data pengguna ke session
+                session()->set([
+                    'logged_in' => true,
+                    'user_id' => $user['id'],
+                    'username_siswa' => $user['username_siswa'],
+                    'password_siswa' => $user['password_siswa'],
+                ]);
+
+                // Redirect ke halaman dashboard atau halaman setelah login
+                return redirect()->to('/SiswaController/');
+            } else {
+                // Kredensial tidak valid
+                return redirect()->back()->withInput()->with('errors', ['login' => 'Username atau Password salah!']);
+            }
+        } else {
+            // Kembalikan ke halaman sebelumnya dengan input yang sudah diisi dan error
+            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        }
     }
 
     public function logout()

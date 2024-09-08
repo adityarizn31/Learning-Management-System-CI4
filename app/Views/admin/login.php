@@ -9,51 +9,32 @@
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
                         <div class="row">
-
                             <div class="col-lg">
-                                <div class="p-5">
+                                <div class="p-5 text-center">
 
-                                    <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4"> <?= lang('Auth.loginTitle') ?> </h1>
+                                    <!-- School Logo -->
+                                    <div class="mb-4">
+                                        <img src="/img/default/stm.png" alt="Stemanikaku" style="max-width: 100px;">
                                     </div>
 
-                                    <form class="user" action="" method="post">
+                                    <!-- Login Title -->
+                                    <h1 class="h4 text-gray-900 mb-4"><?= lang('Auth.loginTitle') ?></h1>
 
-                                        <div class="form-group">
-                                            <input type="email" class="form-control form-control-user <?php if (session('errors.login')) : ?> is-invalid <?php endif ?>" name="login" aria-describedby="email" placeholder="<?= lang('Auth.email') ?>" id="">
-                                            <div class="invalid-feedback">
-                                                <?= session('errors.login') ?>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <input type="text" class="form-control <?php if (session('errors.login')) : ?>is-invalid<?php endif ?>" name="login" placeholder="<?= lang('Auth.emailOrUsername') ?>">
-                                            <div class="invalid-feedback">
-                                                <?= session('errors.login') ?>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <input type="password" name="password" class="form-control  <?php if (session('errors.password')) : ?>is-invalid<?php endif ?>" placeholder="<?= lang('Auth.password') ?>">
-                                            <div class="invalid-feedback">
-                                                <?= session('errors.password') ?>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-check">
-                                            <label class="form-check-label">
-                                                <input type="checkbox" name="remember" class="form-check-input" <?php if (old('remember')) : ?> checked <?php endif ?>>
-                                                <?= lang('Auth.rememberMe') ?>
-                                            </label>
-                                        </div>
-
-                                        <button type="submit" class="btn btn-primary btn-block"><?= lang('Auth.loginAction') ?></button>
-
-                                    </form>
+                                    <!-- Login Buttons -->
+                                    <div class="d-flex justify-content-center gap-3 flex-wrap m-2">
+                                        <a href="<?= base_url() ?>Auth/loginadmin/" class="btn btn-primary btn-sm d-flex align-items-center mb-2 mx-2">
+                                            <i class="fas fa-user-shield me-2"> </i> Login Admin
+                                        </a>
+                                        <a href="<?= base_url() ?>Auth/loginsiswa/" class="btn btn-success btn-sm d-flex align-items-center mb-2 mx-2">
+                                            <i class="fas fa-user-graduate me-2"> </i> Login Siswa
+                                        </a>
+                                        <a href="<?= base_url() ?>Auth/loginguru/" class="btn btn-info btn-sm d-flex align-items-center mb-2 mx-2">
+                                            <i class="fas fa-chalkboard-teacher me-2"> </i> Login Guru
+                                        </a>
+                                    </div>
 
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -62,4 +43,4 @@
     </div>
 </div>
 
-<?= $this->endSection('content'); ?>
+<?= $this->endSection('contentloginregister'); ?>

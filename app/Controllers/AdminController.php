@@ -1247,4 +1247,39 @@ class AdminController extends BaseController
         session()->remove('id');
         return redirect()->to(site_url('login'));
     }
+
+
+    public function loginsiswa()
+    {
+        helper(['form']);
+        $SISWAA = $this->siswaAModel->findAll();
+        $SISWAB = $this->siswaBModel->findAll();
+        $SISWAC = $this->siswaCModel->findAll();
+        $data = [
+            'title' => 'Login Siswa || Siswa Stemanikaku',
+            'siswaa' => $SISWAA,
+            'validation' => \Config\Services::validation()
+        ];
+        return view('auth/loginsiswa', $data);
+    }
+
+    public function loginprocess()
+    {
+        $post = $this->request->getVar();
+        $query = $this->siswaAModel->getWhere(['username_siswa' => $post['username_siswa']]);
+        $user = $query->getRow();
+
+        if ($user) {
+            if (password_verify($post['password_siswa'], $user->password_user)) {
+                $params = ['id' => $user->id];
+                session()->set($params);
+                // return redirect()->to('SiswaController/');
+                return redirect()->to('/AdminController/dataMataPelajaran');
+            } else {
+                return redirect()->back()->with('errors', 'Password tidak sesuai !!');
+            }
+        } else {
+            return redirect()->back()->with('errors', 'Username tidak ada !!');
+        }
+    }
 }

@@ -19,6 +19,18 @@ class GuruModel extends Model
         
         return $this->where(['slug' => $slug])->first();
     }
+
+    public function login($username_guru, $password_guru)
+{
+    return $this->db->table('guru')
+        ->where([
+            'username_guru' => $username_guru,
+            'password_guru' => $password_guru
+        ])
+        ->get()
+        ->getRowArray();
+}
+
 }
 
 ?>
