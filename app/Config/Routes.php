@@ -31,6 +31,8 @@ $routes->setAutoRoute(true);
 
 $routes->get('/', 'Home::index');
 
+$routes->get('auth/loginsiswa', 'Auth::loginsiswa');
+
 // Admin
 $routes->get('admin/', 'AdminController::index');
 $routes->get('admin/login', 'AdminController::login');

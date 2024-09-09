@@ -720,7 +720,7 @@ class GuruController extends BaseController
             'title' => 'Data Guru || Guru Stemanikaku',
             'guru' => $GURU
         ];
-        return view('guru/dataGuru', $data);
+        return view('admin/guru/dataGuru', $data);
     }
 
     // Done
@@ -789,6 +789,8 @@ class GuruController extends BaseController
         return view('guru/rplc/dataNilaiRPLC_Alpro', $data);
     }
 
+    // Done
+    // Grafik Rata Rata
     public function dataTNilaiRPLA_Alpro()
     {
         $NILAIA = $this->siswaAModel->getSiswaWithNilai();
@@ -796,8 +798,20 @@ class GuruController extends BaseController
             'title' => 'Data Nilai RPLA Algoritma Perograman || Guru Stemanikaku',
             'siswa_nilai' => $NILAIA
         ];
-        return view('guru/rpla/dataTNilaiRPLA_Alpro', $data);
+        return view('guru/rpla/dataNilaiRPLA_Alpro', $data);
 
+    }
+
+    // Done
+    // Detail Nilai Rata - Rata Pertemuan
+    public function detailNilaiRPLA_Alpro()
+    {
+        $NILAIA = $this->siswaAModel->getSiswaWithNilai();
+        $data = [
+            'title' => 'Detail Nilai RPLA Algoritma Perograman || Guru Stemanikaku',
+            'siswa_nilai' => $NILAIA
+        ];
+        return view('guru/rpla/detailNilaiRPLA_Alpro', $data);
     }
 
     public function dataNilaiKeterampilanA()
@@ -807,7 +821,7 @@ class GuruController extends BaseController
             'title' => 'Data Nilai Keterampilan A || Guru Stemanikaku',
             'siswa_nilai' => $NILAIKETERAMPILANA
         ];
-        return view('', $data);
+        return view('guru/rpla/dataNilaiKeterampilanA', $data);
     }
 
 

@@ -54,7 +54,7 @@
                             <td><?= $a['nama_siswa']; ?></td>
                             <td><?= $a['kelas_siswa']; ?></td>
                             <td>
-                                <a href="<?= base_url() ?>GuruController/grafikNilaiSiswa" class="btn btn-secondary btn-sm">
+                                <a href="<?= base_url() ?>Detail/grafikSiswa/<?= $a['slug']; ?>" class="btn btn-secondary btn-sm">
                                     <i class="fas fa-chart-bar"></i> Grafik
                                 </a>
                             </td>

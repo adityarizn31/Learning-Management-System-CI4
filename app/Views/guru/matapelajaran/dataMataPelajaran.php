@@ -5,10 +5,12 @@
 <div class="container-fluid">
 
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h2 class="text-black fw-bold">Dashboard Guru</h2>
-        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+        <h2 class="text-black fw-bold">Daftar Mata Pelajaran</h2>
+
+        <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
             <i class=""></i> Action
-        </a>
+        </a> -->
+
     </div>
 
     <div class="card shadow border-primary mb-4">

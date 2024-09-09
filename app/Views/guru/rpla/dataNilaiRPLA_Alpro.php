@@ -3,7 +3,9 @@
 <?= $this->section('content'); ?>
 
 <div class="container mt-5">
-    <h2 class="mb-4">Data Siswa dan Nilai Algoritma Pemrograman RPL A</h2>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="m-0">Data Keterampilan Siswa Algoritma Pemrograman RPL A</h2>        
+    </div>
 
     <div class="container mt-4">
         <div class="row">
@@ -38,7 +40,7 @@
                     <td>Rabu, 30 Agustus 2024</td>
                     <td>
                         <!-- Tombol Preview Tugas -->
-                        <a href="<?= base_url() ?>GuruController/dataNilaiRPLA_Alpro" class="btn btn-info btn-sm">
+                        <a href="<?= base_url() ?>GuruController/detailNilaiRPLA_Alpro" class="btn btn-info btn-sm">
                             <i class="fas fa-eye"></i> Detail Grafik
                         </a>
                     </td>
@@ -46,6 +48,8 @@
             <?php endforeach; ?>
         </tbody>
     </table>
+
+    <!-- Tambahkan Grafik berdasarkan rata rata -->
 
 </div>
 

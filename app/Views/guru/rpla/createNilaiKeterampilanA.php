@@ -18,6 +18,7 @@
             <div class="mb-3">
                 <label class="form-label">Jawaban yang diharapkan:</label>
                 <div>
+                    <!-- Pilihan  -->
                     <?php for ($j = 1; $j <= 5; $j++): ?>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="nilai_<?= $i; ?>" id="nilai_<?= $i; ?>_<?= $j; ?>" value="<?= $j; ?>" required>

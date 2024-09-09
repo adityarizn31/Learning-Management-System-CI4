@@ -34,6 +34,11 @@
             </div>
         </div>
 
+        <!-- Tambahkan Form untuk menampilkan tugas dari siswa berdasarkan pertemuan
+
+        ada di detail Materi
+          -->
+
         <div class="form-group mb-3">
             <label for="nilai">Nilai:</label>
             <input type="number" name="nilai" id="nilai" class="form-control <?= (session('errors.nilai')) ? 'is-invalid' : '' ?>" value="<?= old('nilai'); ?>" min="0" max="100">

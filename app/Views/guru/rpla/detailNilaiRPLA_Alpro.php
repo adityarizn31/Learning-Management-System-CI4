@@ -81,6 +81,8 @@
         </div>
     </div>
 
+    <!-- Grafik Berdasarkan Nilai Siswa Tugas -->
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script>
@@ -97,7 +99,7 @@
 
         const ctx = document.getElementById('myChart');
         new Chart(ctx, {
-            type: 'bar',
+            type: 'line',
             data: {
                 labels: labels,
                 datasets: [{

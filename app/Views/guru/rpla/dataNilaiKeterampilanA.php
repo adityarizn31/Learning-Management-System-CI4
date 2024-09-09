@@ -3,7 +3,13 @@
 <?= $this->section('content'); ?>
 
 <div class="container mt-5">
-    <h2 class="mb-4">Data Keterampilan Siswa Algoritma Pemrograman RPL A</h2>
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="m-0">Data Keterampilan Siswa Algoritma Pemrograman RPL A</h2>
+        <a href="<?= base_url('GuruController/createNilaiKeterampilanA') ?>" class="btn btn-primary">
+            <i class="fas fa-plus"></i> Nilai Keterampilan A
+        </a>
+    </div>
 
     <div class="container mt-4">
         <div class="row">

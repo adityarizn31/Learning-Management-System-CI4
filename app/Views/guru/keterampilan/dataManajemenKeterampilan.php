@@ -20,7 +20,7 @@
                 <!-- Card 1 -->
                 <div class="col-md-4 col-sm-6 mb-4">
                     <div class="card shadow border-primary h-100 text-center">
-                        <a href="<?= base_url() ?>GuruController/dataNilaiRPLA_Alpro/" class="stretched-link">
+                        <a href="<?= base_url() ?>GuruController/dataNilaiKeterampilanA/" class="stretched-link">
                             <div class="card-body">
                                 <h5 class="card-title text-black font-weight-bold">Keterampilan X RPL A</h5>
                             </div>

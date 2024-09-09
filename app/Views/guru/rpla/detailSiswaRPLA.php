@@ -8,7 +8,8 @@
 
     <div class="card-header py-3 border-0 d-flex justify-content-between align-items-center">
       <h5 class="m-0 font-weight-bold text-primary">Detail Siswa RPL A</h5>
-      <div class="d-flex align-items-center">
+
+      <!-- <div class="d-flex align-items-center">
         <a href="<?= base_url() ?>GuruController/editSiswaRPLA/<?= $siswaa['slug']; ?>" class="btn btn-warning btn-sm mr-2">
           <i class="fas fa-edit"></i> Edit
         </a>
@@ -19,10 +20,9 @@
             <i class="fas fa-trash"></i> Delete
           </button>
         </form>
-      </div>
-    </div>
+      </div> -->
 
-    <?= base_url() ?>
+    </div>
 
     <div class="container">
       <div class="row">
@@ -93,20 +93,6 @@
 
               </div>
             </div>
-          </div>
-
-          <div class="card mb-3 mt-3">
-            <table class="table table-fixed table-hover">
-
-              <thead class="table-dark">
-                <tr>
-                  <th scope="col">No</th>
-                  <th scope="col">Mata Pelajaran</th>
-                  <th scope="col">Nilai</th>
-                </tr>
-              </thead>
-
-            </table>
           </div>
 
         </div>
