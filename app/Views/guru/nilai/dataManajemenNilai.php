@@ -18,7 +18,7 @@
             <div class="row justify-content-center">
 
                 <!-- Card 1 -->
-                <!-- <div class="col-md-4 col-sm-6 mb-4">
+                <div class="col-md-4 col-sm-6 mb-4">
                     <div class="card shadow border-primary h-100 text-center">
                         <a href="/GuruController/dataNilaiRPLA_Alpro/" class="stretched-link">
                             <div class="card-body">
@@ -26,10 +26,10 @@
                             </div>
                         </a>
                     </div>
-                </div> -->
+                </div>
 
                 <!-- Card 1 -->
-                <div class="col-md-4 col-sm-6 mb-4">
+                <!-- <div class="col-md-4 col-sm-6 mb-4">
                     <div class="card shadow border-primary h-100 text-center">
                         <a href="<?= base_url() ?>GuruController/dataTNilaiRPLA_Alpro/" class="stretched-link">
                             <div class="card-body">
@@ -37,7 +37,7 @@
                             </div>
                         </a>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- Card 2 -->
                 <div class="col-md-4 col-sm-6 mb-4">

@@ -24,7 +24,6 @@
                     <input type="text" class="form-control" name="answers[<?= $i; ?>]" placeholder="Jawaban <?= $i; ?>" required>
                 </div>
             <?php endfor; ?>
-
         </div>
 
         <button type="submit" class="btn btn-primary">Simpan Pertanyaan</button>

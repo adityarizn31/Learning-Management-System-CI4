@@ -81,7 +81,7 @@ class Edit extends BaseController
 
 
 
-
+    // Bagian Admin
     // Done
     public function editGuru($slug)
     {
@@ -188,6 +188,67 @@ class Edit extends BaseController
         return redirect()->to('/AdminController/dataGuru');
     }
 
+     // Done
+     public function editMataPelajaran($slug)
+     {
+         $data = [
+             'title' => 'Form Edit Mata Pelajaran || Admin Stemanikaku',
+             'validation' => \Config\Services::validation(),
+             'matapelajaran' => $this->rplAModel->getRPLA($slug)
+         ];
+         return view('admin/matapelajaran/editMataPelajaran', $data);
+     }
+ 
+     // Done
+     public function updateMatpel($id)
+     {
+         if (!$this->validate([
+             'nama_matapelajaran' => [
+                 'rules' => 'required[matapelajaran.nama_matapelajaran]',
+                 'errors' => [
+                     'required' => 'Nama Mata Pelajaran harus diisi !!'
+                 ],
+             ],
+             'guru_matapelajaran' => [
+                 'rules' => 'required[matapelajaran.guru_matapelajaran]',
+                 'errors' => [
+                     'required' => 'Guru Mata Pelajaran harus diisi !!'
+                 ],
+             ],
+             'jam_matapelajaran' => [
+                 'rules' => 'required[matapelajaran.jam_matapelajaran]',
+                 'errors' => [
+                     'required' => 'Jam Mata Pelajaran harus diisi !!'
+                 ],
+             ],
+         ])) {
+             return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+         }
+ 
+         $this->matapelajaranModel->save(
+             [
+                 'id' => $id,
+                 'nama_matapelajaran' => $this->request->getVar('nama_matapelajaran'),
+                 'guru_matapelajaran' => $this->request->getVar('guru_matapelajaran'),
+                 'jam_matapelajaran' => $this->request->getVar('jam_matapelajaran'),
+             ]
+         );
+         session()->setFlashdata('pesan', 'Data Mata Pelajaran berhasil diubah !!');
+         return redirect()->to('/AdminController/dataMataPelajaran');
+     }
+
+
+
+
+
+
+
+
+
+
+
+
+    // Bagian Guru
     // Done
     public function editSiswaRPLA($slug)
     {
@@ -483,55 +544,6 @@ class Edit extends BaseController
         );
         session()->setFlashdata('pesan', 'Data Siswa RPLC berhasil diubah !!');
         return redirect()->to('/GuruController/dataSiswaRPLC');
-    }
-
-    // Done
-    public function editMataPelajaran($slug)
-    {
-        $data = [
-            'title' => 'Form Edit Mata Pelajaran || Admin Stemanikaku',
-            'validation' => \Config\Services::validation(),
-            'matapelajaran' => $this->rplAModel->getRPLA($slug)
-        ];
-        return view('admin/matapelajaran/editMataPelajaran', $data);
-    }
-
-    // Done
-    public function updateMatpel($id)
-    {
-        if (!$this->validate([
-            'nama_matapelajaran' => [
-                'rules' => 'required[matapelajaran.nama_matapelajaran]',
-                'errors' => [
-                    'required' => 'Nama Mata Pelajaran harus diisi !!'
-                ],
-            ],
-            'guru_matapelajaran' => [
-                'rules' => 'required[matapelajaran.guru_matapelajaran]',
-                'errors' => [
-                    'required' => 'Guru Mata Pelajaran harus diisi !!'
-                ],
-            ],
-            'jam_matapelajaran' => [
-                'rules' => 'required[matapelajaran.jam_matapelajaran]',
-                'errors' => [
-                    'required' => 'Jam Mata Pelajaran harus diisi !!'
-                ],
-            ],
-        ])) {
-            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
-        }
-
-        $this->matapelajaranModel->save(
-            [
-                'id' => $id,
-                'nama_matapelajaran' => $this->request->getVar('nama_matapelajaran'),
-                'guru_matapelajaran' => $this->request->getVar('guru_matapelajaran'),
-                'jam_matapelajaran' => $this->request->getVar('jam_matapelajaran'),
-            ]
-        );
-        session()->setFlashdata('pesan', 'Data Mata Pelajaran berhasil diubah !!');
-        return redirect()->to('/AdminController/dataMataPelajaran');
     }
 
     public function editMateriAlpro($slug)

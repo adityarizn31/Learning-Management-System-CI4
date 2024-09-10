@@ -688,7 +688,6 @@ class Create extends BaseController
      }
      
     // Done
-    // Done
     // Algoritma Pemrograman RPL A
     public function createNilaiSiswaA()
     {

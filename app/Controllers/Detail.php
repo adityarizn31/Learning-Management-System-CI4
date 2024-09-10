@@ -129,6 +129,16 @@ class Detail extends BaseController
     }
 
     // Done
+    public function detailMataPelajaran($slug)
+    {
+        $data = [
+            'title' => 'Detail Mata Pelajaran || Stemanikaku',
+            'matapelajaran' => $this->matapelajaranModel->getMatpel($slug)
+        ];
+        return view('/admin/matapelajaran/detailMataPelajaran', $data);
+    }
+
+    // Done
     public function detailMateriAlpro($slug)
     {
         $data = [
@@ -159,5 +169,17 @@ class Detail extends BaseController
             'nilai_siswa' => $NILAIA
         ];
         return view('guru/rpla/detailGrafikRPLA_Alpro', $data);   
+    }
+
+    // Done
+    // Detail Nilai Rata - Rata Pertemuan
+    public function detailNilaiRPLA_Alpro()
+    {
+        $NILAIA = $this->siswaAModel->getSiswaWithNilai();
+        $data = [
+            'title' => 'Detail Nilai RPLA Algoritma Perograman || Guru Stemanikaku',
+            'siswa_nilai' => $NILAIA
+        ];
+        return view('guru/rpla/detailNilaiRPLA_Alpro', $data);
     }
 }
