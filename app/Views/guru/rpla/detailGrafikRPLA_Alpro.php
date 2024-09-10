@@ -25,7 +25,7 @@
         labels: [
             <?php foreach ($nilai_siswa as $nilai) : ?>
                 // Dibuat berdasarkan nama Pertemuan dan Tugass
-                '<?= $nilai['slug']; ?>',                
+                '<?= $nilai['slug']; ?>',
             <?php endforeach; ?>
         ],
         datasets: [{
