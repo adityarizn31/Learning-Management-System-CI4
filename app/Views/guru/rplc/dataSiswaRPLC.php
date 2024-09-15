@@ -9,22 +9,18 @@
         <div class="card-header py-3">
             <div class="d-sm-flex align-items-center justify-content-between">
                 <h3 class="m-0 font-weight-bold text-primary"> Data Siswa RPL C </h3>
-
                 <!-- <a href="<?= base_url() ?>GuruController/createSiswaC/" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus"></i> Siswa C </a> -->
-
             </div>
         </div>
 
         <div class="container mt-4">
             <div class="row">
                 <div class="col">
-
                     <?php if (session()->getFlashdata('pesan')) : ?>
                         <div class="alert alert-success" role="alert">
                             <?= session()->getFlashdata('pesan'); ?>
                         </div>
                     <?php endif; ?>
-
                 </div>
             </div>
         </div>
@@ -54,7 +50,7 @@
                             <td><?= $c['nama_siswa']; ?></td>
                             <td><?= $c['kelas_siswa']; ?></td>
                             <td>
-                                <a href="<?= base_url() ?>GuruController/grafikNilaiSiswa" class="btn btn-secondary btn-sm">
+                                <a href="<?= base_url() ?>Detail/grafikSiswaRPLC/" class="btn btn-secondary btn-sm">
                                     <i class="fas fa-chart-bar"></i> Grafik
                                 </a>
                             </td>

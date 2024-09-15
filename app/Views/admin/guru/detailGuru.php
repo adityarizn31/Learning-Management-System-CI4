@@ -7,7 +7,7 @@
       <div class="card shadow mb-4 border-2">
 
         <div class="card-header py-3 border-0 d-flex justify-content-between align-items-center">
-          <h5 class="m-0 font-weight-bold text-primary">Detail Siswa RPL A</h5>
+          <h5 class="m-0 font-weight-bold text-primary">Detail Guru</h5>
           <div>
             <a href="<?= base_url() ?>AdminController/editGuru/<?= $guru['slug']; ?>" class="btn btn-warning btn-sm">
               <i class="fas fa-edit"></i> Edit

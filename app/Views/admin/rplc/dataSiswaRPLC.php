@@ -8,30 +8,24 @@
 
         <div class="card-header py-3">
             <div class="d-sm-flex align-items-center justify-content-between" style="padding-top: 10px;">
-                <h3 class="m-0 font-weight-bold text-primary"> Data Siswa RPL C </h3>
-
-                <!-- Tombol Export Excel -->
-                <a href="<?= base_url(); ?>AdminController/exportExcel" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm" style="margin-right: 10px;">
+                <h3 class="m-0 font-weight-bold text-primary">Data Siswa RPL C </h3>
+                <div class="d-flex">
+                    <!-- Tombol Export Excel -->
+                    <a href="<?= base_url() ?>AdminController/exportExcel" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm" style="margin-right: 10px;">
                         <i class="fas fa-file-excel"></i> Export Excel
                     </a>
-
-                <!-- <a href="<?= base_url(); ?>AdminController/createSiswaRPLC/" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus"></i> Siswa RPL C </a> -->
-
+                </div>
             </div>
         </div>
 
         <div class="container mt-4">
             <div class="row">
                 <div class="col">
-
                     <?php if (session()->getFlashdata('pesan')) : ?>
-
                         <div class="alert alert-success" role="alert">
                             <?= session()->getFlashdata('pesan'); ?>
                         </div>
-
                     <?php endif; ?>
-
                 </div>
             </div>
         </div>
@@ -46,18 +40,25 @@
                         <th scope="col">NIS Siswa</th>
                         <th scope="col">Nama Siswa</th>
                         <th scope="col">Kelas Siswa</th>
+                        <th scope="col">Grafik Perkembangan</th>
                         <th scope="col">Aksi</th>
                     </tr>
                 </thead>
 
                 <tbody>
+                    <?php $i = 1; ?>
                     <?php foreach ($siswac as $c) : ?>
                         <tr>
-                            <th>1</th>
-                            <td><img src="/img/rplc/<?= $c['foto_siswa']; ?>" alt="" style="width: 20%;"></td>
+                            <th><?= $i++; ?></th>
+                            <td><img src="/img/rplb/<?= $c['foto_siswa']; ?>" alt="" style="width: 30%;"></td>
                             <td><?= $c['nis_siswa']; ?></td>
                             <td><?= $c['nama_siswa']; ?></td>
                             <td><?= $c['kelas_siswa']; ?></td>
+                            <td>
+                                <a href="<?= base_url() ?>Detail/grafikSiswaRPLC/<?= $c['slug']; ?>" class="btn btn-secondary btn-sm">
+                                    <i class="fas fa-chart-bar"></i> Grafik
+                                </a>
+                            </td>
                             <td><a href="<?= base_url() ?>AdminController/detailSiswaRPLC/<?= $c['slug']; ?>" class="btn btn-success btn-sm"><i class="fas fa-eye"></i> Detail</a></td>
                         </tr>
                     <?php endforeach; ?>

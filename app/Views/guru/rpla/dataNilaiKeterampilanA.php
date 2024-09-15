@@ -53,6 +53,43 @@
         </tbody>
     </table>
 
+    <!-- Canvas untuk Grafik -->
+    <div class="mt-5">
+        <h3>Grafik Nilai Keterampilan Siswa RPL A</h3>
+        <canvas id="nilaiChart"></canvas>
+    </div>
+
 </div>
+
+<!-- Inisialisasi Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    var ctx = document.getElementById('nilaiChart').getContext('2d');
+    var nilaiChart = new Chart(ctx, {
+        type: 'pie', // Jenis grafik bisa bar, line, pie, dll
+        data: {
+            labels: [<?php foreach ($siswa_nilai as $sn) {
+                            echo '"' . $sn['nama_siswa'] . '",';
+                        } ?>], // Nama siswa
+            datasets: [{
+                label: 'Nilai Keterampilan',
+                data: [<?php foreach ($siswa_nilai as $sn) {
+                            echo $sn['nilai'] . ',';
+                        } ?>], // Nilai keterampilan
+                backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
 
 <?= $this->endSection('content'); ?>

@@ -10,7 +10,7 @@
                 <h4 class="m-0 font-weight-bold text-primary">Tambah Siswa X RPL C</h4>
             </div>
 
-            <form action="<?= base_url(); ?>AdminController/savesiswaC" method="post" enctype="multipart/form-data">
+            <form action="<?= base_url(); ?>AdminController/savesiswaRPLC" method="post" enctype="multipart/form-data">
 
                 <?= csrf_field(); ?>
 

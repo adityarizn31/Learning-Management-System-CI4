@@ -19,8 +19,10 @@ use App\Models\NilaiAModel;
 use App\Models\NilaiBModel;
 use App\Models\NilaiCModel;
 
+use App\Models\SurveyKeterampilanModel;
 use App\Models\SoalModel;
 use App\Models\JawabanModel;
+
 use CodeIgniter\Config\Services;
 
 class AdminController extends BaseController
@@ -42,6 +44,7 @@ class AdminController extends BaseController
     protected $nilaiBModel;
     protected $nilaiCModel;
 
+    protected $surveyKeterampilanModel;
     protected $soalModel;
     protected $jawabanModel;
 
@@ -65,6 +68,7 @@ class AdminController extends BaseController
         $this->nilaiBModel = new NilaiBModel();
         $this->nilaiCModel = new NilaiCModel();
 
+        $this->surveyKeterampilanModel = new SurveyKeterampilanModel();
         $this->soalModel = new SoalModel();
         $this->jawabanModel = new JawabanModel();
     }
@@ -179,11 +183,11 @@ class AdminController extends BaseController
             // 'level' => done
         ]);
         session()->setFlashdata('pesan', 'Guru berhasil ditambahkan !!');
-        return redirect()->to('/AdminController/dataGuru');        
+        return redirect()->to('/AdminController/dataGuru');
     }
 
     // Done
-    public function createSiswaA()
+    public function createSiswaRPLA()
     {
         helper(['form']);
         $SISWAA = $this->siswaAModel->findAll();
@@ -197,7 +201,7 @@ class AdminController extends BaseController
     }
 
     // Done
-    public function saveSiswaA()
+    public function saveSiswaRPLA()
     {
         $validate = $this->validate([
             'nis_siswa' => [
@@ -284,7 +288,7 @@ class AdminController extends BaseController
     }
 
     // Done
-    public function createSiswaB()
+    public function createSiswaRPLB()
     {
         helper(['form']);
         $SISWAB = $this->siswaBModel->findAll();
@@ -298,7 +302,7 @@ class AdminController extends BaseController
     }
 
     // Done
-    public function saveSiswaB()
+    public function saveSiswaRPLB()
     {
         $validate = $this->validate([
             'nis_siswa' => [
@@ -385,7 +389,7 @@ class AdminController extends BaseController
     }
 
     // Done
-    public function createSiswaC()
+    public function createSiswaRPLC()
     {
         helper(['form']);
         $SISWAC = $this->siswaCModel->findAll();
@@ -399,7 +403,7 @@ class AdminController extends BaseController
     }
 
     // Done
-    public function saveSiswaC()
+    public function saveSiswaRPLC()
     {
         $validate = $this->validate([
             'nis_siswa' => [
@@ -550,32 +554,168 @@ class AdminController extends BaseController
 
     public function savePengetahuanAlpro()
     {
+        $validate = $this->validate([
+            'pertanyaan1' => [
+                'rules' => 'required[surveyketerampilan.pertanyaan1]',
+                'errors' => [
+                    'required' => 'Pertanyaan 1 harus diisi !!'
+                ],
+            ],
+            // 'jawaban1' => [
+            //     'rules' => 'required[surveyketerampilan.jawaban1]',
+            //     'errors' => [
+            //         'required' => 'Jawaban 1 harus diisi !!'
+            //     ],
+            // ],
+            'pertanyaan2' => [
+                'rules' => 'required[surveyketerampilan.pertanyaan2]',
+                'errors' => [
+                    'required' => 'Pertanyaan 2 harus diisi !!'
+                ],
+            ],
+            // 'jawaban2' => [
+            //     'rules' => 'required[surveyketerampilan.jawaban2]',
+            //     'errors' => [
+            //         'required' => 'Jawaban 2 harus diisi !!'
+            //     ],
+            // ],
+            'pertanyaan3' => [
+                'rules' => 'required[surveyketerampilan.pertanyaan3]',
+                'errors' => [
+                    'required' => 'Pertanyaan 3 harus diisi !!'
+                ],
+            ],
+            // 'jawaban3' => [
+            //     'rules' => 'required[surveyketerampilan.jawaban3]',
+            //     'errors' => [
+            //         'required' => 'Jawaban 3 harus diisi !!'
+            //     ],
+            // ],
+            'pertanyaan4' => [
+                'rules' => 'required[surveyketerampilan.pertanyaan4]',
+                'errors' => [
+                    'required' => 'Pertanyaan 4 harus diisi !!'
+                ],
+            ],
+            // 'jawaban4' => [
+            //     'rules' => 'required[surveyketerampilan.jawaban4]',
+            //     'errors' => [
+            //         'required' => 'Jawaban 4 harus diisi !!'
+            //     ],
+            // ],
+            'pertanyaan5' => [
+                'rules' => 'required[surveyketerampilan.pertanyaan5]',
+                'errors' => [
+                    'required' => 'Pertanyaan 5 harus diisi !!'
+                ],
+            ],
+            // 'jawaban5' => [
+            //     'rules' => 'required[surveyketerampilan.jawaban5]',
+            //     'errors' => [
+            //         'required' => 'Jawaban 5 harus diisi !!'
+            //     ],
+            // ],
+        ]);
+
+        if (!$validate) {
+            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        }
+
+        $this->surveyKeterampilanModel->save([
+            'pertanyaan1' => $this->request->getVar('pertanyaan1'),
+            'pertanyaan2' => $this->request->getVar('pertanyaan2'),
+            'pertanyaan3' => $this->request->getVar('pertanyaan3'),
+            'pertanyaan4' => $this->request->getVar('pertanyaan4'),
+            'pertanyaan5' => $this->request->getVar('pertanyaan5'),
+        ]);
+        session()->setFlashdata('pesan', 'Survey Pengetahuan Alpro berhasil dibuat !!');
+        return redirect()->to('/AdminController/dataPengetahuanAlpro');
+    }
+
+    public function savePengetahuanAlpro1()
+    {
         $questionModel = new SoalModel();
         $answerModel = new JawabanModel();
 
+        // Ambil data pertanyaan dari form
+        $pertanyaan = $this->request->getPost('pertanyaan');
+
+        // Pastikan pertanyaan tidak kosong
+        if (empty($pertanyaan)) {
+            return redirect()->back()->withInput()->with('error', 'Pertanyaan tidak boleh kosong.');
+        }
+
         $data = [
-            'teacher_id' => session()->get('guru_id'), // Assuming teacher_id is stored in session
-            'question_text' => $this->request->getPost('pertanyaan'),
+            'pertanyaan' => $pertanyaan,
         ];
 
-        $questionModel->save($data);
-        $questionId = $questionModel->insertID();
+        // Simpan pertanyaan ke database
+        if (!$questionModel->save($data)) {
+            return redirect()->back()->withInput()->with('error', 'Gagal menyimpan pertanyaan.');
+        }
 
+        $questionId = $questionModel->insertID(); // Dapatkan ID pertanyaan yang baru disimpan
+
+        // Ambil data jawaban dari form
         $answers = $this->request->getPost('jawaban');
         $isCorrect = $this->request->getPost('jawaban_benar');
 
-        foreach ($answers as $key => $answer) {
-            $answerData = [
-                'pertanyaan_id' => $questionId,
-                'jawaban' => $answer,
-                'jawaban_benar' => isset($isCorrect[$key]) ? 1 : 0,
-            ];
+        // Pastikan ada jawaban yang diinput
+        if (!empty($answers) && is_array($answers)) {
+            foreach ($answers as $key => $answer) {
+                if (empty($answer)) {
+                    continue; // Lewati jawaban kosong
+                }
+                $answerData = [
+                    'pertanyaan_id' => $questionId,
+                    'jawaban' => $answer,
+                    'jawaban_benar' => isset($isCorrect[$key]) ? 1 : 0,
+                ];
 
-            $answerModel->save($answerData);
+                // Simpan jawaban ke database
+                $answerModel->save($answerData);
+            }
+        } else {
+            // Jika tidak ada jawaban, berikan pesan error
+            return redirect()->back()->withInput()->with('error', 'Jawaban tidak boleh kosong.');
         }
 
-        return redirect()->to('AdminController/dataPengetahuanAlpro')->with('success', 'Question created successfully.');
+        return redirect()->to('AdminController/dataPengetahuanAlpro')->with('success', 'Pertanyaan dan jawaban berhasil dibuat.');
+
+
+        // $data = [
+
+        //     'pertanyaan' => $this->request->getPost('pertanyaan'),
+
+        // ];
+
+
+        // $this->soalModel->insert($data);
+
+
+        // $jawabanData = $this->request->getPost('jawaban');
+
+        // foreach ($jawabanData as $option) {
+
+        //     $optionData = [
+
+        //         'pertanyaan_id' => $this->soalModel->id,
+
+        //         'jawaban' => $option['text'],
+
+        //         'jawaban_benar' => $option['jawaban_benar'],
+
+        //     ];
+
+        //     $this->jawabanModel->insert($optionData);
+
+        // }
+
+
+        // // return redirect()->to('/questions');
+        // return redirect()->to('AdminController/dataPengetahuanAlpro')->with('success', 'Pertanyaan dan jawaban berhasil dibuat.');
     }
+
 
 
 
@@ -843,20 +983,6 @@ class AdminController extends BaseController
         session()->setFlashdata('pesan', 'Data Guru berhasil diubah !!');
         return redirect()->to('/AdminController/dataGuru');
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     // Done
     public function editSiswaRPLA($slug)
@@ -1209,6 +1335,68 @@ class AdminController extends BaseController
         return redirect()->to('/AdminController/dataMataPelajaran');
     }
 
+    // Done
+    public function editKeterampilanAlpro()
+    {
+        $data = [
+            'title' => 'Edit Keterampilan Algoritma Pemrograman || Guru Stemanikaku',
+            'validation' => \Config\Services::validation(),
+            'surveyketerampilan' => $this->surveyKeterampilanModel->findAll()
+        ];
+        return view('admin/alpro/keterampilan_alpro/editKeterampilanAlpro', $data);
+    }
+
+    // Done
+    public function updateKeterampilanAlpro($id)
+    {
+        if (!$this->validate([
+            'pertanyaan1' => [
+                'rules' => 'required[surveyketerampilan.pertanyaan1]',
+                'errors' => [
+                    'required' => 'Pertanyaan harus diisi !!'
+                ],
+            ],
+            'pertanyaan2' => [
+                'rules' => 'required[surveyketerampilan.pertanyaan2]',
+                'errors' => [
+                    'required' => 'Pertanyaan harus diisi !!'
+                ],
+            ],
+            'pertanyaan3' => [
+                'rules' => 'required[surveyketerampilan.pertanyaan3]',
+                'errors' => [
+                    'required' => 'Pertanyaan harus diisi !!'
+                ],
+            ],
+            'pertanyaan4' => [
+                'rules' => 'required[surveyketerampilan.pertanyaan4]',
+                'errors' => [
+                    'required' => 'Pertanyaan harus diisi !!'
+                ],
+            ],
+            'pertanyaan5' => [
+                'rules' => 'required[surveyketerampilan.pertanyaan5]',
+                'errors' => [
+                    'required' => 'Pertanyaan harus diisi !!'
+                ],
+            ],
+        ])) {
+            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        }
+
+        $this->surveyKeterampilanModel->save([
+            'id' => $id,
+            'pertanyaan1' => $this->request->getVar('pertanyaan1'),
+            'pertanyaan2' => $this->request->getVar('pertanyaan2'),
+            'pertanyaan3' => $this->request->getVar('pertanyaan3'),
+            'pertanyaan4' => $this->request->getVar('pertanyaan4'),
+            'pertanyaan5' => $this->request->getVar('pertanyaan5'),
+        ]);
+        session()->setFlashdata('pesan', 'Pertanyaan Keterampilan berhasil diubah !!');
+        return redirect()->to('/AdminController/dataKeterampilan');
+    }
+
+
 
 
 
@@ -1262,6 +1450,15 @@ class AdminController extends BaseController
         $this->guruModel->delete($id);
         session()->setFlashdata('pesan', 'Data Guru berhasil dihapus !!');
         return redirect()->to('/AdminController/dataGuru');
+    }
+
+    // Done
+    // Hapus Sementara
+    public function deleteKeterampilanAlpro($id = null)
+    {
+        $this->surveyKeterampilanModel->delete($id);
+        session()->setFlashdata('pesan', 'Survey Keterampilan berhasil dihapus !!');
+        return redirect()->to('/AdminController/dataKeterampilanAlpro');
     }
 
 

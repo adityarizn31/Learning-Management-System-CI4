@@ -161,14 +161,40 @@ class Detail extends BaseController
     // Done
     // Grafik Semua Pertemuan berdaasarkan siswa yang pilih
     // Berada di Manajemen Kelas
-    public function grafikSiswa($slug)
+    public function grafikSiswaRPLA($slug)
     {
         $NILAIA = $this->siswaAModel->getSiswaWithNilai($slug);
         $data = [
-            'title' => 'Detail Nilai Grafik Siswa || Guru Stemanikaku',
+            'title' => 'Detail Nilai Grafik Siswa RPLA || Guru Stemanikaku',
             'nilai_siswa' => $NILAIA
         ];
         return view('guru/rpla/detailGrafikRPLA_Alpro', $data);   
+    }
+
+    // Done
+    // Grafik Semua Pertemuan berdaasarkan siswa yang pilih
+    // Berada di Manajemen Kelas
+    public function grafikSiswaRPLB($slug)
+    {
+        $NILAIB = $this->siswaBModel->getSiswaWithNilai($slug);
+        $data = [
+            'title' => 'Detail Nilai Grafik Siswa RPLB || Guru Stemanikaku',
+            'nilai_siswa' => $NILAIB
+        ];
+        return view('guru/rplb/detailGrafikRPLB_Alpro', $data);   
+    }
+
+    // Done
+    // Grafik Semua Pertemuan berdaasarkan siswa yang pilih
+    // Berada di Manajemen Kelas
+    public function grafikSiswaRPLC($slug)
+    {
+        $NILAIC = $this->siswaCModel->getSiswaWithNilai($slug);
+        $data = [
+            'title' => 'Detail Nilai Grafik Siswa RPLC || Guru Stemanikaku',
+            'nilai_siswa' => $NILAIC
+        ];
+        return view('guru/rplc/detailGrafikRPLC_Alpro', $data);   
     }
 
     // Done
@@ -181,5 +207,29 @@ class Detail extends BaseController
             'siswa_nilai' => $NILAIA
         ];
         return view('guru/rpla/detailNilaiRPLA_Alpro', $data);
+    }
+
+    // Done
+    // Detail Nilai Rata - Rata Pertemuan
+    public function detailNilaiRPLB_Alpro()
+    {
+        $NILAIB = $this->siswaBModel->getSiswaWithNilai();
+        $data = [
+            'title' => 'Detail Nilai RPLB Algoritma Perograman || Guru Stemanikaku',
+            'siswa_nilai' => $NILAIB
+        ];
+        return view('guru/rplb/detailNilaiRPLB_Alpro', $data);
+    }
+
+    // Done
+    // Detail Nilai Rata - Rata Pertemuan
+    public function detailNilaiRPLC_Alpro()
+    {
+        $NILAIC = $this->siswaCModel->getSiswaWithNilai();
+        $data = [
+            'title' => 'Detail Nilai RPLC Algoritma Perograman || Guru Stemanikaku',
+            'siswa_nilai' => $NILAIC
+        ];
+        return view('guru/rplc/detailNilaiRPLC_Alpro', $data);
     }
 }

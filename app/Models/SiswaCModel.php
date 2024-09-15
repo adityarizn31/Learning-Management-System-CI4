@@ -17,7 +17,7 @@ class SiswaCModel extends Model
         if ($slug == false) {
             return $this->findAll();
         }
-        
+
         return $this->where(['slug' => $slug])->first();
     }
 
@@ -29,14 +29,13 @@ class SiswaCModel extends Model
     }
 
     public function login($username_siswa, $password_siswa)
-{
-    return $this->db->table('siswac')
-        ->where([
-            'username_siswa' => $username_siswa,
-            'password_siswa' => $password_siswa
-        ])
-        ->get()
-        ->getRowArray();
-}
-
+    {
+        return $this->db->table('siswac')
+            ->where([
+                'username_siswa' => $username_siswa,
+                'password_siswa' => $password_siswa
+            ])
+            ->get()
+            ->getRowArray();
+    }
 }

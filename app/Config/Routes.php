@@ -92,6 +92,9 @@ $routes->get('/quiz/set_question_count', 'QuizController::setQuestionCount');
 $routes->post('/quiz/create_questions', 'QuizController::createQuestions');
 $routes->post('/quiz/store_questions', 'QuizController::storeQuestions');
 
+$routes->get('guru/alpro/keterampilan_alpro/dataKeterampilanAlpro', 'GuruController::dataKeterampilanAlpro');
+
+
 $routes->get('guru/rpla/createSiswaA', 'GuruController::createSiswaA');
 $routes->get('guru/rpla/dataTNilaiRPLA_Alpro', 'GuruController::dataNilaiRPLA_Alpro');
 $routes->get('guru/rpla/dataNilaiRPLA_Alpro', 'GuruController::dataNilaiRPLA_Alpro');

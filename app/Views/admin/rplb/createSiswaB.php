@@ -10,7 +10,7 @@
                 <h4 class="m-0 font-weight-bold text-primary">Tambah Siswa X RPL B</h4>
             </div>
 
-            <form action="<?= base_url() ?>AdminController/savesiswaB" method="post" enctype="multipart/form-data">
+            <form action="<?= base_url() ?>AdminController/savesiswaRPLB" method="post" enctype="multipart/form-data">
 
                 <?= csrf_field(); ?>
 
@@ -76,7 +76,7 @@
                 <!-- Kelas Siswa -->
                 <div class="form-group row mb-3">
                     <label for="kelas_siswa" class="form-label fw-semibold">Kelas Siswa</label>
-                    <input name="kelas_siswa" id="kelas_siswa" class="form-control" disabled placeholder="A">
+                    <input name="kelas_siswa" id="kelas_siswa" class="form-control" disabled placeholder="B">
                 </div>
 
                 <!-- No Hp Siswa -->

@@ -19,9 +19,10 @@ use App\Models\NilaiAModel;
 use App\Models\NilaiBModel;
 use App\Models\NilaiCModel;
 
+use App\Models\SurveyKeterampilanModel;
 use App\Models\SoalModel;
 use App\Models\JawabanModel;
-use App\Models\JawabanModelModel;
+
 use CodeIgniter\Config\Services;
 
 class GuruController extends BaseController
@@ -43,6 +44,7 @@ class GuruController extends BaseController
     protected $nilaiBModel;
     protected $nilaiCModel;
 
+    protected $surveyKeterampilanModel;
     protected $soalModel;
     protected $jawabanModel;
 
@@ -65,6 +67,7 @@ class GuruController extends BaseController
         $this->nilaiBModel = new NilaiBModel();
         $this->nilaiCModel = new NilaiCModel();
 
+        $this->surveyKeterampilanModel = new SurveyKeterampilanModel();
         $this->soalModel = new SoalModel();
         $this->jawabanModel = new JawabanModel();
     }
@@ -846,14 +849,23 @@ class GuruController extends BaseController
     // Done 
     public function dataPengetahuanAlpro()
     {
-        $MATERIALPRO = $this->materiAlproModel->findAll();
-        $RPLA = $this->rplAModel->findAll();
+        $SURVEYKETERAMPILAN = $this->surveyKeterampilanModel->findAll();
         $data = [
             'title' => 'Daftar Pengetahuan Algoritma Pemrograman || Guru Stemanikaku',
-            'materi_alpro' => $MATERIALPRO,
-            'rpla' => $RPLA
+            'surveyketerampilan' => $SURVEYKETERAMPILAN
         ];
         return view('guru/alpro/pengetahuan_alpro/dataPengetahuanAlpro', $data);
+    }
+
+    // Done
+    public function dataKeterampilanAlpro()
+    {
+        $SURVEYKETERAMPILAN = $this->surveyKeterampilanModel->findAll();
+        $data = [
+            'title' => 'Keterampilan Alpro || Guru Stemanikaku',
+            'surveyketerampilan' => $SURVEYKETERAMPILAN
+        ];
+        return view('guru/alpro/keterampilan_alpro/dataKeterampilanAlpro', $data);
     }
 
 
