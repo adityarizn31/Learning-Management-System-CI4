@@ -11,7 +11,7 @@
                 <h3 class="m-0 font-weight-bold text-primary">Data Siswa RPL A</h3>
                 <div class="d-flex">
                     <!-- Tombol Export Excel -->
-                    <a href="<?= base_url() ?>AdminController/exportExcel" class="btn btn-sm btn-success shadow-sm mr-2">
+                    <a href="<?= base_url() ?>Export/exportRPLA" class="btn btn-sm btn-success shadow-sm mr-2">
                         <i class="fas fa-file-excel"></i> Export Excel
                     </a>
                 </div>

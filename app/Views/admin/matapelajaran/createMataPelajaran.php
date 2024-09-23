@@ -8,15 +8,15 @@
 
         <div class="card-header py-3">
             <div class="d-sm-flex align-items-center justify-content-between" style="padding-top: 10px;"></div>
-            <h4 class="m-0 font-weight-bold text-primary">Tambah Matpel</h4>
+            <h4 class="m-0 font-weight-bold text-primary">Tambah Mata Pelajaran</h4>
         </div>
 
-        <form action="<?= base_url(); ?>AdminController/saveMatpel" method="post" enctype="multipart/form-data">
+        <form action="<?= base_url(); ?>AdminController/saveMataPelajaran" method="post" enctype="multipart/form-data">
 
             <div class="card-body">
                 <div class="row">
 
-                    <!-- Nama Matpel -->
+                    <!-- Nama Mata Pelajaran -->
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="nama_matapelajaran" class="form-label fw-semibold">Nama Mata Pelajaran</label>
@@ -27,7 +27,7 @@
                         </div>
                     </div>
 
-                    <!-- Guru Matpel -->
+                    <!-- Guru Mata Pelajaran -->
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="guru_matapelajaran" class="form-label fw-semibold">Guru Mata Pelajaran</label>
@@ -38,7 +38,7 @@
                         </div>
                     </div>
 
-                    <!-- Jam Matpel -->
+                    <!-- Jam Mata Pelajaran -->
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="jam_matapelajaran" class="form-label fw-semibold">Jam Mata Pelajaran</label>
@@ -49,10 +49,10 @@
                         </div>
                     </div>
 
-                    <!-- Button Create -->
+                    <!-- Button Mata Pelajaran -->
                     <div class="col-sm-12">
                         <button type="submit" class="btn btn-primary btn-user btn-block">
-                            Tambah Matpel
+                            Tambah Mata Pelajaran
                         </button>
                     </div>
 

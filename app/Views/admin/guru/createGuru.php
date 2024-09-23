@@ -113,7 +113,7 @@
             </div>
           </div>
 
-          <!-- Foto Siswa -->
+          <!-- Foto Guru -->
           <div class="col-sm-6">
             <div class="mb-3">
               <label for="foto_guru" class="form-label fw-semibold">Foto Guru</label>

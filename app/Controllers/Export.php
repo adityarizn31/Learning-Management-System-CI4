@@ -64,9 +64,9 @@ class Export extends BaseController
 
     public function exportRPLA()
     {
-        $siswaRPLA =  new RPLAModel();
-        $dataSiswaRPLA = $siswaRPLA->onlyDeleted()->findAll();
-
-        
+        $data = [
+            'rpla' => $this->rplAModel->findAll()
+        ];
+        echo view('Export/exportRPLA', $data);
     }
 }

@@ -15,23 +15,17 @@
                     <i class="fas fa-file-excel"></i> Export Excel
                 </a>
 
-                <!-- <a href="<?= base_url(); ?>/AdminController/createGuru/" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus"></i> Guru </a> -->
-
             </div>
         </div>
 
         <div class="container mt-4">
             <div class="row">
                 <div class="col">
-
                     <?php if (session()->getFlashdata('pesan')) : ?>
-
                         <div class="alert alert-success" role="alert">
                             <?= session()->getFlashdata('pesan'); ?>
                         </div>
-
                     <?php endif; ?>
-
                 </div>
             </div>
         </div>

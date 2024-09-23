@@ -1416,6 +1416,16 @@ class GuruController extends BaseController
 
     public function createPilgan()
     {
+        if($this->request->getMethod()=== 'post') {
+            $pertanyaans = $this->request->getPost('pertanyaan');
+
+            foreach ($pertanyaans as $pertanyaan) {
+                $this->soalModel->save($pertanyaan);
+            }
+
+            return redirect()->to('GuruController/createPilgan');
+        }
+
         $data = [
             'title' => 'Buat Soal Pilihan Ganda || Guru Stemanikaku'
         ];

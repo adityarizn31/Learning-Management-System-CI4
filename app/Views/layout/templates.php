@@ -26,16 +26,10 @@
 
 <body id="page-top">
 
-    <!-- Page Wrapper -->
-    <div id="wrapper">
-
-        <?= $this->include('layout/sidebar'); ?>
-        <?= $this->include('layout/topbar'); ?>
-        <?= $this->renderSection('content'); ?>
-        <?= $this->include('layout/footer'); ?>
-
-    </div>
-    <!-- End of Content Wrapper -->
+    <?= $this->include('layout/sidebar'); ?>
+    <?= $this->include('layout/topbar'); ?>
+    <?= $this->renderSection('content'); ?>
+    <?= $this->include('layout/footer'); ?>
 
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
@@ -71,6 +65,7 @@
 
     <!-- Custom scripts for all pages-->
     <script src="<?= base_url() ?>assets/js/sb-admin-2.min.js"></script>
+    <script src="<?= base_url() ?>js/sb-admin-2.min.js"></script>
 
     <script>
         function previewImgSiswa() {

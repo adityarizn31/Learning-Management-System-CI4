@@ -1,4 +1,4 @@
-<?= $this->extend('layout/template'); ?>
+<?= $this->extend('layout/templates'); ?>
 
 <?= $this->section('content'); ?>
 
@@ -18,58 +18,21 @@
             <div class="row">
                 <div class="col">
 
-                    <form action="<?= base_url('/QuizController/storeQuestions_Alpro'); ?>" method="post">
-
-                        <?= csrf_field(); ?>
-
-                        <?php for ($pertanyaan = 1; $pertanyaan <= $jumlahpertanyaan_alpro; $pertanyaan++) : ?>
-
-                            <h3> Pertanyaan <?= $pertanyaan; ?> </h3>
-
+                    <form action="<?= base_url() ?>Siswa/takeQuiz" method="post">
+                        <?php foreach ($pertanyaans as $pertanyaan): ?>
                             <div>
-                                <label for="question_<?= $i; ?>">Pertanyaan:</label>
-                                <textarea name="questions[<?= $i; ?>][question]" id="question_<?= $i; ?>" required><?= old("questions[$i][question]"); ?></textarea>
+                                <p><?= $pertanyaan['pertanyaan'] ?></p>
+                                <label><input type="radio" name="jawaban[<?= $pertanyaan['id'] ?>]" value="A" required> <?= $pertanyaan['pilihan_a'] ?></label><br>
+                                <label><input type="radio" name="jawaban[<?= $pertanyaan['id'] ?>]" value="B"> <?= $pertanyaan['pilihan_b'] ?></label><br>
+                                <label><input type="radio" name="jawaban[<?= $pertanyaan['id'] ?>]" value="C"> <?= $pertanyaan['pilihan_c'] ?></label><br>
+                                <label><input type="radio" name="jawaban[<?= $pertanyaan['id'] ?>]" value="D"> <?= $pertanyaan['pilihan_d'] ?></label><br>
                             </div>
+                            <br>
+                        <?php endforeach; ?>
 
-                            <div>
-                                <label for="option_a_<?= $i; ?>">Opsi A:</label>
-                                <input type="text" name="questions[<?= $i; ?>][option_a]" id="option_a_<?= $i; ?>" value="<?= old("questions[$i][option_a]"); ?>" required>
-                            </div>
-
-                            <div>
-                                <label for="option_b_<?= $i; ?>">Opsi B:</label>
-                                <input type="text" name="questions[<?= $i; ?>][option_b]" id="option_b_<?= $i; ?>" value="<?= old("questions[$i][option_b]"); ?>" required>
-                            </div>
-
-                            <div>
-                                <label for="option_c_<?= $i; ?>">Opsi C:</label>
-                                <input type="text" name="questions[<?= $i; ?>][option_c]" id="option_c_<?= $i; ?>" value="<?= old("questions[$i][option_c]"); ?>" required>
-                            </div>
-
-                            <div>
-                                <label for="option_d_<?= $i; ?>">Opsi D:</label>
-                                <input type="text" name="questions[<?= $i; ?>][option_d]" id="option_d_<?= $i; ?>" value="<?= old("questions[$i][option_d]"); ?>" required>
-                            </div>
-
-                            <div>
-                                <label for="correct_answer_<?= $i; ?>">Jawaban Benar:</label>
-                                <select name="questions[<?= $i; ?>][correct_answer]" id="correct_answer_<?= $i; ?>" required>
-                                    <option value="A" <?= old("questions[$i][correct_answer]") == 'A' ? 'selected' : ''; ?>>A</option>
-                                    <option value="B" <?= old("questions[$i][correct_answer]") == 'B' ? 'selected' : ''; ?>>B</option>
-                                    <option value="C" <?= old("questions[$i][correct_answer]") == 'C' ? 'selected' : ''; ?>>C</option>
-                                    <option value="D" <?= old("questions[$i][correct_answer]") == 'D' ? 'selected' : ''; ?>>D</option>
-                                </select>
-                            </div>
-
-                            <hr>
-
-                        <?php endfor; ?>
-
-                        <div>
-                            <button type="submit"> Simpan Kuis </button>
-                        </div>
-
+                        <button type="submit">Kirim Jawaban</button>
                     </form>
+
 
                 </div>
             </div>

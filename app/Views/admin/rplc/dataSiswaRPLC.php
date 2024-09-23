@@ -50,7 +50,7 @@
                     <?php foreach ($siswac as $c) : ?>
                         <tr>
                             <th><?= $i++; ?></th>
-                            <td><img src="/img/rplb/<?= $c['foto_siswa']; ?>" alt="" style="width: 30%;"></td>
+                            <td><img src="/img/rplc/<?= $c['foto_siswa']; ?>" alt="" style="width: 30%;"></td>
                             <td><?= $c['nis_siswa']; ?></td>
                             <td><?= $c['nama_siswa']; ?></td>
                             <td><?= $c['kelas_siswa']; ?></td>

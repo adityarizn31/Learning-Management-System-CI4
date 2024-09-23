@@ -9,7 +9,6 @@
         <div class="card-header py-3">
             <div class="d-sm-flex align-items-center justify-content-between" style="padding-top: 10px;">
                 <h3 class="m-0 font-weight-bold text-primary"> Data Mata Pelajaran </h3>
-                <a href="<?= base_url() ?>AdminController/createMataPelajaran" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"> <i class="fas fa-plus"></i> Mata Pelajaran </a>
             </div>
         </div>
 
@@ -17,15 +16,11 @@
         <div class="container mt-4">
             <div class="row">
                 <div class="col">
-
                     <?php if (session()->getFlashdata('pesan')) : ?>
-
                         <div class="alert alert-success" role="alert">
                             <?= session()->getFlashdata('pesan'); ?>
                         </div>
-
                     <?php endif; ?>
-
                 </div>
             </div>
         </div>
@@ -39,7 +34,6 @@
                         <th scope="col">Nama Mata Pelajaran</th>
                         <th scope="col">Guru Mata Pelajaran</th>
                         <th scope="col">Jam Mata Pelajaran</th>
-                        <th scope="col">Aksi</th>
                     </tr>
                 </thead>
 
@@ -51,7 +45,6 @@
                             <td><?= $mat['nama_matapelajaran']; ?></td>
                             <td><?= $mat['guru_matapelajaran']; ?></td>
                             <td><?= $mat['jam_matapelajaran']; ?> Jam</td>
-                            <td><a href="<?= base_url(); ?>AdminController/detailMataPelajaran/<?= $mat['slug']; ?>" class="btn btn-success btn-sm"><i class="fas fa-eye"></i> Detail</a></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

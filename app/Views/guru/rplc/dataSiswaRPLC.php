@@ -18,7 +18,7 @@
                 <div class="col">
                     <?php if (session()->getFlashdata('pesan')) : ?>
                         <div class="alert alert-success" role="alert">
-                            <?= session()->getFlashdata('pesan'); ?>
+                            <?= session()->getFlashdata('pesan'); ?>3
                         </div>
                     <?php endif; ?>
                 </div>

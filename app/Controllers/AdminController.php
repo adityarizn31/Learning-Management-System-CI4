@@ -495,14 +495,14 @@ class AdminController extends BaseController
         helper(['form']);
         $data = [
             'title' => 'Tambah Mata Pelajaran || Admin Stemanikaku',
-            'validation' => \Config\Services::validation()
+            'validation' => \Config\Services::validation(),
         ];
 
         return view('admin/matapelajaran/createMataPelajaran', $data);
     }
 
     // Done
-    public function saveMatpel()
+    public function saveMataPelajaran()
     {
         $validate = $this->validate([
             'nama_matapelajaran' => [
@@ -787,9 +787,11 @@ class AdminController extends BaseController
     public function dataMataPelajaran()
     {
         $MATPEL = $this->matapelajaranModel->findAll();
+        $GURU = $this->guruModel->findAll();
         $data = [
             'title' => 'Data Mata Pelajaran || Admin Stemanikaku',
-            'matapelajaran' => $MATPEL
+            'matapelajaran' => $MATPEL,
+            'guru' => $GURU
         ];
         return view('admin/matapelajaran/dataMataPelajaran', $data);
     }

@@ -1,10 +1,10 @@
-<?php 
+<?php
 
 namespace App\Models;
 
 use CodeIgniter\Model;
 
-class GuruModel extends Model 
+class GuruModel extends Model
 {
     protected $table = 'guru';
     protected $useTimestamps = true;
@@ -16,21 +16,18 @@ class GuruModel extends Model
         if ($slug == false) {
             return $this->findAll();
         }
-        
+
         return $this->where(['slug' => $slug])->first();
     }
 
     public function login($username_guru, $password_guru)
-{
-    return $this->db->table('guru')
-        ->where([
-            'username_guru' => $username_guru,
-            'password_guru' => $password_guru
-        ])
-        ->get()
-        ->getRowArray();
+    {
+        return $this->db->table('guru')
+            ->where([
+                'username_guru' => $username_guru,
+                'password_guru' => $password_guru
+            ])
+            ->get()
+            ->getRowArray();
+    }
 }
-
-}
-
-?>
