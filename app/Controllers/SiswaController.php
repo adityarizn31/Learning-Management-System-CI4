@@ -161,4 +161,18 @@ class SiswaController extends BaseController
         ];
         return view('/siswa/alpro/detailTugasAlpro', $data);
     }
+
+
+
+
+
+
+
+
+
+
+
+    public function takePilgan() {
+        
+    }
 }

@@ -10,11 +10,11 @@
             <div class="d-sm-flex align-items-center justify-content-between" style="padding-top: 10px;">
                 <h3 class="m-0 font-weight-bold text-primary"> Survey RPL A Pengetahuan Algoritma Pemrograman </h3>
 
-                <a href="<?= base_url() ?>AdminController/createPengetahuanAlpro/" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus"> </i> Quiz </a>
-                <a href="<?= base_url() ?>AdminController/createPengetahuanAlpro/" class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm">
+                <a href="<?= base_url() ?>GuruController/createPilgan/" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus"> </i> Quiz </a>
+                <a href="<?= base_url() ?>GuruController/createPengetahuanAlpro/" class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm">
                     <i class="fas fa-edit me-2"></i> Edit Quiz
                 </a>
-                <a href="<?= base_url() ?>AdminController/deletePengetahuanAlpro/" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">
+                <a href="<?= base_url() ?>GuruController/deletePengetahuanAlpro/" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">
                     <i class="fas fa-trash-alt me-2"></i> Delete Quiz
                 </a>
 
@@ -24,15 +24,11 @@
         <div class="container mt-4">
             <div class="row">
                 <div class="col">
-
                     <?php if (session()->getFlashdata('pesan')) : ?>
-
                         <div class="alert alert-success" role="alert">
                             <?= session()->getFlashdata('pesan'); ?>
                         </div>
-
                     <?php endif; ?>
-
                 </div>
             </div>
         </div>

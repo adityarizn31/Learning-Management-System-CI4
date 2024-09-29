@@ -633,10 +633,7 @@ class GuruController extends BaseController
         return view('guru/rpla/createNilaiKeterampilanA', $data);
     }
 
-    public function saveKeterampilanRPLA() 
-    {
-
-    }
+    public function saveKeterampilanRPLA() {}
 
 
 
@@ -1416,7 +1413,7 @@ class GuruController extends BaseController
 
     public function createPilgan()
     {
-        if($this->request->getMethod()=== 'post') {
+        if ($this->request->getMethod() === 'post') {
             $pertanyaans = $this->request->getPost('pertanyaan');
 
             foreach ($pertanyaans as $pertanyaan) {
@@ -1425,6 +1422,35 @@ class GuruController extends BaseController
 
             return redirect()->to('GuruController/createPilgan');
         }
+
+        // // Pastikan metode HTTP adalah POST
+        // if ($this->request->getMethod() === 'post') {
+        //     // Ambil semua pertanyaan dari input form
+        //     $pertanyaans = $this->request->getPost('pertanyaans');
+
+        //     // Periksa apakah input 'questions' tidak kosong
+        //     if (!empty($pertanyaans)) {
+        //         foreach ($pertanyaans as $pertanyaan) {
+        //             // Validasi data sebelum menyimpan, misalnya pastikan data tidak kosong
+        //             if (!empty($pertanyaan['pertanyaan']) && !empty($pertanyaan['pilihan_benar'])) {
+        //                 // Simpan pertanyaan ke database menggunakan model
+        //                 $this->soalModel->save([
+        //                     'pertanyaan' => $pertanyaan['pertanyaan'],
+        //                     'pilihan_a' => $pertanyaan['pilihan_a'],
+        //                     'pilihan_b' => $pertanyaan['pilihan_b'],
+        //                     'pilihan_c' => $pertanyaan['pilihan_c'],
+        //                     'pilihan_d' => $pertanyaan['pilihan_d'],
+        //                     'pilihan_benar' => $pertanyaan['pilihan_benar']
+        //                 ]);
+        //             }
+        //         }
+        //         // Redirect ke halaman lain setelah berhasil menyimpan
+        //         return redirect()->to('GuruController/createPilgan')->with('message', 'Quiz berhasil disimpan.');
+        //     } else {
+        //         // Jika tidak ada pertanyaan yang diterima, kirim pesan error
+        //         return redirect()->back()->with('error', 'Tidak ada pertanyaan yang disimpan.');
+        //     }
+        // }
 
         $data = [
             'title' => 'Buat Soal Pilihan Ganda || Guru Stemanikaku'
@@ -1435,32 +1461,191 @@ class GuruController extends BaseController
     public function savePilgan()
     {
 
-        $questionModel = new SoalModel();
-        $answerModel = new JawabanModel();
+        // $questionModel = new SoalModel();
+        // $answerModel = new JawabanModel();
 
-        $SOAL = $this->soalModel->findAll();
-        $data = [
-            'guru_id'=> session()->get('guru_id'),
-            'pertanyaan' => $this->request->getVar('pertanyaan')
-        ];
+        // $SOAL = $this->soalModel->findAll();
+        // $data = [
+        //     'guru_id' => session()->get('guru_id'),
+        //     'pertanyaan' => $this->request->getVar('pertanyaan')
+        // ];
 
-        $questionModel->save($data);
-        $questionId = $questionModel->insertID();
+        // $questionModel->save($data);
+        // $questionId = $questionModel->insertID();
 
-        $answers = $this->request->getPost('jawaban');
-        $isCorrect = $this->request->getPost('jawaban_benar');
+        // $jawabans = $this->request->getPost('jawaban');
+        // $jawabanBenar = $this->request->getPost('jawaban_benar');
 
-        foreach ($answers as $key => $answer) {
-            $answerData = [
-                'pertanyaan_id' => $questionId,
-                'jawaban' => $answer,
-                'jawaban_benar' => isset($isCorrect[$key]) ? 1 : 0,
-            ];
+        // foreach ($jawabans as $key => $jawaban) {
+        //     $dataJawaban = [
+        //         'pertanyaan_id' => $questionId,
+        //         'jawaban' => $jawaban,
+        //         'jawaban_benar' => isset($jawabanBenar[$key]) ? 1 : 0,
+        //     ];
 
-            $answerModel->save($answerData);
+        //     $answerModel->save($dataJawaban);
+        // }
+
+        // return redirect()->to('/guru/createQuestion')->with('success', 'Question created successfully.');
+
+        // Pastikan metode HTTP adalah POST
+        if ($this->request->getMethod() === 'post') {
+            // Ambil semua pertanyaan dari input form
+            $pertanyaans = $this->request->getPost('pertanyaans');
+
+            // Periksa apakah input 'questions' tidak kosong
+            if (!empty($pertanyaans)) {
+                foreach ($pertanyaans as $question) {
+                    // Validasi data sebelum menyimpan, misalnya pastikan data tidak kosong
+                    if (!empty($question['pertanyaan']) && !empty($question['pilihan_benar'])) {
+                        // Simpan pertanyaan ke database menggunakan model
+                        $this->soalModel->save([
+                            'pertanyaan' => $question['pertanyaan'],
+                            'pilihan_a' => $question['pilihan_a'],
+                            'pilihan_b' => $question['pilihan_b'],
+                            'pilihan_c' => $question['pilihan_c'],
+                            'pilihan_d' => $question['pilihan_d'],
+                            'pilihan_benar' => $question['pilihan_benar']
+                        ]);
+                    }
+                }
+                // Redirect ke halaman lain setelah berhasil menyimpan
+                return redirect()->to('GuruController/createPilgan')->with('message', 'Quiz berhasil disimpan.');
+            } else {
+                // Jika tidak ada pertanyaan yang diterima, kirim pesan error
+                return redirect()->back()->with('error', 'Tidak ada pertanyaan yang disimpan.');
+            }
         }
 
-        return redirect()->to('/guru/createQuestion')->with('success', 'Question created successfully.');
+        // Tampilkan view untuk membuat quiz jika metode bukan POST
+        return redirect()->to('GuruController/createPilgan');
+    }
+
+    // Controller method untuk menyimpan soal pilihan ganda
+    public function savePilgann()
+    {
+        // Cek apakah request adalah POST
+        if ($this->request->getMethod() === 'post') {
+            $pertanyaans = $this->request->getPost('pertanyaan');
+
+            if (!empty($pertanyaans)) {
+                foreach ($pertanyaans as $pertanyaan) {
+                    // Simpan data soal ke database (pastikan struktur tabel sesuai)
+                    $this->soalModel->save([
+                        'pertanyaan' => $pertanyaan['pertanyaan'],
+                        'pilihan_a' => $pertanyaan['pilihan_a'],
+                        'pilihan_b' => $pertanyaan['pilihan_b'],
+                        'pilihan_c' => $pertanyaan['pilihan_c'],
+                        'pilihan_d' => $pertanyaan['pilihan_d'],
+                        'jawaban_benar' => $pertanyaan['jawaban_benar']
+                    ]);
+                }
+                // Redirect ke halaman setelah berhasil simpan
+                return redirect()->to('GuruController/createPilgan')->with('message', 'Soal berhasil disimpan.');
+            } else {
+                // Jika tidak ada data yang diterima
+                return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+            }
+        }
+    }
+
+    public function takeSoal()
+    {
+        $data = [
+            'title' => 'Pilihan Ganda || Algoritma Pemrograman'
+        ];
+
+        $pertanyaans = $this->soalModel->findAll();
+
+        if ($this->request->getMethod() === 'post') {
+            $jawabans = $this->request->getPost('jawabans');
+            $idSiswa = 1;
+
+            foreach ($jawabans as $pertanyaan_id => $jawaban) {
+                $this->jawabanModel->save([
+                    'pertanyaan_id' => $pertanyaan_id,
+                    'siswaa_id' => $idSiswa,
+                    'jawaban' => $jawaban
+                ]);
+            }
+            return redirect()->to('SiswaController/resultPilgan');
+        }
+        return view('guru/alpro/pengetahuan_alpro/takeSoal', ['pertanyaans' => $pertanyaans], $data);
+    }
+
+    // Done
+    public function daftarSoal()
+    {
+        $SOAL = $this->soalModel->findAll();
+        $data = [
+            'title' => 'Daftar Soal Pilihan Ganda || Guru Stemanikaku',
+            'soal' => $SOAL
+        ];
+        return view('guru/alpro/pengetahuan_alpro/daftarSoal', $data);
+    }
+
+    public function tambahSoal()
+    {
+        // $SOAL = $this->soalModel->findAll();
+        // if ($this->request->getMethod() == 'post') {
+        //     $data = [
+        //         'pertanyaan' => $this->request->getPost('pertanyaan'),
+        //         'pilihan_a' => $this->request->getPost('pilihan_a'),
+        //         'pilihan_b' => $this->request->getPost('pilihan_b'),
+        //         'pilihan_c' => $this->request->getPost('pilihan_c'),
+        //         'pilihan_d' => $this->request->getPost('pilihan_d'),
+        //         'pilihan_benar' => $this->request->getPost('pilihan_benar'),
+        //     ];
+
+        //     $SOAL->save($data);
+        //     return redirect()->to('GuruController/daftarSoal');
+        // }
+        // return view('guru/alpro/pengetahuan_alpro/daftarSoal');
+
+        $data['soal'] = $this->soalModel->findAll();
+
+        if ($this->request->getMethod() == 'post') {
+            $data = [
+                'pertanyaan' => $this->request->getVar('pertanyaan'),
+                'pilihan_a' => $this->request->getVar('pilihan_a'),
+                'pilihan_b' => $this->request->getVar('pilihan_b'),
+                'pilihan_c' => $this->request->getVar('pilihan_c'),
+                'pilihan_d' => $this->request->getVar('pilihan_d'),
+                'pilihan_benar' => $this->request->getVar('pilihan_benar'),
+            ];
+
+            $this->soalModel->save($data);
+            return view('guru/alpro/pengetahuan_alpro/daftarSoal');
+        }
+
+        return view('guru/alpro/pengetahuan_alpro/daftarSoal');
+    }
+
+    public function editSoal($id)
+    {
+        $data['soal'] = $this->soalModel->find($id);
+
+        if ($this->request->getMethod() == 'post') {
+            $data = [
+                'pertanyaan' => $this->request->getPost('pertanyaan'),
+                'pilihan_a' => $this->request->getPost('pilihan_a'),
+                'pilihan_b' => $this->request->getPost('pilihan_b'),
+                'pilihan_c' => $this->request->getPost('pilihan_c'),
+                'pilihan_d' => $this->request->getPost('pilihan_d'),
+                'pilihan_benar' => $this->request->getPost('pilihan_benar'),
+            ];
+
+            $this->soalModel->update($id, $data);
+            return redirect()->to('GuruController/daftarSoal');
+        }
+        return view('guru/edit_soal', $data);
+    }
+
+    public function hapusSoal($id)
+    {
+        $this->jawabanModel->where('soal_id', $id)->delete();
+        $this->soalModel->delete($id);
+        return redirect()->to('/guru/daftar-soal');
     }
 
 
@@ -1540,5 +1725,19 @@ class GuruController extends BaseController
         $this->tugasAlproModel->delete($id);
         session()->setFlashdata('pesan', 'Tugas Alpro berhasil dihapus !!');
         return redirect()->to('/GuruController/tugas_alpro/dataTugasAlpro');
+    }
+
+    // Done
+    // Hapus Pertanyaan
+    public function deletePertanyaan($id)
+    {
+        $pertanyaan = $this->soalModel->find($id);
+
+        if ($pertanyaan) {
+            $this->soalModel->delete($id);
+            return redirect()->to('/GuruController/createPilgan')->with('message', 'Pertanyaan berhasil dihapus !!');
+        } else {
+            return redirect()->back()->with('error', 'Pertanyaan Tidak Ditemukan !!');
+        }
     }
 }

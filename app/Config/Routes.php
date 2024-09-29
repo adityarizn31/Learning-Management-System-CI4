@@ -88,12 +88,13 @@ $routes->get('/guru/alpro/detailTugasAlpro', 'GuruController::detailTugasAlpro')
 $routes->get('guru/alpro/editTugasAlpro', 'GuruController::editTugasAlpro');
 
 $routes->get('guru/alpro/dataPengetahuanAlpro', 'GuruController::dataPengetahuanAlpro');
+$routes->get('guru/alpro/pengetahuan_alpro/takeQuiz', 'GuruController::takeQuiz');
+
 $routes->get('/quiz/set_question_count', 'QuizController::setQuestionCount');
 $routes->post('/quiz/create_questions', 'QuizController::createQuestions');
 $routes->post('/quiz/store_questions', 'QuizController::storeQuestions');
 
 $routes->get('guru/alpro/keterampilan_alpro/dataKeterampilanAlpro', 'GuruController::dataKeterampilanAlpro');
-
 
 $routes->get('guru/rpla/createSiswaA', 'GuruController::createSiswaA');
 $routes->get('guru/rpla/dataTNilaiRPLA_Alpro', 'GuruController::dataNilaiRPLA_Alpro');
@@ -110,6 +111,7 @@ $routes->get('guru/rplc/dataNilaiRPLC_Alpro', 'GuruController::dataNilaiRPLC_Alp
 $routes->get('guru/rplc/createNilaiSiswaC', 'GuruController::createNilaiSiswaC');
 
 $routes->get('guru/soal/createPilgan', 'GuruController::createPilgan');
+$routes->get('guru/soal/createPilgan', 'GuruController::deletePilgan/$1');
 
 // Siswa
 $routes->get('siswa/', 'SiswaController::index');

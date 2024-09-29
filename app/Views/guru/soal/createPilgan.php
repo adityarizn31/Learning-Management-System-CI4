@@ -5,7 +5,22 @@
 <div class="container mt-5">
     <h2 class="mb-4">Buat Pertanyaan Pilihan Ganda</h2>
 
-    <form action="<?= base_url() ?>GuruController/createPilgan" method="post">
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col">
+                <?php if (session()->getFlashdata('pesan')) : ?>
+                    <div class="alert alert-success" role="alert">
+                        <?= session()->getFlashdata('pesan'); ?>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+
+    <form action="<?= base_url() ?>GuruController/tambahSoal" method="post">
+
+        <?= csrf_field() ?>
+
         <?php for ($i = 1; $i <= 10; $i++): ?>
             <div class="question">
                 <label for="pertanyaan<?= $i ?>">Soal <?= $i ?>:</label>
@@ -54,7 +69,7 @@
 
         <?php endfor; ?>
 
-        <button type="submit">Simpan Soal</button>
+        <button type="submit" value="submit" class="btn btn-sm btn-primary">Simpan Soal</button>
     </form>
 </div>
 
