@@ -88,7 +88,7 @@ $routes->get('/guru/alpro/detailTugasAlpro', 'GuruController::detailTugasAlpro')
 $routes->get('guru/alpro/editTugasAlpro', 'GuruController::editTugasAlpro');
 
 $routes->get('guru/alpro/dataPengetahuanAlpro', 'GuruController::dataPengetahuanAlpro');
-$routes->get('guru/alpro/pengetahuan_alpro/takeQuiz', 'GuruController::takeQuiz');
+$routes->get('guru/alpro/pengetahuan_alpro/takeSoal', 'GuruController::takeSoal');
 
 $routes->get('/quiz/set_question_count', 'QuizController::setQuestionCount');
 $routes->post('/quiz/create_questions', 'QuizController::createQuestions');

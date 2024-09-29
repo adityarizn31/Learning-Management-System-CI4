@@ -1551,26 +1551,29 @@ class GuruController extends BaseController
 
     public function takeSoal()
     {
+        // $pertanyaans = $this->soalModel->findAll();
+
+        // if ($this->request->getMethod() === 'post') {
+        //     $jawabans = $this->request->getPost('jawabans');
+        //     $idSiswa = 1;
+
+        //     foreach ($jawabans as $pertanyaan_id => $jawaban) {
+        //         $this->jawabanModel->save([
+        //             'pertanyaan_id' => $pertanyaan_id,
+        //             'siswaa_id' => $idSiswa,
+        //             'jawaban' => $jawaban
+        //         ]);
+        //     }
+        //     return redirect()->to('SiswaController/resultPilgan');
+        // }
+
+        $SOAL = $this->soalModel->findAll();
         $data = [
-            'title' => 'Pilihan Ganda || Algoritma Pemrograman'
+            'title' => 'Buat Soal Pilihan Ganda || Guru Stemanikaku',
+            'soal' => $SOAL
         ];
 
-        $pertanyaans = $this->soalModel->findAll();
-
-        if ($this->request->getMethod() === 'post') {
-            $jawabans = $this->request->getPost('jawabans');
-            $idSiswa = 1;
-
-            foreach ($jawabans as $pertanyaan_id => $jawaban) {
-                $this->jawabanModel->save([
-                    'pertanyaan_id' => $pertanyaan_id,
-                    'siswaa_id' => $idSiswa,
-                    'jawaban' => $jawaban
-                ]);
-            }
-            return redirect()->to('SiswaController/resultPilgan');
-        }
-        return view('guru/alpro/pengetahuan_alpro/takeSoal', ['pertanyaans' => $pertanyaans], $data);
+        return view('guru/alpro/pengetahuan_alpro/takeSoal', $data);
     }
 
     // Done
