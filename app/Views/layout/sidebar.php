@@ -67,7 +67,7 @@
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
                 aria-expanded="true" aria-controls="collapseThree">
                 <i class="fas fa-lightbulb"></i>
-                <span>Manajemen Nilai</span>
+                <span>Manajemen Tugas</span>
             </a>
             <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">

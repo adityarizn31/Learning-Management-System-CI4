@@ -95,6 +95,8 @@ $routes->post('/quiz/create_questions', 'QuizController::createQuestions');
 $routes->post('/quiz/store_questions', 'QuizController::storeQuestions');
 
 $routes->get('guru/alpro/keterampilan_alpro/dataKeterampilanAlpro', 'GuruController::dataKeterampilanAlpro');
+$routes->get('guru/alpro/keterampilan_alpro/createSurvey', 'GuruController::createSurvey');
+$routes->get('guru/alpro/keterampilan_alpro/takeSurvey', 'GuruController::takeSurvey');
 
 $routes->get('guru/rpla/createSiswaA', 'GuruController::createSiswaA');
 $routes->get('guru/rpla/dataTNilaiRPLA_Alpro', 'GuruController::dataNilaiRPLA_Alpro');

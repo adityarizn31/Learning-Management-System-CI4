@@ -1,4 +1,4 @@
-<?= $this->extend('layout/templates'); ?>
+s<?= $this->extend('layout/templates'); ?>
 
 <?= $this->section('content'); ?>
 
@@ -10,7 +10,7 @@
             <div class="d-sm-flex align-items-center justify-content-between" style="padding-top: 10px;">
                 <h3 class="m-0 font-weight-bold text-primary"> Soal Pilihan Ganda Algoritma Pemrograman </h3>
 
-                <a href="<?= base_url() ?>AdminController/createPengetahuanAlpro/" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus"> </i> Quiz </a>
+                <a href="<?= base_url() ?>AdminController/createSoal/" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus"> </i> Soal </a>
                 <!-- <a href="<?= base_url() ?>AdminController/createPengetahuanAlpro/" class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm">
                     <i class="fas fa-edit me-2"></i> Edit Quiz
                 </a>

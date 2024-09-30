@@ -17,7 +17,7 @@
         </div>
     </div>
 
-    <form action="<?= base_url() ?>GuruController/tambahSoal" method="post">
+    <form action="<?= base_url() ?>GuruController/saveSoal" method="post">
 
         <?= csrf_field() ?>
 

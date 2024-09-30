@@ -1411,6 +1411,167 @@ class GuruController extends BaseController
 
 
 
+
+
+
+
+
+    // Done
+    // Hapus Sementara di Non aktifkan belum dibuat deleted_at
+    public function deleteSiswaRPLA($id = null)
+    {
+        $this->siswaAModel->delete($id);
+        session()->setFlashdata('pesan', 'Data Siswa RPL A berhasil dihapus !!');
+        return redirect()->to('/GuruController/dataSiswaRPLA');
+    }
+
+    // Done
+    // Hapus Sementara di Non aktifkan belum dibuat deleted_at
+    public function deleteSiswaRPLB($id = null)
+    {
+        $this->siswaBModel->delete($id);
+        session()->setFlashdata('pesan', 'Data Siswa RPL B berhasil dihapus !!');
+        return redirect()->to('/GuruController/dataSiswaRPLB');
+    }
+
+    // Done
+    // Hapus Sementara di Non aktifkan belum dibuat deleted_at
+    public function deleteSiswaRPLC($id = null)
+    {
+        $this->siswaCModel->delete($id);
+        session()->setFlashdata('pesan', 'Data Siswa berhasil dihapus !!');
+        return redirect()->to('/GuruController/dataSiswaRPLC');
+    }
+
+    // Done
+    // Hapus Sementara di Non aktifkan belum dibuat deleted_at
+    public function deleteMatpel($id = null)
+    {
+        $this->matapelajaranModel->delete($id);
+        session()->setFlashdata('pesan', 'Data Mata Pelajaran berhasil dihapus !!');
+        return redirect()->to('/GuruController/dataMataPelajaran');
+    }
+
+    // Done
+    // Hapus Sementara di Non aktifkan belum dibuat deleted_at
+    public function deleteGuru($id = null)
+    {
+        $this->guruModel->delete($id);
+        session()->setFlashdata('pesan', 'Data Guru berhasil dihapus !!');
+        return redirect()->to('/GuruController/dataGuru');
+    }
+
+    // Done
+    // Hapus Sementara di Non aktifkan belum dibuat deleted_at
+    public function deleteMateriAlpro($id = null)
+    {
+        $this->materiAlproModel->delete($id);
+        session()->setFlashdata('pesan', 'Materi Alpro berhasil dihapus !!');
+        return redirect()->to('/GuruController/dataMateriAlpro');
+    }
+
+    // Done
+    // Hapus Sementara di Non aktifkan belum dibuat deleted_at
+    public function deleteTugasAlpro($id = null)
+    {
+        $this->tugasAlproModel->delete($id);
+        session()->setFlashdata('pesan', 'Tugas Alpro berhasil dihapus !!');
+        return redirect()->to('/GuruController/tugas_alpro/dataTugasAlpro');
+    }
+
+    // Done
+    // Hapus Pertanyaan
+    public function deletePertanyaan($id)
+    {
+        $pertanyaan = $this->soalModel->find($id);
+
+        if ($pertanyaan) {
+            $this->soalModel->delete($id);
+            return redirect()->to('/GuruController/createPilgan')->with('message', 'Pertanyaan berhasil dihapus !!');
+        } else {
+            return redirect()->back()->with('error', 'Pertanyaan Tidak Ditemukan !!');
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // Done
+    public function createSoal()
+    {
+        helper(['form']);
+        $SOAL = $this->soalModel->findAll();
+        $data = [
+            'title' => 'Tambah Soal Pilihan Ganda|| Guru Stemanikaku',
+            'soal' => $SOAL
+        ];
+
+        return view('guru/alpro/pengetahuan_alpro/createSoal', $data);
+    }
+
+    // Done
+    public function saveSoal()
+    {
+
+        $validate = $this->validate([
+            'pertanyaan' => [
+                'rules' => 'required[soal.pertanyaan]',
+                'errors' => [
+                    'required' => 'Soal wajib diisi!!'
+                ],
+            ],
+            'pilihan_a' => [
+                'rules' => 'required[soal.pilihan_a]',
+                'errors' => [
+                    'required' => 'Pilihan A wajib diisi!!'
+                ],
+            ],
+            'pilihan_b' => [
+                'rules' => 'required[soal.pilihan_b]',
+                'errors' => [
+                    'required' => 'Pilihan B wajib diisi!!'
+                ],
+            ],
+            'pilihan_c' => [
+                'rules' => 'required[soal.pilihan_c]',
+                'errors' => [
+                    'required' => 'Pilihan C wajib diisi!!'
+                ],
+            ],
+            'pilihan_d' => [
+                'rules' => 'required[soal.pilihan_d]',
+                'errors' => [
+                    'required' => 'Pilihan D wajib diisi!!'
+                ],
+            ],
+        ]);
+
+        if (!$validate) {
+            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        }
+
+        $this->soalModel->save([
+            'pertanyaan' => $this->request->getVar('pertanyaan'),
+            'pilihan_a' => $this->request->getVar('pilihan_a'),
+            'pilihan_b' => $this->request->getVar('pilihan_b'),
+            'pilihan_c' => $this->request->getVar('pilihan_c'),
+            'pilihan_d' => $this->request->getVar('pilihan_d'),
+        ]);
+        session()->setFlashdata('pesan', 'Pertanyaan berhasil ditambahkan !!');
+        return redirect()->to('/GuruController/daftarSoal');
+    }
+
     public function createPilgan()
     {
         if ($this->request->getMethod() === 'post') {
@@ -1487,6 +1648,7 @@ class GuruController extends BaseController
         // }
 
         // return redirect()->to('/guru/createQuestion')->with('success', 'Question created successfully.');
+
 
         // Pastikan metode HTTP adalah POST
         if ($this->request->getMethod() === 'post') {
@@ -1576,16 +1738,6 @@ class GuruController extends BaseController
         return view('guru/alpro/pengetahuan_alpro/takeSoal', $data);
     }
 
-    // Done
-    public function daftarSoal()
-    {
-        $SOAL = $this->soalModel->findAll();
-        $data = [
-            'title' => 'Daftar Soal Pilihan Ganda || Guru Stemanikaku',
-            'soal' => $SOAL
-        ];
-        return view('guru/alpro/pengetahuan_alpro/daftarSoal', $data);
-    }
 
     public function tambahSoal()
     {
@@ -1624,6 +1776,17 @@ class GuruController extends BaseController
         return view('guru/alpro/pengetahuan_alpro/daftarSoal');
     }
 
+    // Done
+    public function daftarSoal()
+    {
+        $SOAL = $this->soalModel->findAll();
+        $data = [
+            'title' => 'Daftar Soal Pilihan Ganda || Guru Stemanikaku',
+            'soal' => $SOAL
+        ];
+        return view('guru/alpro/pengetahuan_alpro/daftarSoal', $data);
+    }
+
     public function editSoal($id)
     {
         $data['soal'] = $this->soalModel->find($id);
@@ -1660,87 +1823,147 @@ class GuruController extends BaseController
 
 
 
+    // Done
+    public function createSurvey()
+    {
+        helper(['form']);
+        $SURVEYKETERAMPILAN = $this->surveyKeterampilanModel->findAll();
+        $data = [
+            'title' => 'Buat Soal Keterampilan || Guru Stemanikaku',
+            'validation' => \Config\Services::validation(),
+            'surveyketerampilan' => $SURVEYKETERAMPILAN
+        ];
 
-
-
-
-
-
+        return view('guru/alpro/keterampilan_alpro/createSurvey', $data);
+    }
 
     // Done
-    // Hapus Sementara di Non aktifkan belum dibuat deleted_at
-    public function deleteSiswaRPLA($id = null)
+    public function saveSurvey()
     {
-        $this->siswaAModel->delete($id);
-        session()->setFlashdata('pesan', 'Data Siswa RPL A berhasil dihapus !!');
+        $validate = $this->validate([            
+            'pertanyaan1' => [
+                'rules' => 'required[surveyketerampilan.pertanyaan1]',
+                'errors' => [
+                    'required' => 'Pertanyaan 1 harus diisi !!',
+                ],
+            ],
+            'pertanyaan2' => [
+                'rules' => 'required[surveyketerampilan.pertanyaan2]',
+                'errors' => [
+                    'required' => 'Pertanyaan 2 harus diisi !!',
+                ],
+            ],
+            'pertanyaan3' => [
+                'rules' => 'required[surveyketerampilan.pertanyaan3]',
+                'errors' => [
+                    'required' => 'Pertanyaan 3 harus diisi !!',
+                ],
+            ],
+            'pertanyaan4' => [
+                'rules' => 'required[surveyketerampilan.pertanyaan4]',
+                'errors' => [
+                    'required' => 'Pertanyaan 4 harus diisi !!',
+                ],
+            ],
+            'pertanyaan5' => [
+                'rules' => 'required[surveyketerampilan.pertanyaan5]',
+                'errors' => [
+                    'required' => 'Pertanyaan 5 harus diisi !!',
+                ],
+            ],
+        ]);
+
+        if (!$validate) {
+            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        }        
+
+        $this->surveyKeterampilanModel->save([
+            'pertanyaan1' => $this->request->getVar('pertanyaan1'),
+            'pertanyaan2' => $this->request->getVar('pertanyaan2'),
+            'pertanyaan3' => $this->request->getVar('pertanyaan3'),
+            'pertanyaan4' => $this->request->getVar('pertanyaan4'),
+            'pertanyaan5' => $this->request->getVar('pertanyaan5'),            
+        ]);
+        session()->setFlashdata('pesan', 'Siswa RPL A berhasil ditambahkan !!');
         return redirect()->to('/GuruController/dataSiswaRPLA');
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // Done
-    // Hapus Sementara di Non aktifkan belum dibuat deleted_at
-    public function deleteSiswaRPLB($id = null)
+    public function takeSurvey()
     {
-        $this->siswaBModel->delete($id);
-        session()->setFlashdata('pesan', 'Data Siswa RPL B berhasil dihapus !!');
-        return redirect()->to('/GuruController/dataSiswaRPLB');
+        helper(['form']);
+        $SURVEYKETERAMPILAN = $this->surveyKeterampilanModel->findAll();
+        $data = [
+            'title' => 'Kerjakan Soal Keterampilan || Guru Stemanikaku',
+            'validation' => \Config\Services::validation(),
+            'surveyketerampilan' => $SURVEYKETERAMPILAN
+        ];
+
+        return view('guru/alpro/keterampilan_alpro/takeSurvey', $data);
     }
 
     // Done
-    // Hapus Sementara di Non aktifkan belum dibuat deleted_at
-    public function deleteSiswaRPLC($id = null)
+    public function takeSaveSurvey()
     {
-        $this->siswaCModel->delete($id);
-        session()->setFlashdata('pesan', 'Data Siswa berhasil dihapus !!');
-        return redirect()->to('/GuruController/dataSiswaRPLC');
-    }
+        $validate = $this->validate([            
+            'jawaban1' => [
+                'rules' => 'required[surveyketerampilan.jawaban1]',
+                'errors' => [
+                    'required' => 'Pertanyaan 1 harus diisi !!',
+                ],
+            ],
+            'jawaban2' => [
+                'rules' => 'required[surveyketerampilan.jawaban2]',
+                'errors' => [
+                    'required' => 'Pertanyaan 2 harus diisi !!',
+                ],
+            ],
+            'jawaban3' => [
+                'rules' => 'required[surveyketerampilan.jawaban3]',
+                'errors' => [
+                    'required' => 'Pertanyaan 3 harus diisi !!',
+                ],
+            ],
+            'jawaban4' => [
+                'rules' => 'required[surveyketerampilan.jawaban4]',
+                'errors' => [
+                    'required' => 'Pertanyaan 4 harus diisi !!',
+                ],
+            ],
+            'jawaban5' => [
+                'rules' => 'required[surveyketerampilan.jawaban5]',
+                'errors' => [
+                    'required' => 'Pertanyaan 5 harus diisi !!',
+                ],
+            ],
+        ]);
 
-    // Done
-    // Hapus Sementara di Non aktifkan belum dibuat deleted_at
-    public function deleteMatpel($id = null)
-    {
-        $this->matapelajaranModel->delete($id);
-        session()->setFlashdata('pesan', 'Data Mata Pelajaran berhasil dihapus !!');
-        return redirect()->to('/GuruController/dataMataPelajaran');
-    }
+        if (!$validate) {
+            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        }        
 
-    // Done
-    // Hapus Sementara di Non aktifkan belum dibuat deleted_at
-    public function deleteGuru($id = null)
-    {
-        $this->guruModel->delete($id);
-        session()->setFlashdata('pesan', 'Data Guru berhasil dihapus !!');
-        return redirect()->to('/GuruController/dataGuru');
-    }
-
-    // Done
-    // Hapus Sementara di Non aktifkan belum dibuat deleted_at
-    public function deleteMateriAlpro($id = null)
-    {
-        $this->materiAlproModel->delete($id);
-        session()->setFlashdata('pesan', 'Materi Alpro berhasil dihapus !!');
-        return redirect()->to('/GuruController/dataMateriAlpro');
-    }
-
-    // Done
-    // Hapus Sementara di Non aktifkan belum dibuat deleted_at
-    public function deleteTugasAlpro($id = null)
-    {
-        $this->tugasAlproModel->delete($id);
-        session()->setFlashdata('pesan', 'Tugas Alpro berhasil dihapus !!');
-        return redirect()->to('/GuruController/tugas_alpro/dataTugasAlpro');
-    }
-
-    // Done
-    // Hapus Pertanyaan
-    public function deletePertanyaan($id)
-    {
-        $pertanyaan = $this->soalModel->find($id);
-
-        if ($pertanyaan) {
-            $this->soalModel->delete($id);
-            return redirect()->to('/GuruController/createPilgan')->with('message', 'Pertanyaan berhasil dihapus !!');
-        } else {
-            return redirect()->back()->with('error', 'Pertanyaan Tidak Ditemukan !!');
-        }
+        $this->surveyKeterampilanModel->save([
+            'jawaban1' => $this->request->getVar('jawaban1'),
+            'jawaban2' => $this->request->getVar('jawaban2'),
+            'jawaban3' => $this->request->getVar('jawaban3'),
+            'jawaban4' => $this->request->getVar('jawaban4'),
+            'jawaban5' => $this->request->getVar('jawaban5'),            
+        ]);
+        session()->setFlashdata('pesan', 'Berhasil Mengerjakan Survey');
+        return redirect()->to('/GuruController/takeSurvey');
     }
 }
